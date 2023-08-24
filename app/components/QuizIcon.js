@@ -1,19 +1,17 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Image, View } from "react-native";
 
 import colors from "../utility/colors";
-
 import data from "../utility/data";
 
-const QuizIcon = ({ quizId }) => {
+const QuizIcon = ({ completed, quizId }) => {
   const quiz = data.getQuizById(quizId);
 
+  console.log({ completed });
+
   return (
-    <TouchableOpacity
-      style={iconStyles.container}
-      onPress={() => console.log(quiz)}
-    >
-      {quiz.completed ? (
+    <View style={iconStyles.container}>
+      {completed ? (
         <Image
           source={require("../assets/colorLongFlower.png")}
           style={{ width: 40, height: 50 }}
@@ -24,21 +22,24 @@ const QuizIcon = ({ quizId }) => {
           style={iconStyles.image}
         />
       )}
-    </TouchableOpacity>
+    </View>
   );
 };
 
 const iconStyles = StyleSheet.create({
   container: {
-    backgroundColor: colors.gray4,
-    padding: 5,
+    backgroundColor: colors.gray3,
+    padding: 4,
     borderRadius: 50,
     overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 70,
+    height: 70,
   },
   image: {
-    height: 60,
-    width: 60,
-    // backgroundColor: "gray",
+    height: 50,
+    width: 50,
   },
 });
 

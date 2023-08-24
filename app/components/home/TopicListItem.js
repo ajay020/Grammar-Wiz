@@ -29,9 +29,7 @@ const TopicListItem = ({ selectedTopic, setSelectedTopic, topic }) => {
           />
         </View>
       </TouchableOpacity>
-      {selectedTopic?.id === topic.id && (
-        <ExpandableItem quizzes={topic.quizzes} />
-      )}
+      {selectedTopic?.id === topic.id && <ExpandableItem topic={topic} />}
     </>
   );
 };

@@ -4,6 +4,7 @@ export default {
   gray2: "#2c2c2c",
   gray3: "#3E3E44",
   gray4: "#aaa",
+  gray5: "#bbb",
   white: "#fff",
   black: "#000",
 };
