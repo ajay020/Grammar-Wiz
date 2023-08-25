@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, FlatList } from "react-native";
-import { useFocusEffect } from "@react-navigation/native";
+import { StyleSheet, FlatList } from "react-native";
 
 import data from "../utility/data";
 import ListItemSeprator from "../components/ListItemSeprator";
 import TopicListItem from "../components/home/TopicListItem";
 import cache from "../utility/cache";
 
+const initializeData = () => {
+  const topics = data?.topics;
+
+  return topics ? topics : [];
+};
+
 export default HomeScreen = () => {
-  const [topics, setTopics] = useState([...data.topics]);
+  const [topics, setTopics] = useState(initializeData);
   const [selectedTopic, setSelectedTopic] = useState(null);
 
-  console.log("HomeScreen render");
+  //   console.log("HomeScreen render");
 
-  const completedQuizzes = async () => {
+  const clearCache = async () => {
     await cache.clearAll();
   };
 
   useEffect(() => {
-    // completedQuizzes();
+    // clearCache();
   }, []);
 
   return (

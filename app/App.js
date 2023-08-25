@@ -6,11 +6,13 @@ import Screen from "./components/Screen";
 import AppScreen from "./screens/AppScreen";
 import Quiz from "./screens/QuizScreen";
 import Result from "./components/Result";
+import ProgressScreen from "./screens/ProgressScreen";
 
 export default function App() {
   return (
     <NavigationContainer>
       <AppScreen />
+      {/* <ProgressScreen /> */}
     </NavigationContainer>
   );
 }

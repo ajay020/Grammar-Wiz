@@ -1,7 +1,13 @@
 import React, { useRef } from "react";
 import { Animated, View, StyleSheet } from "react-native";
+import colors from "../utility/colors";
 
-const AppProgressBar = ({ progress, height = 16 }) => {
+const AppProgressBar = ({
+  progress = 0,
+  backgroundColor = colors.primary,
+  height = 16,
+  style,
+}) => {
   const animatedWidth = useRef(new Animated.Value(progress)).current;
 
   // Update animation when progress changes
@@ -19,9 +25,9 @@ const AppProgressBar = ({ progress, height = 16 }) => {
   };
 
   return (
-    <View style={[styles.progressBar, { height }]}>
+    <View style={[styles.progressBar, { height }, style]}>
       <Animated.View
-        style={[styles.progressTrack, animatedStyles]}
+        style={[styles.progressTrack, animatedStyles, { backgroundColor }]}
       ></Animated.View>
     </View>
   );
@@ -31,13 +37,13 @@ const styles = StyleSheet.create({
   progressBar: {
     height: 16,
     width: "100%",
-    backgroundColor: "#ccc",
+    backgroundColor: colors.gray4,
     borderRadius: 10,
     overflow: "hidden",
   },
   progressTrack: {
     height: "100%",
-    backgroundColor: "green",
+    backgroundColor: colors.primary,
   },
 });
 

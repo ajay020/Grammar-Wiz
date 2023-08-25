@@ -39,7 +39,6 @@ const QuizScreen = ({ route }) => {
     }
     // Quiz is completed, save its id to local storage
     if (currentQuestionIndex == QUESTION_COUNT - 1) {
-      console.log("saved Data");
       saveQuiz();
     }
   };
@@ -49,11 +48,11 @@ const QuizScreen = ({ route }) => {
       // Retrieve existing quizzes from local storage
       const existingQuizzes = (await cache.getData("completedQuizzes")) || [];
 
-      let isExist = existingQuizzes.find(
+      let existQuiz = existingQuizzes.find(
         (item) => item.quizId === quizId && item.topicId === topicId
       );
 
-      if (!isExist) {
+      if (!existQuiz) {
         const modifiedQuizzes = [
           ...existingQuizzes,
           {
@@ -66,6 +65,21 @@ const QuizScreen = ({ route }) => {
         // Store the modified quizzes back to local storage
         await cache.storeData("completedQuizzes", modifiedQuizzes);
         console.log("Quiz  Saved");
+      } else {
+        if (existQuiz.correct < correctAnswerCount) {
+          const updatedQuiz = { ...existQuiz, correct: correctAnswerCount };
+          const updatedQuizzes = existingQuizzes.map((q) => {
+            if (
+              q.quizId === updatedQuiz.quizId &&
+              q.topicId === updatedQuiz.topicId
+            ) {
+              return updatedQuiz;
+            }
+            return q;
+          });
+          await cache.storeData("completedQuizzes", updatedQuizzes);
+          console.log("Quiz  updated");
+        }
       }
     } catch (error) {
       console.log("Error adding QuizId to completedQuzzes:", error);

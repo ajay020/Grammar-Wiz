@@ -1,29 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 import colors from "../utility/colors";
 import QuizIcon from "../components/QuizIcon";
-import cache from "../utility/cache";
+import useQuizData from "./hooks/useQuizData";
 
 const ExpandableItem = ({ topic }) => {
+  //   console.log("ExpandableItem render");
+
   const navigation = useNavigation();
-  const [completedQuizzes, setCompletedQuizzes] = useState([]);
-
-  console.log("ExpandableItem render");
-
-  const fetchCompletdQuizzes = async () => {
-    try {
-      let list = await cache.getData("completedQuizzes");
-      setCompletedQuizzes([...list]);
-    } catch (error) {
-      console.log("Error fetching data", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCompletdQuizzes();
-  }, []);
+  const { completedQuizzes, fetchCompletdQuizzes } = useQuizData();
 
   return (
     <View style={styles.container}>
@@ -44,6 +31,8 @@ const ExpandableItem = ({ topic }) => {
               (quiz) => quiz.quizId == quizId && topic.id === quiz.topicId
             )}
             quizId={quizId}
+            topicId={topic?.id}
+            completedQuizzes={completedQuizzes}
           />
         </TouchableOpacity>
       ))}
