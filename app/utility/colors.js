@@ -7,4 +7,5 @@ export default {
   gray5: "#bbb",
   white: "#fff",
   black: "#000",
+  golden: "gold",
 };

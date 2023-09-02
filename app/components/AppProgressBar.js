@@ -7,19 +7,21 @@ const AppProgressBar = ({
   backgroundColor = colors.primary,
   height = 16,
   style,
+  range = 1,
+  duration = 400,
 }) => {
   const animatedWidth = useRef(new Animated.Value(progress)).current;
 
   // Update animation when progress changes
   Animated.timing(animatedWidth, {
     toValue: progress,
-    duration: 400, // Duration of the animation in milliseconds
+    duration, // Duration of the animation in milliseconds
     useNativeDriver: false, // Set to true for better performance (requires Animated.View)
   }).start();
 
   const animatedStyles = {
     width: animatedWidth.interpolate({
-      inputRange: [0, 1],
+      inputRange: [0, range],
       outputRange: ["0%", "100%"],
     }),
   };
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
   progressBar: {
     height: 16,
     width: "100%",
-    backgroundColor: colors.gray4,
+    backgroundColor: colors.gray1,
     borderRadius: 10,
     overflow: "hidden",
   },

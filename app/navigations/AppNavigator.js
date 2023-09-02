@@ -1,15 +1,14 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import ProgressScreen from "./ProgressScreen";
-import GameScreen from "./GameScreen";
+import ProgressScreen from "../screens/ProgressScreen";
 import Icon from "../components/Icon";
 import colors from "../utility/colors";
-import HomeNavigator from "../navigations/HomeNavigator";
-import HomeScreen from "./HomeScreen";
+import HomeNavigator from "./HomeNavigator";
+import GameNavigator from "./GameNavigator";
 
 const Tab = createBottomTabNavigator();
 
-function AppScreen() {
+function AppNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -28,7 +27,7 @@ function AppScreen() {
       />
       <Tab.Screen
         name="Games"
-        component={GameScreen}
+        component={GameNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Icon name={"dumbbell"} color={color} size={size} />
@@ -48,4 +47,4 @@ function AppScreen() {
   );
 }
 
-export default AppScreen;
+export default AppNavigator;

@@ -1,18 +1,12 @@
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
-import HomeScreen from "./screens/HomeScreen";
-import Screen from "./components/Screen";
-import AppScreen from "./screens/AppScreen";
-import Quiz from "./screens/QuizScreen";
-import Result from "./components/Result";
-import ProgressScreen from "./screens/ProgressScreen";
+import AppNavigator from "./navigations/AppNavigator";
 
 export default function App() {
   return (
     <NavigationContainer>
-      <AppScreen />
-      {/* <ProgressScreen /> */}
+      <AppNavigator />
     </NavigationContainer>
   );
 }

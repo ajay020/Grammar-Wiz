@@ -7,7 +7,6 @@ import data from "../utility/data";
 import Text from "../components/Text";
 import AppProgressBar from "../components/AppProgressBar";
 import { useNavigation } from "@react-navigation/native";
-import useQuizData from "../components/hooks/useQuizData";
 
 const ProgressScreen = () => {
   const topics = data?.topics;
