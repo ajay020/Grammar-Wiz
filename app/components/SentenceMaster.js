@@ -60,7 +60,7 @@ const SentenceMaster = ({ route }) => {
 
   useEffect(() => {
     if (currectQuizIndex < quizzes?.length) {
-      const sentence = gameData?.quizzes[currectQuizIndex];
+      const sentence = quizzes[currectQuizIndex];
       const shuffleWords = shuffleArray(sentence.words);
       setWords([...shuffleWords]);
     } else {
