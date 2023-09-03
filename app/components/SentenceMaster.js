@@ -13,6 +13,7 @@ import SentenceModal from "./SentenceModal";
 import useTimer from "../hooks/useTimer";
 import AppProgressBar from "./AppProgressBar";
 import { getQuizzesByDifficulty } from "../utility/gameData";
+import { useFocusEffect } from "@react-navigation/native";
 
 function shuffleArray(array) {
   // Create a copy of the original array to avoid modifying it directly
@@ -39,7 +40,6 @@ const SentenceMaster = ({ route }) => {
 
   // fetch quizzes by difficulty
   const quizzes = getQuizzesByDifficulty(level);
-  //   console.log(quizzes);
 
   const handleTimerComplete = () => {
     openModal();
@@ -50,9 +50,19 @@ const SentenceMaster = ({ route }) => {
     handleTimerComplete
   );
 
-  useEffect(() => {
-    startTimer();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      //   startTimer();
+      //   resetTimer();
+      console.log("SentenceMaster focused");
+
+      return () => {
+        stopTimer();
+        // console.log("Timer stopped!");
+        console.log("SentenceMaster removed");
+      };
+    }, [])
+  );
 
   useEffect(() => {
     if (currectQuizIndex < quizzes?.length) {
@@ -113,51 +123,49 @@ const SentenceMaster = ({ route }) => {
   };
 
   return (
-    <>
-      <View style={styles.container}>
-        <View style={styles.output}>
-          {arrangedWords.map((word) => (
-            <AppText key={word.id} style={styles.wordChip}>
-              {word.text}
-            </AppText>
-          ))}
-        </View>
-        <View style={styles.progressContainer}>
-          {progress > 0 && (
-            <AppProgressBar progress={progress} range={100} duration={600} />
-          )}
-        </View>
-        <View style={styles.input}>
-          {words?.map((word) => (
-            <TouchableOpacity
-              onPress={() => handleWordSelect(word)}
-              key={word.id}
-              activeOpacity={0.8}
-            >
-              <AppText style={styles.wordChip}>{word.text}</AppText>
-            </TouchableOpacity>
-          ))}
-        </View>
-        {/* Sentence Modal */}
-        <SentenceModal
-          words={arrangedWords}
-          handleRetakeQuiz={handleRetakeQuiz}
-          modalVisible={modalVisible}
-          moveToNextSentence={moveToNextSentence}
-          timeLeft={timeLeft}
-          closeModal={closeModal}
-        />
-        {/* Sentence Modal */}
+    <View style={styles.container}>
+      <View style={styles.output}>
+        {arrangedWords.map((word) => (
+          <AppText key={word.id} style={styles.wordChip}>
+            {word.text}
+          </AppText>
+        ))}
       </View>
-    </>
+      <View style={styles.progressContainer}>
+        {progress > 0 && (
+          <AppProgressBar progress={progress} range={100} duration={600} />
+        )}
+      </View>
+      <View style={styles.input}>
+        {words?.map((word) => (
+          <TouchableOpacity
+            onPress={() => handleWordSelect(word)}
+            key={word.id}
+            activeOpacity={0.8}
+          >
+            <AppText style={styles.wordChip}>{word.text}</AppText>
+          </TouchableOpacity>
+        ))}
+      </View>
+      {/* Sentence Modal */}
+      <SentenceModal
+        words={arrangedWords}
+        handleRetakeQuiz={handleRetakeQuiz}
+        modalVisible={modalVisible}
+        moveToNextSentence={moveToNextSentence}
+        timeLeft={timeLeft}
+        closeModal={closeModal}
+      />
+      {/* Sentence Modal */}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.gray4,
+    backgroundColor: colors.primary,
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
+    // paddingTop: StatusBar.currentHeight,
   },
   input: {
     alignItems: "center",
@@ -168,7 +176,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     gap: 10,
-    padding: 10,
+    // padding: 10,
   },
   output: {
     backgroundColor: colors.gray2,

@@ -1,15 +1,32 @@
 import React from "react";
-
 import { createStackNavigator } from "@react-navigation/stack";
+import { View } from "react-native";
+
 import QuizScreen from "../screens/QuizScreen";
 import HomeScreen from "../screens/HomeScreen";
+import colors from "../utility/colors";
+import AppText from "../components/Text";
 
 const Stack = createStackNavigator();
 
 const HomeNavigator = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+    <Stack.Navigator screenOptions={{ headerShown: true }}>
+      <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{
+          headerShown: true,
+          headerTitleAlign: "center",
+          headerTitle: "English Grammer",
+          headerStyle: {
+            backgroundColor: colors.gray1,
+          },
+          headerTitleStyle: {
+            color: colors.white,
+          },
+        }}
+      />
       <Stack.Screen name="QuizScreen" component={QuizScreen} />
     </Stack.Navigator>
   );

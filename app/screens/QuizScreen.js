@@ -11,20 +11,25 @@ import AppProgressBar from "../components/AppProgressBar";
 import Result from "../components/Result";
 import cache from "../utility/cache";
 
-const QuizScreen = ({ route }) => {
+const QuizScreen = ({ route, navigation }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isValidatedOption, setIsValidatedOption] = useState(false);
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
 
-  const { quizId, topicId } = route?.params;
+  const { quizId, topicId, title } = route?.params;
   const quiz = data.getQuizById(quizId);
   const questions = quiz?.questions;
 
   const question = data?.getQuestionById(questions?.[currentQuestionIndex]);
   const topic = data.getTopicById(quiz.topicId);
   const QUESTION_COUNT = questions?.length;
+
+  // Set the header title dynamically based on the passed title parameter
+  React.useLayoutEffect(() => {
+    navigation.setOptions({ title: title });
+  }, [navigation, route]);
 
   const handleNextQeustion = async () => {
     setSelectedOption(null);

@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, TouchableOpacity } from "react-native";
 
 import ProgressScreen from "../screens/ProgressScreen";
 import Icon from "../components/Icon";
@@ -14,6 +15,16 @@ function AppNavigator() {
       screenOptions={{
         tabBarActiveTintColor: colors.primary,
         headerShown: false,
+        tabBarLabel: "",
+        tabBarStyle: {
+          height: 60,
+        },
+        tabBarItemStyle: {
+          paddingVertical: 0,
+          justifyContent: "center",
+          alignItems: "center",
+          //   backgroundColor: "lightblue",
+        },
       }}
     >
       <Tab.Screen

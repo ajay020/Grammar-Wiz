@@ -1,15 +1,26 @@
 import React from "react";
 import { View, StyleSheet, StatusBar, TouchableOpacity } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 
 import colors from "../utility/colors";
 import Text from "../components/Text";
 
 const GameScreen = ({ navigation }) => {
+  useFocusEffect(
+    React.useCallback(() => {
+      navigation.navigate("GameScreen");
+      console.log("GameScreen FOCUSED");
+
+      return () => {
+        console.log("GameScreen UNFOCUSED");
+      };
+    }, [])
+  );
+
   const sendDataToSentenceMaster = (level) => {
     const data = {
       level,
     };
-
     // Navigate to SentenceMaster and pass the data
     navigation.navigate("SentenceMaster", { data: data });
   };

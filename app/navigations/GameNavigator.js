@@ -10,7 +10,7 @@ const GameNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName="GameScreen"
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: true }}
     >
       <Stack.Screen name="GameScreen" component={GameScreen} />
       <Stack.Screen name="SentenceMaster" component={SentenceMaster} />

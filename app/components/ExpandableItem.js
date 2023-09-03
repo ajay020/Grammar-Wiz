@@ -12,19 +12,24 @@ const ExpandableItem = ({ topic }) => {
   const navigation = useNavigation();
   const { completedQuizzes, fetchCompletdQuizzes } = useQuizData();
 
+  const navigateToQuizScreen = (quizId) => {
+    navigation.addListener("focus", () => {
+      fetchCompletdQuizzes();
+    });
+    navigation.navigate("QuizScreen", {
+      quizId,
+      topicId: topic?.id,
+      title: topic?.title,
+    });
+  };
+
   return (
     <View style={styles.container}>
       {topic?.quizzes.map((quizId) => (
         <TouchableOpacity
           key={quizId}
           activeOpacity={0.3}
-          onPress={() => {
-            navigation.addListener("focus", () => {
-              console.log("BE FOCUSED");
-              fetchCompletdQuizzes();
-            });
-            navigation.navigate("QuizScreen", { quizId, topicId: topic?.id });
-          }}
+          onPress={() => navigateToQuizScreen(quizId)}
         >
           <QuizIcon
             completed={completedQuizzes.find(
