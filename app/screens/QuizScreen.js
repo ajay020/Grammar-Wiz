@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import { Dimensions, View, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import Text from "../components/Text";
 import colors from "../utility/colors";
 import AppButton from "../components/AppButton";
 import AppText from "../components/Text";
-import data from "../utility/data";
+import { getQuizById } from "../database/grammer/quizzes";
+import { getQuestionById } from "../database/grammer/questions";
+import { getTopicById } from "../database/grammer/topics";
+
 import AppProgressBar from "../components/AppProgressBar";
 import Result from "../components/Result";
 import cache from "../utility/cache";
@@ -18,13 +21,16 @@ const QuizScreen = ({ route, navigation }) => {
   const [isValidatedOption, setIsValidatedOption] = useState(false);
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
 
+  console.log({ getQuizById });
   const { quizId, topicId, title } = route?.params;
-  const quiz = data.getQuizById(quizId);
+  const quiz = getQuizById(quizId);
   const questions = quiz?.questions;
 
-  const question = data?.getQuestionById(questions?.[currentQuestionIndex]);
-  const topic = data.getTopicById(quiz.topicId);
+  const question = getQuestionById(questions?.[currentQuestionIndex]);
+  const topic = getTopicById(quiz.topicId);
   const QUESTION_COUNT = questions?.length;
+
+  useEffect(() => {}, []);
 
   // Set the header title dynamically based on the passed title parameter
   React.useLayoutEffect(() => {

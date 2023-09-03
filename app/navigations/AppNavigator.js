@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, TouchableOpacity } from "react-native";
 
 import ProgressScreen from "../screens/ProgressScreen";
 import Icon from "../components/Icon";

@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  StyleSheet,
-  StatusBar,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 
 import AppText from "./Text";
 import colors from "../utility/colors";
 import SentenceModal from "./SentenceModal";
 import useTimer from "../hooks/useTimer";
 import AppProgressBar from "./AppProgressBar";
-import { getQuizzesByDifficulty } from "../utility/gameData";
+import gameData from "../database/gameData";
 import { useFocusEffect } from "@react-navigation/native";
 
 function shuffleArray(array) {
@@ -39,7 +33,7 @@ const SentenceMaster = ({ route }) => {
   } = route.params;
 
   // fetch quizzes by difficulty
-  const quizzes = getQuizzesByDifficulty(level);
+  const quizzes = gameData.getQuizzesByDifficulty(level);
 
   const handleTimerComplete = () => {
     openModal();
@@ -53,7 +47,7 @@ const SentenceMaster = ({ route }) => {
   useFocusEffect(
     React.useCallback(() => {
       //   startTimer();
-      //   resetTimer();
+      resetTimer();
       console.log("SentenceMaster focused");
 
       return () => {
@@ -66,7 +60,7 @@ const SentenceMaster = ({ route }) => {
 
   useEffect(() => {
     if (currectQuizIndex < quizzes?.length) {
-      const sentence = quizzes[currectQuizIndex];
+      const sentence = gameData?.quizzes[currectQuizIndex];
       const shuffleWords = shuffleArray(sentence.words);
       setWords([...shuffleWords]);
     } else {

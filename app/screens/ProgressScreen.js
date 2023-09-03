@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, StatusBar } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import cache from "../utility/cache";
 import colors from "../utility/colors";
-import data from "../utility/data";
+import quizData from "../database/grammer/quizzes";
+import { topics } from "../database/grammer/topics";
 import Text from "../components/Text";
 import AppProgressBar from "../components/AppProgressBar";
-import { useNavigation } from "@react-navigation/native";
 
 const ProgressScreen = () => {
-  const topics = data?.topics;
   const [progressDataList, setProgressDataList] = useState([]);
 
   const navigation = useNavigation();
@@ -40,7 +40,7 @@ const ProgressScreen = () => {
       let totalQuestions = 0;
 
       topic?.quizzes?.forEach((quizId) => {
-        totalQuestions += data?.getQuizById(quizId)?.questions?.length || 0;
+        totalQuestions += quizData?.getQuizById(quizId)?.questions?.length || 0;
       });
 
       if (currentTopicQuizzs?.length > 0) {

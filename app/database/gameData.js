@@ -635,4 +635,4 @@ const getQuizById = (id) => {
   return quizzes.find((sentence) => sentence.id === id);
 };
 
-export { getQuizById, quizzes, getQuizzesByDifficulty };
+export default { getQuizById, quizzes, getQuizzesByDifficulty };
