@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 
 import AppText from "./Text";
 import colors from "../utility/colors";
@@ -7,7 +8,6 @@ import SentenceModal from "./SentenceModal";
 import useTimer from "../hooks/useTimer";
 import AppProgressBar from "./AppProgressBar";
 import gameData from "../database/gameData";
-import { useFocusEffect } from "@react-navigation/native";
 
 function shuffleArray(array) {
   // Create a copy of the original array to avoid modifying it directly
@@ -33,7 +33,7 @@ const SentenceMaster = ({ route }) => {
   } = route.params;
 
   // fetch quizzes by difficulty
-  const quizzes = gameData.getQuizzesByDifficulty(level);
+  const filteredQuizzes = gameData.getQuizzesByDifficulty(level);
 
   const handleTimerComplete = () => {
     openModal();
@@ -59,8 +59,8 @@ const SentenceMaster = ({ route }) => {
   );
 
   useEffect(() => {
-    if (currectQuizIndex < quizzes?.length) {
-      const sentence = quizzes[currectQuizIndex];
+    if (currectQuizIndex < filteredQuizzes?.length) {
+      const sentence = filteredQuizzes[currectQuizIndex];
       const shuffleWords = shuffleArray(sentence.words);
       setWords([...shuffleWords]);
     } else {
@@ -78,7 +78,7 @@ const SentenceMaster = ({ route }) => {
   }, [words.length]);
 
   const moveToNextSentence = () => {
-    if (currectQuizIndex < quizzes?.length) {
+    if (currectQuizIndex < filteredQuizzes?.length) {
       setCurrentWordPosition(1);
       setArrangedWords([]);
       setCurrectQuizIndex((prev) => prev + 1);
@@ -90,7 +90,7 @@ const SentenceMaster = ({ route }) => {
   const handleRetakeQuiz = () => {
     setCurrentWordPosition(1);
     setCurrectQuizIndex((prev) => prev);
-    const sentence = quizzes[currectQuizIndex];
+    const sentence = filteredQuizzes[currectQuizIndex];
     // shffle words
     const shuffleWords = shuffleArray(sentence.words);
 

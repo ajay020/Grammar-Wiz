@@ -2,22 +2,12 @@ const quizzes = [
   {
     id: 1,
     topicId: 1, // ID of the topic this quiz belongs to
-    questions: [1, 2], // IDs of questions in this quiz
+    questions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], // IDs of questions in this quiz
   },
   {
     id: 2,
-    topicId: 1,
-    questions: [3, 4],
-  },
-  {
-    id: 3,
-    topicId: 2,
-    questions: [5, 6],
-  },
-  {
-    id: 4,
-    topicId: 2,
-    questions: [7, 8],
+    topicId: 1, // ID of the topic this quiz belongs to
+    questions: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20], // IDs of questions in this quiz
   },
 ];
 

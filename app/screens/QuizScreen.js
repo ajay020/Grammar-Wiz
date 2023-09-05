@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -21,16 +21,13 @@ const QuizScreen = ({ route, navigation }) => {
   const [isValidatedOption, setIsValidatedOption] = useState(false);
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
 
-  console.log({ getQuizById });
   const { quizId, topicId, title } = route?.params;
   const quiz = getQuizById(quizId);
   const questions = quiz?.questions;
 
   const question = getQuestionById(questions?.[currentQuestionIndex]);
-  const topic = getTopicById(quiz.topicId);
+  const topic = getTopicById(quiz?.topicId);
   const QUESTION_COUNT = questions?.length;
-
-  useEffect(() => {}, []);
 
   // Set the header title dynamically based on the passed title parameter
   React.useLayoutEffect(() => {

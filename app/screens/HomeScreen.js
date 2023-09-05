@@ -13,12 +13,12 @@ export default HomeScreen = () => {
   //   console.log("HomeScreen render");
 
   const clearCache = async () => {
-    // await cache.clearAll();
+    await cache.clearAll();
   };
 
   useEffect(() => {
     setTopics(topicData.topics);
-    // clearCache();
+    clearCache();
   }, []);
 
   return (
