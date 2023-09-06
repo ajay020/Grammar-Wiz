@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import colors from "../utility/colors";
 import QuizIcon from "../components/QuizIcon";
-import useQuizData from "./hooks/useQuizData";
+import useQuizData from "../hooks/useQuizData";
 
 const ExpandableItem = ({ topic }) => {
   //   console.log("ExpandableItem render");

@@ -22,7 +22,7 @@ function shuffleArray(array) {
   return shuffledArray;
 }
 
-const SentenceMaster = ({ route }) => {
+const SentenceMaster = ({ route, navigation }) => {
   const [currectQuizIndex, setCurrectQuizIndex] = useState(0);
   const [currentWordPosition, setCurrentWordPosition] = useState(1);
   const [arrangedWords, setArrangedWords] = useState([]);
@@ -66,6 +66,7 @@ const SentenceMaster = ({ route }) => {
     } else {
       stopTimer();
       Alert.alert("Congratulations! You completed all the quizzes!!");
+      navigation.navigate("GameScreen");
     }
   }, [currectQuizIndex]);
 

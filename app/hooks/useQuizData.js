@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import cache from "../../utility/cache";
+import cache from "../utility/cache";
 
 function useQuizData() {
   const [completedQuizzes, setCompletedQuizzes] = useState([]);

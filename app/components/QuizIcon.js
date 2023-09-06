@@ -4,9 +4,6 @@ import { useNavigation } from "@react-navigation/native";
 
 import colors from "../utility/colors";
 import CircularProgress from "./CircularProgress";
-import useQuizData from "./hooks/useQuizData";
-
-import * as Progress from "react-native-progress";
 
 const QuizIcon = ({ completedQuizzes, completed, quizId, topicId }) => {
   console.log("QuizIcon render");

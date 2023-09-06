@@ -16,7 +16,7 @@ import cache from "../utility/cache";
 
 const QuizScreen = ({ route, navigation }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(0.1);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isValidatedOption, setIsValidatedOption] = useState(false);
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
@@ -114,7 +114,7 @@ const QuizScreen = ({ route, navigation }) => {
       {currentQuestionIndex < QUESTION_COUNT ? (
         <View style={styles.container}>
           <View style={styles.header}>
-            <Text style={styles.headerTxt}>{topic?.title}</Text>
+            {/* <Text style={styles.headerTxt}>{topic?.title}</Text> */}
             <AppProgressBar progress={progress} />
           </View>
 
@@ -130,17 +130,17 @@ const QuizScreen = ({ route, navigation }) => {
                   style={[
                     styles.optionTxt,
                     option?.id === selectedOption?.id && {
-                      backgroundColor: colors.gray4,
+                      backgroundColor: colors.gray3,
                     },
 
                     isValidatedOption &&
                       option.id === question?.correctOptionId && {
-                        borderColor: "green",
+                        borderColor: colors.primary,
                       },
                     isValidatedOption &&
                       option.id === selectedOption?.id &&
                       selectedOption?.id !== question?.correctOptionId && {
-                        borderColor: "red",
+                        borderColor: colors.danger,
                       },
                   ]}
                 >
@@ -149,20 +149,28 @@ const QuizScreen = ({ route, navigation }) => {
               </TouchableOpacity>
             ))}
           </View>
-          <View style={styles.footer}>
+          <View
+            style={[
+              styles.footer,
+              isValidatedOption ? { backgroundColor: colors.gray3 } : "",
+            ]}
+          >
             <View style={styles.explainContainer}>
-              <AppText style={styles.explainLable}> Explanation:</AppText>
-              <AppText style={styles.explainText}>
-                {question?.explanation}
-              </AppText>
+              {isValidatedOption && (
+                <AppText style={styles.explainText}>
+                  {question?.explanation}
+                </AppText>
+              )}
+              <AppButton
+                onPress={
+                  isValidatedOption
+                    ? handleNextQeustion
+                    : handleOptionValidation
+                }
+                title={isValidatedOption ? "Next" : "Check"}
+                style={[styles.button, !selectedOption && styles.disableButton]}
+              />
             </View>
-            <AppButton
-              onPress={
-                isValidatedOption ? handleNextQeustion : handleOptionValidation
-              }
-              title={isValidatedOption ? "Next" : "Check"}
-              style={[styles.button, !selectedOption && styles.disableButton]}
-            />
           </View>
         </View>
       ) : (
@@ -174,59 +182,58 @@ const QuizScreen = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: colors.gray1,
-    gap: 22,
+    backgroundColor: colors.gray2,
+    gap: 24,
+    paddingHorizontal: 20,
   },
   button: {
     fontSize: 28,
     marginVertical: 6,
-    borderRadius: 14,
-    borderColor: colors.gray4,
+    borderRadius: 12,
+    borderColor: colors.gray1,
+    width: "100%",
+    paddingHorizontal: 14,
   },
   container: {
-    backgroundColor: colors.gray1,
+    backgroundColor: colors.gray2,
     justifyContent: "space-between",
     height: "100%",
-    paddingHorizontal: 20,
   },
   disableButton: {
     backgroundColor: colors.gray3,
     borderWidth: 0.5,
-    paddingVertical: 12,
+    paddingHorizontal: 10,
   },
   errorButton: {
     backgroundColor: "tomato",
   },
   explainContainer: {
-    backgroundColor: colors.gray3,
-    marginBottom: 24,
-    paddingHorizontal: 8,
-    paddingVertical: 6,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: colors.gray4,
+    // backgroundColor: colors.gray1,
+    alignItems: "center",
+
+    // marginBottom: 24,
+    paddingHorizontal: 20,
+    // paddingVertical: 6,
+    // borderRadius: 12,
+    // borderWidth: 1,
+    // borderColor: colors.gray4,
   },
-  explainLable: {
-    fontSize: 22,
-    fontWeight: 400,
-    color: colors.white,
-  },
+
   explainText: {
-    fontSize: 20,
+    fontSize: 18,
     color: colors.white,
-    padding: 0,
+    paddingVertical: 24,
   },
   footer: {
-    // backgroundColor: colors.gray2,
+    // backgroundColor: colors.gray4,
     paddingVertical: 12,
     gap: 12,
   },
   header: {
     alignItems: "center",
     backgroundColor: colors.gray2,
-
-    padding: 16,
-    gap: 12,
+    paddingVertical: 18,
+    paddingHorizontal: 20,
   },
   headerTxt: {
     color: colors.white,
@@ -234,17 +241,18 @@ const styles = StyleSheet.create({
   },
   optionTxt: {
     borderWidth: 0.5,
+    borderBottomWidth: 2,
     borderColor: colors.white,
     borderRadius: 12,
-    backgroundColor: colors.gray1,
+    backgroundColor: colors.gray2,
     color: colors.white,
-    fontSize: 22,
+    fontSize: 19,
     padding: 10,
     textAlign: "center",
   },
   questionTxt: {
     color: colors.white,
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: "400",
     textAlign: "center",
   },

@@ -1,4 +1,5 @@
 export default {
+  danger: "tomato",
   primary: "#0B8C08",
   gray1: "#1f1f21",
   gray2: "#2c2c2c",
