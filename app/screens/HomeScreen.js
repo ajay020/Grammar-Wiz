@@ -5,6 +5,7 @@ import ListItemSeprator from "../components/ListItemSeprator";
 import TopicListItem from "../components/home/TopicListItem";
 import cache from "../utility/cache";
 import topicData from "../database/grammer/topics";
+import TopicListItem2 from "../components/TopicListItem2";
 
 export default HomeScreen = () => {
   const [topics, setTopics] = useState([]);
@@ -24,15 +25,10 @@ export default HomeScreen = () => {
   return (
     <FlatList
       data={topics}
+      numColumns={2}
       ItemSeparatorComponent={ListItemSeprator}
       keyExtractor={(item) => item.id?.toString()}
-      renderItem={({ item }) => (
-        <TopicListItem
-          selectedTopic={selectedTopic}
-          setSelectedTopic={setSelectedTopic}
-          topic={item}
-        />
-      )}
+      renderItem={({ item }) => <TopicListItem2 item={item} />}
     />
   );
 };

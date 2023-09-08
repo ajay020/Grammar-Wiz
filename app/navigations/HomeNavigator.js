@@ -1,11 +1,10 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { View } from "react-native";
 
 import QuizScreen from "../screens/QuizScreen";
 import HomeScreen from "../screens/HomeScreen";
 import colors from "../utility/colors";
-import AppText from "../components/Text";
+import QuizListScreen from "../screens/QuizListScreen";
 
 const Stack = createStackNavigator();
 
@@ -27,6 +26,7 @@ const HomeNavigator = () => {
           },
         }}
       />
+      <Stack.Screen name="quizList" component={QuizListScreen} />
       <Stack.Screen name="QuizScreen" component={QuizScreen} />
     </Stack.Navigator>
   );

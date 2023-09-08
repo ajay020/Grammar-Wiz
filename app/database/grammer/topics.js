@@ -2,7 +2,12 @@ const topics = [
   {
     id: 1,
     title: "Present Simple",
-    quizzes: [1, 2], // IDs of quizzes belonging to this topic
+    quizzes: [1, 2, 3, 4], // IDs of quizzes belonging to this topic
+  },
+  {
+    id: 2,
+    title: "Present Continuous",
+    quizzes: [5, 6, 7, 8], // IDs of quizzes belonging to this topic
   },
 ];
 

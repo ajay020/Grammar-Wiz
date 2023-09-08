@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Image, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 import colors from "../utility/colors";
 import CircularProgress from "./CircularProgress";
 
 const QuizIcon = ({ completedQuizzes, completed, quizId, topicId }) => {
-  console.log("QuizIcon render");
-
-  //   const { completedQuizzes } = useQuizData();
+  //   console.log("QuizIcon render");
   const [progress, setProgress] = useState(0);
-  const navigation = useNavigation();
 
   const calculateProgress = (topicId, quizId) => {
-    console.log("PROGRESS CALCULATED");
     const [quizProgressData] = completedQuizzes?.filter(
       (quiz) => quiz.quizId === quizId && quiz.topicId === topicId
     );
-
-    console.log({ completedQuizzes });
 
     if (quizProgressData) {
       const { correct, total } = quizProgressData;
@@ -30,10 +23,6 @@ const QuizIcon = ({ completedQuizzes, completed, quizId, topicId }) => {
 
   useEffect(() => {
     calculateProgress(topicId, quizId);
-    // navigation.addListener("focus", () => {
-    //   console.log("Icon FOCUSED");
-    //   calculateProgress(topicId, quizId);
-    // });
   }, [quizId, topicId, completedQuizzes]);
 
   return (
@@ -67,14 +56,14 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   image: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
   },
   outerContainer: {
     backgroundColor: colors.gray3,
-    width: 90,
-    height: 90,
-    borderRadius: 45,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
     padding: 2,
     overflow: "hidden",
     justifyContent: "center",
