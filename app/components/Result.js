@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import AppText from "./Text";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Icon from "./Icon";
+import CheckIcon from "./CheckIcon";
 
 const Result = ({ correct, totalQuestions }) => {
   const navigation = useNavigation();
@@ -14,7 +15,7 @@ const Result = ({ correct, totalQuestions }) => {
   const percent = (correct / totalQuestions) * 100;
   let message = "";
 
-  if (percent > 90) {
+  if (percent > 80) {
     message = "Congratulations! You're a Quiz Master! 🎉";
   } else if (percent > 60) {
     message = "Great job! You're on the right track! 🌟";
@@ -24,76 +25,97 @@ const Result = ({ correct, totalQuestions }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.messageText}>{message}</Text>
-      <View style={styles.scoreContainer}>
-        <Text style={styles.score}>{percent}% </Text>
+      <View style={styles.box1}>
+        <CheckIcon
+          color={colors.white}
+          backgroundColor={colors.primary}
+          size={38}
+          style={{ width: 70, height: 70, borderRadius: 35 }}
+        />
+        <Text style={styles.messageText}>{message}</Text>
       </View>
+      <View style={styles.box2}>
+        <View style={styles.scoreContainer}>
+          <Text style={styles.score}>{percent}% </Text>
+        </View>
 
-      <View style={styles.scoreTextContainer}>
-        <AppText style={styles.scoreText}> {correct}</AppText>
-        <Icon name={"check"} size={40} color="green" />
-      </View>
-      <View style={styles.scoreTextContainer}>
-        <AppText style={styles.scoreText}>{totalQuestions - correct}</AppText>
-        <Icon name={"close"} size={40} color="red" />
+        <View style={styles.box}>
+          <View style={styles.scoreTextContainer}>
+            <AppText style={styles.scoreText}> {correct}</AppText>
+            <Icon name={"check"} size={24} color="green" />
+          </View>
+          <View style={styles.scoreTextContainer}>
+            <AppText style={styles.scoreText}>
+              {totalQuestions - correct}
+            </AppText>
+            <Icon name={"close"} size={24} color="red" />
+          </View>
+        </View>
       </View>
 
       <AppButton
         title="Next Quiz"
         style={styles.button}
-        onPress={() => navigation.navigate("HomeScreen")}
+        onPress={() => navigation.goBack()}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.gray2,
-    flex: 1,
-    justifyContent: "center",
+  box: {
+    flexDirection: "row",
+    gap: 12,
+  },
+  box1: {
+    alignItems: "center",
+  },
+  box2: {
     alignItems: "center",
     gap: 12,
+  },
+  container: {
+    flex: 1,
+    justifyContent: "space-around",
+    alignItems: "center",
+    gap: 22,
     paddingHorizontal: 30,
   },
   button: {
     borderRadius: 12,
     width: "100%",
-    marginTop: 30,
+    // marginTop: "auto",
+    marginBottom: 12,
   },
   messageText: {
-    color: colors.white,
+    color: colors.black,
     fontSize: 24,
     fontWeight: "400",
-    marginBottom: 16,
+    marginTop: 16,
   },
   score: {
-    color: colors.white,
-    fontSize: 42,
+    color: colors.black,
+    fontSize: 40,
   },
   scoreText: {
-    color: colors.white,
-    fontSize: 28,
+    color: colors.black,
+    fontSize: 20,
   },
   scoreTextContainer: {
-    borderWidth: 1,
-    borderColor: "white",
     marginVertical: 18,
-    gap: 20,
-    padding: 4,
+    gap: 16,
+    padding: 12,
     textAlign: "center",
     justifyContent: "center",
     flexDirection: "row",
   },
   scoreContainer: {
-    backgroundColor: colors.gray3,
-    width: 150,
-    height: 150,
+    width: 180,
+    height: 100,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 75,
-    borderWidth: 4,
-    borderColor: colors.gray4,
+    backgroundColor: "whtie",
+    padding: 12,
   },
 });
 

@@ -23,15 +23,14 @@ const TopicListItem2 = ({ item }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.gray3,
-    borderWidth: 1,
-    paddingHorizontal: 14,
-    paddingVertical: 28,
+    backgroundColor: colors.white,
+    paddingHorizontal: 18,
+    paddingVertical: 20,
     margin: 4,
     flex: 1,
   },
   text: {
-    color: colors.white,
+    color: colors.black,
     fontSize: 20,
     fontWeight: "400",
     textAlign: "center",
