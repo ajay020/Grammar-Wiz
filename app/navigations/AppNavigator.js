@@ -22,7 +22,6 @@ function AppNavigator() {
           paddingVertical: 0,
           justifyContent: "center",
           alignItems: "center",
-          //   backgroundColor: "lightblue",
         },
       }}
     >
@@ -33,6 +32,7 @@ function AppNavigator() {
           tabBarIcon: ({ color, size }) => (
             <Icon name={"home"} color={color} size={size} />
           ),
+          tabBarVisible: false,
         }}
       />
       <Tab.Screen

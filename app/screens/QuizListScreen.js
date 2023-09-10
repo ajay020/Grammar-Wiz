@@ -1,19 +1,22 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import useQuizData from "../hooks/useQuizData";
-import QuizIcon from "../components/QuizIcon";
 import colors from "../utility/colors";
-import { useNavigation } from "@react-navigation/native";
 import Text from "../components/Text";
 import Icon from "../components/Icon";
 import CheckIcon from "../components/CheckIcon";
+import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
 
 const QuizListScreen = ({ route }) => {
   const { completedQuizzes, fetchCompletdQuizzes } = useQuizData();
 
   const { id: topicId, quizzes: quizIds, title } = route?.params?.data;
   const navigation = useNavigation();
+
+  // Hide Bottom tab navigation layout.
+  useHideBottomTabBar();
 
   // Set navigation headr title
   React.useLayoutEffect(() => {
