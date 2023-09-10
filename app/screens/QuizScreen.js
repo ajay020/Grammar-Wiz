@@ -116,14 +116,10 @@ const QuizScreen = ({ route, navigation }) => {
     }
   };
 
-  console.log(isCorrect, isValidatedOption);
-
   return (
     <>
       {currentQuestionIndex < QUESTION_COUNT ? (
         <View style={styles.container}>
-          {/* <View style={styles.header}></View> */}
-
           <View style={styles.body}>
             <AppProgressBar
               progress={progress}
@@ -154,7 +150,7 @@ const QuizScreen = ({ route, navigation }) => {
           >
             <View style={styles.explainContainer}>
               <AppText style={[styles.resultText]}>
-                {isCorrect ? "correct" : ""}
+                {isCorrect ? "Correct" : ""}
                 {!isCorrect && isValidatedOption ? "Incorrect" : ""}
               </AppText>
               {isValidatedOption && (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -18,10 +18,22 @@ const QuizListScreen = ({ route }) => {
   // Hide Bottom tab navigation layout.
   useHideBottomTabBar();
 
+  // Check if all quizzes have been completed
+  const allQuizzesCompleted = quizIds.every((quizId) => {
+    // Check if there is a completed quiz with the same quizId
+    return completedQuizzes.some(
+      (completedQuiz) => completedQuiz.quizId === quizId
+    );
+  });
+
+  console.log({ allQuizzesCompleted });
+
   // Set navigation headr title
   React.useLayoutEffect(() => {
     navigation.setOptions({ title });
   }, [navigation, route]);
+
+  useEffect(() => {}, []);
 
   const navigateToQuizScreen = (quizId) => {
     navigation.addListener("focus", () => {
@@ -36,19 +48,29 @@ const QuizListScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      {quizIds.map((quizId, index) => (
-        <TouchableOpacity
-          key={quizId}
-          activeOpacity={0.3}
-          style={styles.quizItem}
-          onPress={() => navigateToQuizScreen(quizId)}
-        >
-          <Text> Quiz {index + 1}</Text>
-          <CheckIcon />
-        </TouchableOpacity>
-      ))}
-      <View style={styles.trophyContainer}>
-        <Icon name={"trophy"} color="gray" size={40} />
+      {quizIds.map((quizId, index) => {
+        let isQuizTaken = completedQuizzes.find(
+          (quiz) => quiz.quizId === quizId
+        );
+        return (
+          <TouchableOpacity
+            key={quizId}
+            activeOpacity={0.3}
+            style={styles.quizItem}
+            onPress={() => navigateToQuizScreen(quizId)}
+          >
+            <Text> Quiz {index + 1}</Text>
+
+            {isQuizTaken ? <CheckIcon /> : null}
+          </TouchableOpacity>
+        );
+      })}
+      <View style={[styles.trophyContainer]}>
+        <Icon
+          name={"trophy"}
+          color={`${allQuizzesCompleted ? colors.golden : "gray"}`}
+          size={50}
+        />
       </View>
     </View>
   );
@@ -77,20 +99,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: colors.white,
-    borderRadius: 12,
+    borderRadius: 10,
     elevation: 5,
     padding: 16,
     marginVertical: 4,
     marginHorizontal: 10,
-    width: "100%",
+    width: "90%",
   },
   trophyContainer: {
     alignItems: "center",
-    borderWidth: 2,
-    borderRadius: 35,
-    borderColor: colors.gray4,
-    width: 70,
-    height: 70,
+    // borderWidth: 2,
+    // borderRadius: 35,
+    // borderColor: colors.gray4,
+    // width: 80,
+    // height: 80,
     padding: 12,
   },
 });
