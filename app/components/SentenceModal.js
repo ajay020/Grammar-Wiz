@@ -3,6 +3,7 @@ import { Modal, View, StyleSheet, TouchableOpacity, Text } from "react-native";
 
 import colors from "../utility/colors";
 import Icon from "./Icon";
+import { useNavigation } from "@react-navigation/native";
 
 const SentenceModal = ({
   words,
@@ -11,6 +12,7 @@ const SentenceModal = ({
   moveToNextSentence,
   timeLeft,
 }) => {
+  const navigation = useNavigation();
   let arrangedSentence = words?.reduce(
     (acc, word) => acc + " " + word.text,
     ""
@@ -46,6 +48,14 @@ const SentenceModal = ({
 
   return (
     <Modal visible={modalVisible} animationType="slide" transparent={false}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}
+        style={styles.closeIconContainer}
+      >
+        <Icon name={"close"} size={35} />
+      </TouchableOpacity>
       <View style={styles.modalContainer}>
         {timeTaken >= 60 ? (
           <Text style={styles.ansTxt}> Try again </Text>
@@ -98,6 +108,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-around",
     padding: 8,
+  },
+  closeIconContainer: {
+    backgroundColor: "white",
+    paddingLeft: 28,
+    paddingTop: 24,
   },
   performance: {
     // backgroundColor: colors.gray2,
