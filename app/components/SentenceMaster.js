@@ -8,6 +8,7 @@ import SentenceModal from "./SentenceModal";
 import useTimer from "../hooks/useTimer";
 import AppProgressBar from "./AppProgressBar";
 import gameData from "../database/gameData";
+import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
 
 function shuffleArray(array) {
   // Create a copy of the original array to avoid modifying it directly
@@ -32,6 +33,9 @@ const SentenceMaster = ({ route, navigation }) => {
     data: { level },
   } = route.params;
 
+  // Hide Bottom tab navigation layout.
+  useHideBottomTabBar();
+
   // fetch quizzes by difficulty
   const filteredQuizzes = gameData.getQuizzesByDifficulty(level);
 
@@ -48,12 +52,12 @@ const SentenceMaster = ({ route, navigation }) => {
     React.useCallback(() => {
       //   startTimer();
       resetTimer();
-      console.log("SentenceMaster focused");
+      //   console.log("SentenceMaster focused");
 
       return () => {
         stopTimer();
         // console.log("Timer stopped!");
-        console.log("SentenceMaster removed");
+        // console.log("SentenceMaster removed");
       };
     }, [])
   );
@@ -121,9 +125,11 @@ const SentenceMaster = ({ route, navigation }) => {
     <View style={styles.container}>
       <View style={styles.output}>
         {arrangedWords.map((word) => (
-          <AppText key={word.id} style={styles.wordChip}>
-            {word.text}
-          </AppText>
+          <View style={styles.chipContainer}>
+            <AppText key={word.id} style={styles.wordChip}>
+              {word.text}
+            </AppText>
+          </View>
         ))}
       </View>
       <View style={styles.progressContainer}>
@@ -137,6 +143,7 @@ const SentenceMaster = ({ route, navigation }) => {
             onPress={() => handleWordSelect(word)}
             key={word.id}
             activeOpacity={0.8}
+            style={styles.chipContainer}
           >
             <AppText style={styles.wordChip}>{word.text}</AppText>
           </TouchableOpacity>
@@ -158,23 +165,21 @@ const SentenceMaster = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.primary,
     flex: 1,
-    // paddingTop: StatusBar.currentHeight,
   },
   input: {
     alignItems: "center",
     alignContent: "center",
-    backgroundColor: colors.gray3,
+    // backgroundColor: colors.gray3,
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
     gap: 10,
-    // padding: 10,
+    padding: 10,
   },
   output: {
-    backgroundColor: colors.gray2,
+    // backgroundColor: colors.gray2,
     alignItems: "center",
     alignContent: "center",
     flex: 1,
@@ -185,20 +190,22 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   progressContainer: {
-    backgroundColor: colors.gray1,
-    height: 24,
-    borderWidth: 1,
-    borderColor: colors.gray2,
+    height: 20,
     justifyContent: "center",
     alignItems: "center",
   },
+  chipContainer: {
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderRadius: 10,
+    elevation: 3,
+    padding: 12,
+    paddingHorizontal: 16,
+  },
   wordChip: {
     color: colors.white,
-    backgroundColor: colors.gray1,
-    borderWidth: 1,
-    borderRadius: 14,
     fontSize: 24,
-    padding: 16,
+    color: colors.black,
   },
 });
 

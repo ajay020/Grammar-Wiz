@@ -55,23 +55,23 @@ const SentenceModal = ({
 
         <View style={styles.performance}>
           <View style={styles.ratingContainer}>
-            <Icon name={star1} size={90} color={color1} />
-            <Icon name={star2} size={90} color={color2} />
-            <Icon name={star3} size={90} color={color3} />
+            <Icon name={star1} size={70} color={color1} />
+            <Icon name={star2} size={70} color={color2} />
+            <Icon name={star3} size={70} color={color3} />
           </View>
 
           <View style={styles.timeContainer}>
-            <Icon name={"clock-outline"} color={colors.white} />
+            <Icon name={"clock-outline"} color={colors.black} />
             <Text style={styles.timeTaken}>{60 - timeLeft} seconds</Text>
           </View>
         </View>
 
         <View style={styles.actionContainer}>
           <TouchableOpacity onPress={handleRetakeQuiz}>
-            <Icon name={"reload"} size={40} color={colors.white} />
+            <Icon name={"reload"} size={40} color={colors.black} />
           </TouchableOpacity>
           <TouchableOpacity onPress={moveToNextSentence}>
-            <Icon name={"arrow-right"} size={40} color={colors.white} />
+            <Icon name={"arrow-right"} size={40} color={colors.black} />
           </TouchableOpacity>
         </View>
       </View>
@@ -81,20 +81,20 @@ const SentenceModal = ({
 
 const styles = StyleSheet.create({
   actionContainer: {
-    // backgroundColor: "gray",
     flexDirection: "row",
     justifyContent: "center",
     gap: 40,
     width: 200,
   },
   ansTxt: {
-    fontSize: 50,
-    color: colors.white,
+    fontSize: 30,
+    color: colors.black,
     textAlign: "center",
+    padding: 12,
   },
   modalContainer: {
     alignItems: "center",
-    backgroundColor: colors.gray2,
+    // backgroundColor: colors.gray2,
     flex: 1,
     justifyContent: "space-around",
     padding: 8,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
   timeTaken: {
     fontSize: 28,
-    color: colors.white,
+    color: colors.black,
     textAlign: "center",
   },
   timeContainer: {

@@ -27,20 +27,23 @@ const GameScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => sendDataToSentenceMaster(1)}>
-        <View style={styles.tile}>
-          <Text style={styles.title}>Beginner</Text>
-        </View>
+      <TouchableOpacity
+        style={styles.tile}
+        onPress={() => sendDataToSentenceMaster(1)}
+      >
+        <Text style={styles.title}>Beginner</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => sendDataToSentenceMaster(2)}>
-        <View style={styles.tile}>
-          <Text style={styles.title}>Intermediate</Text>
-        </View>
+      <TouchableOpacity
+        style={styles.tile}
+        onPress={() => sendDataToSentenceMaster(2)}
+      >
+        <Text style={styles.title}>Intermediate</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => sendDataToSentenceMaster(3)}>
-        <View style={styles.tile}>
-          <Text style={styles.title}>Advanced</Text>
-        </View>
+      <TouchableOpacity
+        style={styles.tile}
+        onPress={() => sendDataToSentenceMaster(3)}
+      >
+        <Text style={styles.title}>Expert</Text>
       </TouchableOpacity>
     </View>
   );
@@ -51,19 +54,21 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: StatusBar.currentHeight,
     padding: 12,
-    backgroundColor: colors.gray2,
+    alignItems: "center",
+    justifyContent: "center",
   },
   tile: {
-    backgroundColor: colors.gray3,
-    paddingVertical: 50,
-    paddingVertical: 40,
+    backgroundColor: colors.white,
+    paddingVertical: 20,
     borderRadius: 10,
+    elevation: 5,
     marginVertical: 6,
+    width: "90%",
   },
   title: {
     textAlign: "center",
-    fontSize: 28,
-    color: colors.white,
+    fontSize: 24,
+    color: colors.black,
   },
 });
 
