@@ -19,12 +19,6 @@ const HomeNavigator = () => {
             headerShown: true,
             headerTitleAlign: "center",
             headerTitle: "English Grammer",
-            headerStyle: {
-              backgroundColor: colors.gray1,
-            },
-            headerTitleStyle: {
-              color: colors.white,
-            },
           }}
         />
         <Stack.Screen name="quizList" component={QuizListScreen} />

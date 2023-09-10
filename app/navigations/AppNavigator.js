@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import ProgressScreen from "../screens/ProgressScreen";
+// import ProgressScreen from "../screens/ProgressScreen";
 import Icon from "../components/Icon";
 import colors from "../utility/colors";
 import HomeNavigator from "./HomeNavigator";
@@ -32,7 +32,6 @@ function AppNavigator() {
           tabBarIcon: ({ color, size }) => (
             <Icon name={"home"} color={color} size={size} />
           ),
-          tabBarVisible: false,
         }}
       />
       <Tab.Screen
@@ -44,7 +43,7 @@ function AppNavigator() {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Progress"
         component={ProgressScreen}
         options={{
@@ -52,7 +51,7 @@ function AppNavigator() {
             <Icon name={"finance"} color={color} size={size} />
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 }

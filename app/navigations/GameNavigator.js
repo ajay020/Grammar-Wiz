@@ -12,7 +12,15 @@ const GameNavigator = () => {
       initialRouteName="GameScreen"
       screenOptions={{ headerShown: true }}
     >
-      <Stack.Screen name="GameScreen" component={GameScreen} />
+      <Stack.Screen
+        name="GameScreen"
+        component={GameScreen}
+        options={{
+          headerShown: true,
+          headerTitleAlign: "center",
+          headerTitle: "Sentence Builder",
+        }}
+      />
       <Stack.Screen name="SentenceMaster" component={SentenceMaster} />
     </Stack.Navigator>
   );
