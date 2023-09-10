@@ -5,6 +5,7 @@ import Icon from "../components/Icon";
 import colors from "../utility/colors";
 import HomeNavigator from "./HomeNavigator";
 import GameNavigator from "./GameNavigator";
+import ShareButton from "../components/ShareButton";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,9 +16,6 @@ function AppNavigator() {
         tabBarActiveTintColor: colors.primary,
         headerShown: false,
         tabBarLabel: "",
-        tabBarStyle: {
-          height: 60,
-        },
         tabBarItemStyle: {
           paddingVertical: 0,
           justifyContent: "center",

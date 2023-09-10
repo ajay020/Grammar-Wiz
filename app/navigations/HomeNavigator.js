@@ -3,8 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import QuizScreen from "../screens/QuizScreen";
 import HomeScreen from "../screens/HomeScreen";
-import colors from "../utility/colors";
 import QuizListScreen from "../screens/QuizListScreen";
+import ShareButton from "../components/ShareButton";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +19,9 @@ const HomeNavigator = () => {
             headerShown: true,
             headerTitleAlign: "center",
             headerTitle: "English Grammer",
+            headerRight: () => {
+              return <ShareButton />;
+            },
           }}
         />
         <Stack.Screen name="quizList" component={QuizListScreen} />

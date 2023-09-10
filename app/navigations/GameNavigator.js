@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import GameScreen from "../screens/GameScreen";
 import SentenceMaster from "../components/SentenceMaster";
+import ShareButton from "../components/ShareButton";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,9 @@ const GameNavigator = () => {
         name="GameScreen"
         component={GameScreen}
         options={{
+          headerRight: () => {
+            return <ShareButton />;
+          },
           headerShown: true,
           headerTitleAlign: "center",
           headerTitle: "Sentence Builder",

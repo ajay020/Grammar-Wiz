@@ -12,22 +12,31 @@ const TopicListItem2 = ({ item }) => {
     navigation.navigate("quizList", { data: item });
   };
 
-  console.log({ item });
-
   return (
-    <TouchableOpacity onPress={goToQuizList} style={styles.container}>
-      <Text style={styles.text}>{item?.title}</Text>
-    </TouchableOpacity>
+    <View style={styles.outerContainer}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={goToQuizList}
+        style={styles.container}
+      >
+        <Text style={styles.text}>{item?.title}</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    paddingHorizontal: 18,
+    borderRadius: 10,
     paddingVertical: 20,
-    margin: 4,
+    marginVertical: 4,
     flex: 1,
+    elevation: 5,
+    width: "100%",
+  },
+  outerContainer: {
+    paddingHorizontal: 10,
   },
   text: {
     color: colors.black,

@@ -125,10 +125,8 @@ const SentenceMaster = ({ route, navigation }) => {
     <View style={styles.container}>
       <View style={styles.output}>
         {arrangedWords.map((word) => (
-          <View style={styles.chipContainer}>
-            <AppText key={word.id} style={styles.wordChip}>
-              {word.text}
-            </AppText>
+          <View key={word.id} style={styles.chipContainer}>
+            <AppText style={styles.wordChip}>{word.text}</AppText>
           </View>
         ))}
       </View>
