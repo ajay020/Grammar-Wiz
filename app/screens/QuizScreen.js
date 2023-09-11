@@ -149,7 +149,13 @@ const QuizScreen = ({ route, navigation }) => {
             ]}
           >
             <View style={styles.explainContainer}>
-              <AppText style={[styles.resultText]}>
+              <AppText
+                style={[
+                  styles.resultText,
+                  isCorrect && { color: colors.primary },
+                  !isCorrect && { color: colors.danger },
+                ]}
+              >
                 {isCorrect ? "Correct" : ""}
                 {!isCorrect && isValidatedOption ? "Incorrect" : ""}
               </AppText>
@@ -189,6 +195,7 @@ const styles = StyleSheet.create({
   body: {
     gap: 20,
     paddingHorizontal: 20,
+    marginTop: 30,
   },
   button: {
     fontSize: 28,
@@ -210,18 +217,20 @@ const styles = StyleSheet.create({
   },
 
   explainContainer: {
-    alignItems: "center",
-    paddingHorizontal: 20,
+    gap: 16,
+  },
+  resultText: {
+    textAlign: "left",
+    fontWeight: "bold",
   },
 
   explainText: {
-    fontSize: 18,
+    fontSize: 16,
+    textAlign: "left",
     color: colors.black,
-    paddingVertical: 12,
   },
   footer: {
-    paddingVertical: 12,
-    gap: 12,
+    padding: 20,
   },
 
   optionTxt: {
@@ -242,11 +251,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
-  },
-  resultText: {
-    textAlign: "left",
-    alignSelf: "flex-start",
-    fontWeight: "bold",
+    marginVertical: 16,
   },
 });
 
