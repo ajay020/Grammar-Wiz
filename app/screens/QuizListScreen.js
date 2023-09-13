@@ -26,8 +26,6 @@ const QuizListScreen = ({ route }) => {
     );
   });
 
-  console.log({ allQuizzesCompleted });
-
   // Set navigation headr title
   React.useLayoutEffect(() => {
     navigation.setOptions({ title });

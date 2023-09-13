@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 import cache from "../utility/cache";
 
-function useQuizData({ level = 1 }) {
-  console.log("useQuizData render");
+function useQuizData() {
+  //   console.log("useQuizData render");
   const [completedQuizzes, setCompletedQuizzes] = useState([]);
 
   const fetchCompletdQuizzes = async () => {

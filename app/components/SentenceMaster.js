@@ -31,6 +31,8 @@ const SentenceMaster = ({ route, navigation }) => {
   const [arrangedWords, setArrangedWords] = useState([]);
   const [words, setWords] = useState([]);
   const [currQuizId, setCurrQuizId] = useState(null);
+  const [wordBorderColor, setWordBorderColor] = useState("black");
+  const [selectedWord, setSelectedWord] = useState(null);
 
   const [modalVisible, setModalVisible] = useState(false);
   const {
@@ -66,7 +68,6 @@ const SentenceMaster = ({ route, navigation }) => {
   );
 
   useEffect(() => {
-    console.log({ isQuizCompleted, x: sentenceQuizzes.length });
     if (isQuizCompleted && sentenceQuizzes.length == 0) {
       Alert.alert("Congratulations! You completed all the quizzes!!");
       navigation.navigate("GameScreen");
@@ -78,6 +79,10 @@ const SentenceMaster = ({ route, navigation }) => {
 
       setWords([...shuffleWords]);
       setCurrQuizId(sentence.id);
+    }
+
+    if (isQuizCompleted && currectQuizIndex >= sentenceQuizzes?.length) {
+      navigation.navigate("GameScreen");
     }
   }, [currectQuizIndex, sentenceQuizzes.length]);
 
@@ -147,6 +152,11 @@ const SentenceMaster = ({ route, navigation }) => {
       setArrangedWords((prev) => [...prev, word]);
       setCurrentWordPosition((prev) => prev + 1);
       setWords(words.filter((w) => w.id !== word.id));
+    } else {
+      setSelectedWord(word);
+      setTimeout(() => {
+        setSelectedWord(null);
+      }, 400);
     }
   };
 
@@ -178,7 +188,11 @@ const SentenceMaster = ({ route, navigation }) => {
             onPress={() => handleWordSelect(word)}
             key={word.id}
             activeOpacity={0.8}
-            style={styles.chipContainer}
+            style={[
+              styles.chipContainer,
+              { borderColor: selectedWord?.id === word.id ? "red" : "black" },
+              { borderWidth: selectedWord?.id === word.id ? 2 : 1 },
+            ]}
           >
             <AppText style={styles.wordChip}>{word.text}</AppText>
           </TouchableOpacity>
