@@ -1,4 +1,4 @@
-const quizzes = [
+const sentenceList = [
   {
     id: 0,
     difficulty: 1,
@@ -628,11 +628,11 @@ const quizzes = [
 //++++++++++++++++++++++++++++++++++++++++++++
 
 const getQuizzesByDifficulty = (difficulty) => {
-  return quizzes.filter((quiz) => quiz.difficulty === difficulty);
+  return sentenceList.filter((quiz) => quiz.difficulty === difficulty);
 };
 
 const getQuizById = (id) => {
-  return quizzes.find((sentence) => sentence.id === id);
+  return sentenceList.find((sentence) => sentence.id === id);
 };
 
-export default { getQuizById, quizzes, getQuizzesByDifficulty };
+export default { getQuizById, sentenceList, getQuizzesByDifficulty };

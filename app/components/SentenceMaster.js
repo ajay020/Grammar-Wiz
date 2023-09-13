@@ -4,11 +4,12 @@ import { useFocusEffect } from "@react-navigation/native";
 
 import AppText from "./Text";
 import colors from "../utility/colors";
+import cache from "../utility/cache";
 import SentenceModal from "./SentenceModal";
 import useTimer from "../hooks/useTimer";
 import AppProgressBar from "./AppProgressBar";
-import gameData from "../database/gameData";
 import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
+import useGetSentenceQuizzes from "../hooks/useGetSentenceQuizzes";
 
 function shuffleArray(array) {
   // Create a copy of the original array to avoid modifying it directly
@@ -24,10 +25,13 @@ function shuffleArray(array) {
 }
 
 const SentenceMaster = ({ route, navigation }) => {
+  console.log("Sentence Master render");
   const [currectQuizIndex, setCurrectQuizIndex] = useState(0);
   const [currentWordPosition, setCurrentWordPosition] = useState(1);
   const [arrangedWords, setArrangedWords] = useState([]);
   const [words, setWords] = useState([]);
+  const [currQuizId, setCurrQuizId] = useState(null);
+
   const [modalVisible, setModalVisible] = useState(false);
   const {
     data: { level },
@@ -36,8 +40,7 @@ const SentenceMaster = ({ route, navigation }) => {
   // Hide Bottom tab navigation layout.
   useHideBottomTabBar();
 
-  // fetch quizzes by difficulty
-  const filteredQuizzes = gameData.getQuizzesByDifficulty(level);
+  const { sentenceQuizzes, isQuizCompleted } = useGetSentenceQuizzes(level);
 
   const handleTimerComplete = () => {
     openModal();
@@ -50,53 +53,87 @@ const SentenceMaster = ({ route, navigation }) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      //   startTimer();
-      resetTimer();
-      //   console.log("SentenceMaster focused");
+      startTimer();
+      //   resetTimer();
+      console.log("SentenceMaster focused");
 
       return () => {
         stopTimer();
         // console.log("Timer stopped!");
-        // console.log("SentenceMaster removed");
+        console.log("SentenceMaster removed");
       };
     }, [])
   );
 
   useEffect(() => {
-    if (currectQuizIndex < filteredQuizzes?.length) {
-      const sentence = filteredQuizzes[currectQuizIndex];
-      const shuffleWords = shuffleArray(sentence.words);
-      setWords([...shuffleWords]);
-    } else {
-      stopTimer();
+    console.log({ isQuizCompleted, x: sentenceQuizzes.length });
+    if (isQuizCompleted && sentenceQuizzes.length == 0) {
       Alert.alert("Congratulations! You completed all the quizzes!!");
       navigation.navigate("GameScreen");
     }
-  }, [currectQuizIndex]);
+
+    if (currectQuizIndex < sentenceQuizzes?.length) {
+      const sentence = sentenceQuizzes[currectQuizIndex];
+      const shuffleWords = shuffleArray(sentence.words);
+
+      setWords([...shuffleWords]);
+      setCurrQuizId(sentence.id);
+    }
+  }, [currectQuizIndex, sentenceQuizzes.length]);
 
   useEffect(() => {
     if (words?.length == 0 && arrangedWords.length) {
       // show modal for retake or next quiz
       stopTimer();
       openModal();
+      saveQuiz();
     }
   }, [words.length]);
 
+  const saveQuiz = async () => {
+    try {
+      const existingData = await cache.getData("sentenceBuilder");
+
+      let currentLevelData = existingData[level];
+
+      console.log(" >>>>", JSON.stringify(existingData));
+
+      if (currentLevelData) {
+        let uniqueIds = new Set([
+          ...currentLevelData.compltedQuizIds,
+          currQuizId,
+        ]);
+
+        const updatedData = {
+          ...currentLevelData,
+          compltedQuizIds: [...uniqueIds],
+        };
+
+        existingData[level] = updatedData;
+        await cache.storeData("sentenceBuilder", existingData);
+        console.log("Saved sentence builder quiz");
+      }
+    } catch (error) {
+      console.log("Error while saving sentence builder quiz", error);
+    }
+  };
+
   const moveToNextSentence = () => {
-    if (currectQuizIndex < filteredQuizzes?.length) {
+    if (currectQuizIndex < sentenceQuizzes?.length) {
       setCurrentWordPosition(1);
       setArrangedWords([]);
       setCurrectQuizIndex((prev) => prev + 1);
       closeModal();
       resetTimer();
+      setCurrQuizId(null);
     }
   };
 
   const handleRetakeQuiz = () => {
     setCurrentWordPosition(1);
     setCurrectQuizIndex((prev) => prev);
-    const sentence = filteredQuizzes[currectQuizIndex];
-    // shffle words
+    const sentence = sentenceQuizzes[currectQuizIndex];
+    // shuffle words
     const shuffleWords = shuffleArray(sentence.words);
 
     setWords([...shuffleWords]);
@@ -155,6 +192,7 @@ const SentenceMaster = ({ route, navigation }) => {
         moveToNextSentence={moveToNextSentence}
         timeLeft={timeLeft}
         closeModal={closeModal}
+        level={level}
       />
       {/* Sentence Modal */}
     </View>
@@ -173,8 +211,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    gap: 10,
-    padding: 10,
+    gap: 14,
+    // padding: 10,
   },
   output: {
     // backgroundColor: colors.gray2,
@@ -184,7 +222,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    gap: 10,
+    gap: 14,
     padding: 10,
   },
   progressContainer: {
@@ -198,7 +236,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
     padding: 12,
-    paddingHorizontal: 16,
+    // paddingHorizontal: 20,
+    gap: 20,
   },
   wordChip: {
     color: colors.white,

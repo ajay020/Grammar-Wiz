@@ -6,11 +6,11 @@ const useTimer = (initialTime, handleTimerComplete) => {
   const [timerId, setTimerId] = useState(null);
   const [shouldStart, setShouldStart] = useState(false);
 
-  console.log("usetimer render");
+  //   console.log("useTimer render");
 
   const startTimer = () => {
     setShouldStart(true);
-    console.log("Timer started");
+    // console.log("Timer started");
   };
 
   const resetTimer = () => {
@@ -18,13 +18,13 @@ const useTimer = (initialTime, handleTimerComplete) => {
     setTimeLeft(initialTime);
     setTimerId(null);
     setShouldStart(true);
-    console.log("Timer restarted");
+    // console.log("Timer restarted");
   };
 
   const stopTimer = () => {
     setTimerId(null);
     setShouldStart(false);
-    console.log("Timer stopped");
+    // console.log("Timer stopped");
   };
 
   useEffect(() => {

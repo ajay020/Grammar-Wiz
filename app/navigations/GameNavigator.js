@@ -25,7 +25,7 @@ const GameNavigator = () => {
           headerTitle: "Sentence Builder",
         }}
       />
-      <Stack.Screen name="SentenceMaster" component={SentenceMaster} />
+      <Stack.Screen name="SentenceBuilder" component={SentenceMaster} />
     </Stack.Navigator>
   );
 };

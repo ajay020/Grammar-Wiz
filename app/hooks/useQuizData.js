@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import cache from "../utility/cache";
 
-function useQuizData() {
+function useQuizData({ level = 1 }) {
+  console.log("useQuizData render");
   const [completedQuizzes, setCompletedQuizzes] = useState([]);
 
   const fetchCompletdQuizzes = async () => {
@@ -20,7 +21,10 @@ function useQuizData() {
     fetchCompletdQuizzes();
   }, []);
 
-  return { completedQuizzes, fetchCompletdQuizzes };
+  return {
+    completedQuizzes,
+    fetchCompletdQuizzes,
+  };
 }
 
 export default useQuizData;

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import useSentenceCounts from "../hooks/useSentenceCount";
 
 import colors from "../utility/colors";
 import Icon from "./Icon";
-import { useNavigation } from "@react-navigation/native";
 
 const SentenceModal = ({
   words,
@@ -11,12 +12,18 @@ const SentenceModal = ({
   modalVisible,
   moveToNextSentence,
   timeLeft,
+  level = 1,
 }) => {
   const navigation = useNavigation();
+  const { total, completed, fetchSentenceCount } = useSentenceCounts(level);
   let arrangedSentence = words?.reduce(
     (acc, word) => acc + " " + word.text,
     ""
   );
+
+  useEffect(() => {
+    fetchSentenceCount();
+  }, [modalVisible]);
 
   let timeTaken = 60 - timeLeft;
 
@@ -71,8 +78,13 @@ const SentenceModal = ({
           </View>
 
           <View style={styles.timeContainer}>
-            <Icon name={"clock-outline"} color={colors.black} />
+            <Icon name={"clock-outline"} color={colors.black} size={24} />
             <Text style={styles.timeTaken}>{60 - timeLeft} seconds</Text>
+          </View>
+          <View style={styles.countContainer}>
+            <Text style={styles.countText}>
+              {completed + 1}/{total}
+            </Text>
           </View>
         </View>
 
@@ -102,12 +114,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
     padding: 12,
   },
+  countContainer: {
+    // backgroundColor: "gray",
+  },
+  countText: {
+    fontSize: 20,
+  },
   modalContainer: {
     alignItems: "center",
-    // backgroundColor: colors.gray2,
+    backgroundColor: colors.gray4,
     flex: 1,
     justifyContent: "space-around",
-    padding: 8,
   },
   closeIconContainer: {
     backgroundColor: "white",
@@ -116,7 +133,7 @@ const styles = StyleSheet.create({
   },
   performance: {
     // backgroundColor: colors.gray2,
-    gap: 20,
+    gap: 24,
     alignItems: "center",
   },
   ratingContainer: {
@@ -126,7 +143,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   timeTaken: {
-    fontSize: 28,
+    fontSize: 20,
     color: colors.black,
     textAlign: "center",
   },

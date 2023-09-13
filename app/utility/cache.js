@@ -22,13 +22,13 @@ const getData = async (key) => {
   }
 };
 
-const removeItem = async () => {
+const removeItem = async (key) => {
   try {
     await AsyncStorage.removeItem(key);
     console.log("Item removed with key :", key);
   } catch (e) {
     // error reading value
-    console.log("Error deleting", e);
+    console.log("Error deleting item with key: " + key, e);
   }
 };
 
