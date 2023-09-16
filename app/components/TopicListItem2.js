@@ -19,7 +19,7 @@ const TopicListItem2 = ({ item }) => {
         onPress={goToQuizList}
         style={styles.container}
       >
-        <Text style={styles.text}>{item?.title}</Text>
+        <Text style={styles.text}> {item?.title}</Text>
       </TouchableOpacity>
     </View>
   );

@@ -31,7 +31,6 @@ const SentenceMaster = ({ route, navigation }) => {
   const [arrangedWords, setArrangedWords] = useState([]);
   const [words, setWords] = useState([]);
   const [currQuizId, setCurrQuizId] = useState(null);
-  const [wordBorderColor, setWordBorderColor] = useState("black");
   const [selectedWord, setSelectedWord] = useState(null);
 
   const [modalVisible, setModalVisible] = useState(false);

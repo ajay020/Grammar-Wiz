@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -8,11 +8,13 @@ import Text from "../components/Text";
 import Icon from "../components/Icon";
 import CheckIcon from "../components/CheckIcon";
 import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
+import TopicSummary from "../components/TopicSummary";
 
 const QuizListScreen = ({ route }) => {
-  const { completedQuizzes, fetchCompletdQuizzes } = useQuizData();
+  const [isModalVisible, setModalVisible] = useState(false);
 
-  const { id: topicId, quizzes: quizIds, title } = route?.params?.data;
+  const { completedQuizzes, fetchCompletdQuizzes } = useQuizData();
+  const { id: topicId, quizzes: quizIds, title, summary } = route?.params?.data;
   const navigation = useNavigation();
 
   // Hide Bottom tab navigation layout.
@@ -31,8 +33,6 @@ const QuizListScreen = ({ route }) => {
     navigation.setOptions({ title });
   }, [navigation, route]);
 
-  useEffect(() => {}, []);
-
   const navigateToQuizScreen = (quizId) => {
     navigation.addListener("focus", () => {
       fetchCompletdQuizzes();
@@ -44,33 +44,53 @@ const QuizListScreen = ({ route }) => {
     });
   };
 
-  return (
-    <View style={styles.container}>
-      {quizIds.map((quizId, index) => {
-        let isQuizTaken = completedQuizzes.find(
-          (quiz) => quiz.quizId === quizId
-        );
-        return (
-          <TouchableOpacity
-            key={quizId}
-            activeOpacity={0.3}
-            style={styles.quizItem}
-            onPress={() => navigateToQuizScreen(quizId)}
-          >
-            <Text> Quiz {index + 1}</Text>
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
-            {isQuizTaken ? <CheckIcon /> : null}
-          </TouchableOpacity>
-        );
-      })}
-      <View style={[styles.trophyContainer]}>
-        <Icon
-          name={"trophy"}
-          color={`${allQuizzesCompleted ? colors.golden : "gray"}`}
-          size={50}
+  return (
+    <>
+      <TouchableOpacity
+        style={{
+          alignItems: "center",
+          paddingVertical: 18,
+        }}
+        onPress={toggleModal}
+      >
+        <Icon name={"book"} size={56} />
+        <TopicSummary
+          topicId={topicId}
+          isVisible={isModalVisible}
+          onClose={toggleModal}
         />
+      </TouchableOpacity>
+      <View style={styles.container}>
+        {quizIds.map((quizId, index) => {
+          let isQuizTaken = completedQuizzes.find(
+            (quiz) => quiz.quizId === quizId
+          );
+          return (
+            <TouchableOpacity
+              key={quizId}
+              activeOpacity={0.3}
+              style={styles.quizItem}
+              onPress={() => navigateToQuizScreen(quizId)}
+            >
+              <Text> Quiz {index + 1}</Text>
+
+              {isQuizTaken ? <CheckIcon /> : null}
+            </TouchableOpacity>
+          );
+        })}
+        <View style={[styles.trophyContainer]}>
+          <Icon
+            name={"trophy"}
+            color={`${allQuizzesCompleted ? colors.golden : "gray"}`}
+            size={50}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 

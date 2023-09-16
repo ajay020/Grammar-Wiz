@@ -22,7 +22,6 @@ export default HomeScreen = ({ navigation }) => {
       style={styles.container}
       data={topicData.topics}
       numColumns={1}
-      //   ItemSeparatorComponent={ListItemSeprator}
       keyExtractor={(item) => item.id?.toString()}
       renderItem={({ item }) => <TopicListItem2 item={item} />}
     />
