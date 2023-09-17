@@ -101,10 +101,25 @@ const QuizScreen = ({ route, navigation }) => {
       if (typeof question.correctOptionId === "string") {
         setSelectedOptions([option]);
       } else {
-        setSelectedOptions((prev) => [...prev, option]);
+        setSelectedOptions((prev) => toggleOption(prev, option));
       }
     }
   };
+
+  function toggleOption(selectedOptions, optionToAdd) {
+    // Check if the optionToAdd already exists in selectedOptions
+    const index = selectedOptions.findIndex(
+      (option) => option.id === optionToAdd.id
+    );
+
+    // If the optionToAdd is not in selectedOptions, add it
+    if (index === -1) {
+      return [...selectedOptions, optionToAdd];
+    } else {
+      // If the optionToAdd is already in selectedOptions, remove it
+      return selectedOptions.filter((option) => option.id !== optionToAdd.id);
+    }
+  }
 
   const handleOptionValidation = () => {
     if (selectedOptions.length > 0) {
@@ -198,7 +213,7 @@ const QuizScreen = ({ route, navigation }) => {
                 style={[
                   styles.button,
 
-                  !selectedOptions && styles.disableButton,
+                  !selectedOptions.length && styles.disableButton,
                   isCorrect &&
                     isValidatedOption && { backgroundColor: colors.primary },
                   !isCorrect &&

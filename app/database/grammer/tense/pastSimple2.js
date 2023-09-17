@@ -2,7 +2,7 @@ export default [
   {
     id: 151,
     quizId: 16,
-    text: "Select option(s), which is/are NOT in present simple.",
+    text: "Select option(s), which is/are NOT in Past Simple.",
     options: [
       {
         id: "a",
