@@ -1,3 +1,5 @@
+import pastSimple1 from "./tense/pastSimple1";
+import pastSimple2 from "./tense/pastSimple2";
 import { presentContinuous1 } from "./tense/presentConti1";
 import { presentContinuous2 } from "./tense/presentConti2";
 import { presentContinuous3 } from "./tense/presentConti3";
@@ -7,6 +9,7 @@ import { presentPerfect2 } from "./tense/presentPerfect2";
 import { presentPerfect3 } from "./tense/presentPerfect3";
 import presentPerfectCont1 from "./tense/presentPerfectCont1";
 import presentPerfectCont2 from "./tense/presentPerfectCont2";
+import presentPerfectCont3 from "./tense/presentPerfectCont3";
 import { presentSimple1 } from "./tense/presentSimple1";
 import presentSimple2 from "./tense/presentSimple2";
 import presentSimple3 from "./tense/presentSimple3";
@@ -52,6 +55,14 @@ const questions = [
   // ================ Present perfect continuous quiz 2 ==========================
   ...presentPerfectCont2,
   // ================ Present perfect continuous quiz 3 ==========================
+  ...presentPerfectCont3,
+  /**
+   *
+   *
+   */
+  // ================ Past Simple quiz 1 ==========================
+  ...pastSimple1,
+  ...pastSimple2,
 ];
 
 // ================ Methods ========================

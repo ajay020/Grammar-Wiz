@@ -58,6 +58,8 @@ const quizzes = [
     topicId: 3, // ID of the topic this quiz belongs to
     questions: [101, 102, 103, 104, 105, 106, 107, 108, 109, 110], // IDs of questions in this quiz
   },
+  //============= Topic Present perfect continuous ====================
+
   {
     id: 12,
     topicId: 4, // ID of the topic this quiz belongs to
@@ -72,6 +74,22 @@ const quizzes = [
     id: 14,
     topicId: 4, // ID of the topic this quiz belongs to
     questions: [131, 132, 133, 134, 135, 136, 137, 138, 139, 140], // IDs of questions in this quiz
+  },
+  //============= Topic Past Simple ====================
+  {
+    id: 15,
+    topicId: 5, // ID of the topic this quiz belongs to
+    questions: [141, 142, 143, 144, 145, 146, 147, 148, 149, 150], // IDs of questions in this quiz
+  },
+  {
+    id: 16,
+    topicId: 5, // ID of the topic this quiz belongs to
+    questions: [151, 152, 153, 154, 155, 156, 157, 158, 159, 160], // IDs of questions in this quiz
+  },
+  {
+    id: 17,
+    topicId: 5, // ID of the topic this quiz belongs to
+    questions: [161, 162, 163, 164, 165, 166, 167, 168, 169, 170], // IDs of questions in this quiz
   },
 ];
 

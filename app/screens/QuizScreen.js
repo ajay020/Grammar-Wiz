@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import React, { useState } from "react";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 
-import Text from "../components/Text";
 import colors from "../utility/colors";
 import AppButton from "../components/AppButton";
-import AppText from "../components/Text";
+import Text from "../components/Text";
 import { getQuizById } from "../database/grammer/quizzes";
 import { getQuestionById } from "../database/grammer/questions";
-import { getTopicById } from "../database/grammer/topics";
 
 import AppProgressBar from "../components/AppProgressBar";
 import Result from "../components/Result";
@@ -18,7 +15,7 @@ import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
 const QuizScreen = ({ route, navigation }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [progress, setProgress] = useState(0.02);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [isValidatedOption, setIsValidatedOption] = useState(false);
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -28,7 +25,6 @@ const QuizScreen = ({ route, navigation }) => {
   const questions = quiz?.questions;
 
   const question = getQuestionById(questions?.[currentQuestionIndex]);
-  const topic = getTopicById(quiz?.topicId);
   const QUESTION_COUNT = questions?.length;
 
   // Hide Bottom tab navigation layout.
@@ -40,7 +36,7 @@ const QuizScreen = ({ route, navigation }) => {
   }, [navigation, route]);
 
   const handleNextQeustion = async () => {
-    setSelectedOption(null);
+    setSelectedOptions([]);
     setIsValidatedOption(false);
     setIsCorrect(false);
 
@@ -102,19 +98,47 @@ const QuizScreen = ({ route, navigation }) => {
 
   const handleOptionSelect = (option) => {
     if (!isValidatedOption) {
-      setSelectedOption(option);
+      if (typeof question.correctOptionId === "string") {
+        setSelectedOptions([option]);
+      } else {
+        setSelectedOptions((prev) => [...prev, option]);
+      }
     }
   };
 
   const handleOptionValidation = () => {
-    if (selectedOption) {
+    if (selectedOptions.length > 0) {
       setIsValidatedOption(true);
-      if (selectedOption.id === question.correctOptionId) {
+
+      if (
+        checkOptionsContainAnswers(selectedOptions, question.correctOptionId)
+      ) {
         setCorrectAnswerCount((preCount) => preCount + 1);
         setIsCorrect(true);
       }
     }
   };
+
+  function checkOptionsContainAnswers(options, answers) {
+    let answerIds;
+
+    if (typeof answers === "string") {
+      answerIds = [answers];
+    } else {
+      answerIds = [...answers];
+    }
+
+    // Create a Set from the answers array for faster lookup
+    const answerSet = new Set(answerIds);
+    // Iterate over the options and check if each option has an id that is in the answer ids set.
+    for (const option of options) {
+      if (!answerSet.has(option.id)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 
   return (
     <>
@@ -133,7 +157,9 @@ const QuizScreen = ({ route, navigation }) => {
                 onPress={() => handleOptionSelect(option)}
                 style={[
                   styles.optionContainer,
-                  option?.id === selectedOption?.id && {
+                  selectedOptions.find(
+                    (selectdOp) => selectdOp?.id === option?.id
+                  ) && {
                     backgroundColor: colors.gray5,
                   },
                 ]}
@@ -149,7 +175,7 @@ const QuizScreen = ({ route, navigation }) => {
             ]}
           >
             <View style={styles.explainContainer}>
-              <AppText
+              <Text
                 style={[
                   styles.resultText,
                   isCorrect && { color: colors.primary },
@@ -158,11 +184,9 @@ const QuizScreen = ({ route, navigation }) => {
               >
                 {isCorrect ? "Correct" : ""}
                 {!isCorrect && isValidatedOption ? "Incorrect" : ""}
-              </AppText>
+              </Text>
               {isValidatedOption && (
-                <AppText style={styles.explainText}>
-                  {question?.explanation}
-                </AppText>
+                <Text style={styles.explainText}>{question?.explanation}</Text>
               )}
               <AppButton
                 onPress={
@@ -174,7 +198,7 @@ const QuizScreen = ({ route, navigation }) => {
                 style={[
                   styles.button,
 
-                  !selectedOption && styles.disableButton,
+                  !selectedOptions && styles.disableButton,
                   isCorrect &&
                     isValidatedOption && { backgroundColor: colors.primary },
                   !isCorrect &&
