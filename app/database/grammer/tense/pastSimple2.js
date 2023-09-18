@@ -91,24 +91,23 @@ export default [
   {
     id: 155,
     quizId: 16,
-    text: "What is the correct past simple form of the verb 'to come'?",
+    text: "My family and I ____ in Canada when I was young.",
     options: [
       {
         id: "a",
-        text: "came",
+        text: "was live",
       },
       {
         id: "b",
-        text: "come",
+        text: "live",
       },
       {
         id: "c",
-        text: "coming",
+        text: "lived",
       },
     ],
-    correctOptionId: "a",
-    explanation:
-      "The correct past simple form of the verb 'to come' is 'came.'",
+    correctOptionId: "c",
+    explanation: "The correct past simple form of the verb 'live' is 'lived'.",
   },
   {
     id: 156,
@@ -157,26 +156,65 @@ export default [
   {
     id: 158,
     quizId: 16,
-    text: "Which of the following are irregular past simple verbs? (Select all that apply)",
+    text: "Jhon ___(buy) a gift for his girlfriend last week.",
     options: [
       {
         id: "a",
-        text: "walked",
+        text: "buy",
       },
       {
         id: "b",
-        text: "spoken",
+        text: "bought",
       },
       {
         id: "c",
-        text: "come",
-      },
-      {
-        id: "d",
-        text: "ran",
+        text: "Has bought",
       },
     ],
-    correctOptionId: ["a", "d"],
-    explanation: "The irregular past simple verbs are 'walked' and 'ran.'",
+    correctOptionId: "b",
+    explanation: "The Past simple form of 'buy' is 'bought'.",
+  },
+  {
+    id: 159,
+    quizId: 16,
+    text: "Which sentence is in the past simple tense?",
+    options: [
+      {
+        id: "a",
+        text: "She has been working all day.",
+      },
+      {
+        id: "b",
+        text: "They are playing soccer now.",
+      },
+      {
+        id: "c",
+        text: "He finished his homework yesterday.",
+      },
+    ],
+    correctOptionId: "c",
+    explanation:
+      "The correct answer is 'He finished his homework yesterday.' This sentence is in the past simple tense because it describes an action that happened and was completed in the past.",
+  },
+  {
+    id: 160,
+    quizId: 16,
+    text: "What is the past simple form of the verb 'ride'?",
+    options: [
+      {
+        id: "a",
+        text: "rides",
+      },
+      {
+        id: "b",
+        text: "riding",
+      },
+      {
+        id: "c",
+        text: "rode",
+      },
+    ],
+    correctOptionId: "c",
+    explanation: "The past simple form of the verb 'ride' is 'rode'.",
   },
 ];
