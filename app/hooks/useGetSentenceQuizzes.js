@@ -4,7 +4,7 @@ import gameData from "../database/gameData";
 import cache from "../utility/cache";
 
 const useGetSentenceQuizzes = (level = 1) => {
-  console.log("useGetSentenceQuizzes render");
+  //   console.log("useGetSentenceQuizzes render");
   const [completedSentenceIds, setCompleteSenteceIds] = useState([]);
   const [sentenceQuizzes, setsentenceQuizzes] = useState([]);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);

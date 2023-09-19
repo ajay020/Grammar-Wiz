@@ -100,7 +100,7 @@ const SentenceMaster = ({ route, navigation }) => {
 
       let currentLevelData = existingData[level];
 
-      console.log(" >>>>", JSON.stringify(existingData));
+      //   console.log(" >>>>", JSON.stringify(existingData));
 
       if (currentLevelData) {
         let uniqueIds = new Set([

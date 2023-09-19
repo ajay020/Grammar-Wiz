@@ -41,15 +41,9 @@ const GameScreen = ({ navigation }) => {
     let intermediate = 0;
     let expert = 0;
 
-    gameData?.sentenceList?.forEach((item) => {
-      if (item.difficulty === 1) {
-        beginner++;
-      } else if (item.difficulty === 2) {
-        intermediate++;
-      } else if (item.difficulty === 3) {
-        expert++;
-      }
-    });
+    beginner = gameData.getQuizzesByDifficulty(1)?.length || 0;
+    intermediate = gameData.getQuizzesByDifficulty(2)?.length || 0;
+    expert = gameData.getQuizzesByDifficulty(3)?.length || 0;
 
     setBeginnerCount(beginner);
     setIntermediateCount(intermediate);
