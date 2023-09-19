@@ -91,7 +91,7 @@ const quizzes = [
     topicId: 5, // ID of the topic this quiz belongs to
     questions: [161, 162, 163, 164, 165, 166, 167, 168, 169, 170], // IDs of questions in this quiz
   },
-  //============= Topic Past continuous ====================
+  //============= Past continuous ====================
   {
     id: 18,
     topicId: 6, // ID of the topic this quiz belongs to
@@ -106,6 +106,22 @@ const quizzes = [
     id: 20,
     topicId: 6, // ID of the topic this quiz belongs to
     questions: [191, 192, 193, 194, 195, 196, 197, 198, 199, 200], // IDs of questions in this quiz
+  },
+  //============= Past Perfect ====================
+  {
+    id: 21,
+    topicId: 7, // ID of the topic this quiz belongs to
+    questions: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210], // IDs of questions in this quiz
+  },
+  {
+    id: 22,
+    topicId: 7, // ID of the topic this quiz belongs to
+    questions: [211, 212, 213, 214, 215, 216, 217, 218, 219, 220], // IDs of questions in this quiz
+  },
+  {
+    id: 23,
+    topicId: 7, // ID of the topic this quiz belongs to
+    questions: [221, 222, 223, 224, 225, 226, 227, 228, 229, 230], // IDs of questions in this quiz
   },
 ];
 

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "EngQuiz",
-    "slug": "EngQuiz",
+    "name": "english grammar quiz",
+    "slug": "english-grammar-quiz",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
@@ -19,10 +19,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ajay020.englishgrammarquiz"
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fed6507c-6d90-46df-bb11-64661907fac8"
+      }
+    },
+    "owner": "ajay020"
   }
 }

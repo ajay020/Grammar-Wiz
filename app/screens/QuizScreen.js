@@ -11,6 +11,7 @@ import AppProgressBar from "../components/AppProgressBar";
 import Result from "../components/Result";
 import cache from "../utility/cache";
 import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
+import { ScrollView } from "react-native-gesture-handler";
 
 const QuizScreen = ({ route, navigation }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -126,7 +127,7 @@ const QuizScreen = ({ route, navigation }) => {
       setIsValidatedOption(true);
 
       if (
-        checkOptionsContainAnswers(selectedOptions, question.correctOptionId)
+        checkOptionsContainAnswers(selectedOptions, question?.correctOptionId)
       ) {
         setCorrectAnswerCount((preCount) => preCount + 1);
         setIsCorrect(true);
@@ -134,7 +135,7 @@ const QuizScreen = ({ route, navigation }) => {
     }
   };
 
-  function checkOptionsContainAnswers(options, answers) {
+  function checkOptionsContainAnswers(chosenOptions, answers) {
     let answerIds;
 
     if (typeof answers === "string") {
@@ -143,86 +144,86 @@ const QuizScreen = ({ route, navigation }) => {
       answerIds = [...answers];
     }
 
-    // Create a Set from the answers array for faster lookup
-    const answerSet = new Set(answerIds);
-    // Iterate over the options and check if each option has an id that is in the answer ids set.
-    for (const option of options) {
-      if (!answerSet.has(option.id)) {
-        return false;
-      }
-    }
-
-    return true;
+    // check if chosen options are correct or not
+    return answerIds.every((answerId) => {
+      let index = chosenOptions.findIndex((option) => option?.id === answerId);
+      if (index < 0) return false;
+      return true;
+    });
   }
 
   return (
     <>
       {currentQuestionIndex < QUESTION_COUNT ? (
-        <View style={styles.container}>
-          <View style={styles.body}>
-            <AppProgressBar
-              progress={progress}
-              style={{ backgroundColor: colors.gray5 }}
-            />
-            <Text style={styles.questionTxt}>{question?.text}</Text>
-            {question?.options?.map((option) => (
-              <TouchableOpacity
-                key={option.id}
-                activeOpacity={0.9}
-                onPress={() => handleOptionSelect(option)}
-                style={[
-                  styles.optionContainer,
-                  selectedOptions.find(
-                    (selectdOp) => selectdOp?.id === option?.id
-                  ) && {
-                    backgroundColor: colors.gray5,
-                  },
-                ]}
-              >
-                <Text style={[styles.optionTxt]}>{option.text}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-          <View
-            style={[
-              styles.footer,
-              isValidatedOption ? { backgroundColor: colors.white } : "",
-            ]}
-          >
-            <View style={styles.explainContainer}>
-              <Text
-                style={[
-                  styles.resultText,
-                  isCorrect && { color: colors.primary },
-                  !isCorrect && { color: colors.danger },
-                ]}
-              >
-                {isCorrect ? "Correct" : ""}
-                {!isCorrect && isValidatedOption ? "Incorrect" : ""}
-              </Text>
-              {isValidatedOption && (
-                <Text style={styles.explainText}>{question?.explanation}</Text>
-              )}
-              <AppButton
-                onPress={
-                  isValidatedOption
-                    ? handleNextQeustion
-                    : handleOptionValidation
-                }
-                title={isValidatedOption ? "Next" : "Check"}
-                style={[
-                  styles.button,
-
-                  !selectedOptions.length && styles.disableButton,
-                  isCorrect &&
-                    isValidatedOption && { backgroundColor: colors.primary },
-                  !isCorrect &&
-                    isValidatedOption && { backgroundColor: colors.danger },
-                ]}
+        <ScrollView>
+          <View style={styles.container}>
+            <View style={styles.body}>
+              <AppProgressBar
+                progress={progress}
+                style={{ backgroundColor: colors.gray5 }}
               />
+              <Text style={styles.questionTxt}>{question?.text}</Text>
+              {question?.options?.map((option) => (
+                <TouchableOpacity
+                  key={option.id}
+                  activeOpacity={0.9}
+                  onPress={() => handleOptionSelect(option)}
+                  style={[
+                    styles.optionContainer,
+                    selectedOptions.find(
+                      (selectdOp) => selectdOp?.id === option?.id
+                    ) && {
+                      backgroundColor: colors.gray5,
+                    },
+                  ]}
+                >
+                  <Text style={[styles.optionTxt]}>{option.text}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+            <View
+              style={[
+                styles.footer,
+                isValidatedOption ? { backgroundColor: colors.white } : "",
+              ]}
+            >
+              <View style={styles.explainContainer}>
+                <Text
+                  style={[
+                    styles.resultText,
+                    isCorrect && { color: colors.primary },
+                    !isCorrect && { color: colors.danger },
+                  ]}
+                >
+                  {isCorrect ? "Correct" : ""}
+                  {!isCorrect && isValidatedOption ? "Incorrect" : ""}
+                </Text>
+                {isValidatedOption && (
+                  <Text style={styles.explainText}>
+                    {question?.explanation}
+                  </Text>
+                )}
+                <AppButton
+                  onPress={
+                    isValidatedOption
+                      ? handleNextQeustion
+                      : handleOptionValidation
+                  }
+                  title={isValidatedOption ? "Next" : "Check"}
+                  style={[
+                    styles.button,
+
+                    !selectedOptions.length && styles.disableButton,
+                    isCorrect &&
+                      isValidatedOption && { backgroundColor: colors.primary },
+                    !isCorrect &&
+                      isValidatedOption && { backgroundColor: colors.danger },
+                  ]}
+                />
+              </View>
             </View>
           </View>
-        </View>
+        </ScrollView>
       ) : (
         <Result correct={correctAnswerCount} totalQuestions={QUESTION_COUNT} />
       )}

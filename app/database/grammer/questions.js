@@ -1,6 +1,9 @@
 import pastContinuous1 from "./tense/pastContinuous1";
 import pastContinuous2 from "./tense/pastContinuous2";
 import pastContinuous3 from "./tense/pastContinuous3";
+import pastPerfect1 from "./tense/pastPerfect1";
+import pastPerfect2 from "./tense/pastPerfect2";
+import pastPerfect3 from "./tense/pastPerfect3";
 import pastSimple1 from "./tense/pastSimple1";
 import pastSimple2 from "./tense/pastSimple2";
 import pastSimple3 from "./tense/pastSimple3";
@@ -20,35 +23,27 @@ import presentSimple3 from "./tense/presentSimple3";
 import { presentSimple4 } from "./tense/presentSimple4";
 
 const questions = [
-  // ================ present simple quiz 1 ==========================
+  // ================ present simple  ==========================
   ...presentSimple1,
-  // ================ present simple quiz 2 ==========================
   ...presentSimple2,
-  // ================ present simple quiz 3 ==========================
   ...presentSimple3,
-  // ================ present simple quiz 4 ==========================
   ...presentSimple4,
   /**
    *
    *
    */
-  // ================ present continuoue quiz 1 ==========================
+  // ================ present continuoue ==========================
   ...presentContinuous1,
-  // ================ present continuoue quiz 2 ==========================
   ...presentContinuous2,
-  // ================ present continuoue quiz 3 ==========================
   ...presentContinuous3,
-  // ================ present continuoue quiz 4 ==========================
   ...presentContinuous4,
   /**
    *
    *
    */
-  // ================ Present perfect quiz 1 ==========================
+  // ================ Present perfect ==========================
   ...presentPerfect1,
-  // ================ Present perfect quiz 2 ==========================
   ...presentPerfect2,
-  // ================ Present perfect quiz 3 ==========================
   ...presentPerfect3,
   /**
    *
@@ -62,7 +57,7 @@ const questions = [
    *
    *
    */
-  // ================ Past Simple quiz  ==========================
+  // ================ Past Simple  ==========================
   ...pastSimple1,
   ...pastSimple2,
   ...pastSimple3,
@@ -74,6 +69,14 @@ const questions = [
   ...pastContinuous1,
   ...pastContinuous2,
   ...pastContinuous3,
+  /**
+   *
+   *
+   */
+  // ================ Past Perfect ==========================
+  ...pastPerfect1,
+  ...pastPerfect2,
+  ...pastPerfect3,
 ];
 
 // ================ Methods ========================
