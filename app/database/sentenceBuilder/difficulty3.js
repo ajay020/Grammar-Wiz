@@ -1,6 +1,6 @@
 export default [
   {
-    id: 2,
+    id: 1,
     difficulty: 3,
     words: [
       {
@@ -26,7 +26,7 @@ export default [
     ],
   },
   {
-    id: 22,
+    id: 2,
     difficulty: 3,
     words: [
       {
@@ -62,7 +62,7 @@ export default [
     ],
   },
   {
-    id: 23,
+    id: 3,
     difficulty: 3,
     words: [
       {
@@ -98,7 +98,7 @@ export default [
     ],
   },
   {
-    id: 24,
+    id: 4,
     difficulty: 3,
     words: [
       {
@@ -144,7 +144,7 @@ export default [
     ],
   },
   {
-    id: 25,
+    id: 5,
     difficulty: 3,
     words: [
       {
@@ -180,7 +180,7 @@ export default [
     ],
   },
   {
-    id: 26,
+    id: 6,
     difficulty: 3,
     words: [
       {
@@ -222,6 +222,228 @@ export default [
         id: 135,
         text: "birthday.",
         position: 8,
+      },
+    ],
+  },
+  {
+    id: 7,
+    difficulty: 3,
+    words: [
+      {
+        id: 1,
+        text: "The",
+        position: 1,
+      },
+      {
+        id: 2,
+        text: "young",
+        position: 2,
+      },
+      {
+        id: 3,
+        text: "boy",
+        position: 3,
+      },
+      {
+        id: 4,
+        text: "ran",
+        position: 4,
+      },
+      {
+        id: 5,
+        text: "through",
+        position: 5,
+      },
+      {
+        id: 6,
+        text: "the",
+        position: 6,
+      },
+      {
+        id: 7,
+        text: "park",
+        position: 7,
+      },
+      {
+        id: 8,
+        text: ",",
+        position: 8,
+      },
+      {
+        id: 9,
+        text: "chasing",
+        position: 9,
+      },
+      {
+        id: 10,
+        text: "a",
+        position: 10,
+      },
+      {
+        id: 11,
+        text: "butterfly",
+        position: 11,
+      },
+      {
+        id: 12,
+        text: ".",
+        position: 12,
+      },
+    ],
+  },
+  {
+    id: 8,
+    difficulty: 3,
+    theme: "food",
+    words: [
+      {
+        id: 1,
+        text: "I",
+        position: 1,
+      },
+      {
+        id: 2,
+        text: "accidentally",
+        position: 2,
+      },
+      {
+        id: 3,
+        text: "put",
+        position: 3,
+      },
+      {
+        id: 4,
+        text: "salt",
+        position: 4,
+      },
+      {
+        id: 5,
+        text: "instead",
+        position: 5,
+      },
+      {
+        id: 6,
+        text: "of",
+        position: 6,
+      },
+      {
+        id: 7,
+        text: "sugar",
+        position: 7,
+      },
+      {
+        id: 8,
+        text: "in",
+        position: 8,
+      },
+      {
+        id: 9,
+        text: "my",
+        position: 9,
+      },
+      {
+        id: 10,
+        text: "coffee!",
+        position: 10,
+      },
+    ],
+  },
+  {
+    id: 9,
+    difficulty: 3,
+    theme: "animals",
+    words: [
+      {
+        id: 1,
+        text: "My",
+        position: 1,
+      },
+      {
+        id: 2,
+        text: "cat",
+        position: 2,
+      },
+      {
+        id: 3,
+        text: "believes",
+        position: 3,
+      },
+      {
+        id: 4,
+        text: "she's",
+        position: 4,
+      },
+      {
+        id: 5,
+        text: "the",
+        position: 5,
+      },
+      {
+        id: 6,
+        text: "queen",
+        position: 6,
+      },
+      {
+        id: 7,
+        text: "of",
+        position: 7,
+      },
+      {
+        id: 8,
+        text: "the",
+        position: 8,
+      },
+      {
+        id: 9,
+        text: "house",
+        position: 9,
+      },
+      {
+        id: 10,
+        text: "and",
+        position: 10,
+      },
+      {
+        id: 11,
+        text: "I'm",
+        position: 11,
+      },
+      {
+        id: 12,
+        text: "her",
+        position: 12,
+      },
+      {
+        id: 13,
+        text: "servant.",
+        position: 13,
+      },
+    ],
+  },
+  {
+    id: 10,
+    difficulty: 1,
+    theme: "nature",
+    words: [
+      {
+        id: 1,
+        text: "Flowers",
+        position: 1,
+      },
+      {
+        id: 2,
+        text: "make",
+        position: 2,
+      },
+      {
+        id: 3,
+        text: "me",
+        position: 3,
+      },
+      {
+        id: 4,
+        text: "happy.",
+        position: 4,
       },
     ],
   },

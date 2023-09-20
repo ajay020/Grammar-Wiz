@@ -80,10 +80,10 @@ const GameScreen = ({ navigation }) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      console.log("GamseScreen focused");
+      //   console.log("GamseScreen focused");
       fetchCompletedCounts();
       return () => {
-        console.log("GameScreen unfocused");
+        // console.log("GameScreen unfocused");
       };
     }, [])
   );
@@ -99,7 +99,7 @@ const GameScreen = ({ navigation }) => {
         let b = x[1].compltedQuizIds;
         let i = x[2].compltedQuizIds;
         let e = x[3].compltedQuizIds;
-        console.log({ b, i, e });
+        // console.log({ b, i, e });
       } catch (error) {
         console.log(error);
       }

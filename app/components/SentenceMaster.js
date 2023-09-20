@@ -41,7 +41,7 @@ const SentenceMaster = ({ route, navigation }) => {
   // Hide Bottom tab navigation layout.
   useHideBottomTabBar();
 
-  const { sentenceQuizzes, isQuizCompleted } = useGetSentenceQuizzes(level);
+  const { sentenceQuizzes, loading } = useGetSentenceQuizzes(level);
 
   const handleTimerComplete = () => {
     openModal();
@@ -56,22 +56,17 @@ const SentenceMaster = ({ route, navigation }) => {
     React.useCallback(() => {
       startTimer();
       //   resetTimer();
-      console.log("SentenceMaster focused");
+      //   console.log("SentenceMaster focused");
 
       return () => {
         stopTimer();
         // console.log("Timer stopped!");
-        console.log("SentenceMaster removed");
+        // console.log("SentenceMaster removed");
       };
     }, [])
   );
 
   useEffect(() => {
-    if (isQuizCompleted && sentenceQuizzes.length == 0) {
-      Alert.alert("Congratulations! You completed all the quizzes!!");
-      navigation.navigate("GameScreen");
-    }
-
     if (currectQuizIndex < sentenceQuizzes?.length) {
       const sentence = sentenceQuizzes[currectQuizIndex];
       const shuffleWords = shuffleArray(sentence.words);
@@ -80,10 +75,11 @@ const SentenceMaster = ({ route, navigation }) => {
       setCurrQuizId(sentence.id);
     }
 
-    if (isQuizCompleted && currectQuizIndex >= sentenceQuizzes?.length) {
+    if (!loading && sentenceQuizzes.length == 0) {
+      Alert.alert("Congratulations! You completed all the quizzes!!");
       navigation.navigate("GameScreen");
     }
-  }, [currectQuizIndex, sentenceQuizzes.length]);
+  }, [currectQuizIndex, sentenceQuizzes, loading]);
 
   useEffect(() => {
     if (words?.length == 0 && arrangedWords.length) {

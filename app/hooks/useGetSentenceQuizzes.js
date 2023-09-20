@@ -5,44 +5,41 @@ import cache from "../utility/cache";
 
 const useGetSentenceQuizzes = (level = 1) => {
   //   console.log("useGetSentenceQuizzes render");
-  const [completedSentenceIds, setCompleteSenteceIds] = useState([]);
   const [sentenceQuizzes, setsentenceQuizzes] = useState([]);
-  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
-
-  // fetch quizzes by difficulty
-  const quizList = gameData.getQuizzesByDifficulty(level);
-
-  const filterQuizzes = () => {
-    const list = quizList.filter((quiz) => {
-      if (completedSentenceIds.indexOf(quiz.id) < 0) {
-        return quiz;
-      }
-    });
-    setsentenceQuizzes([...list]);
-  };
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchCompletdSenteceQuizIds();
   }, [level]);
 
-  useEffect(() => {
-    filterQuizzes();
-  }, [completedSentenceIds]);
+  const filterQuizzes = (completedSentenceIds) => {
+    // fetch quizzes by difficulty
+    const quizList = gameData?.getQuizzesByDifficulty(level);
+
+    const list = quizList?.filter((quiz) => {
+      if (completedSentenceIds?.indexOf(quiz.id) < 0) {
+        return quiz;
+      }
+    });
+
+    return list;
+  };
 
   const fetchCompletdSenteceQuizIds = async () => {
     try {
-      let savedSentenceBuilderData = await cache?.getData("sentenceBuilder");
-      const ids = savedSentenceBuilderData[level].compltedQuizIds;
-      const totalQuizzes = savedSentenceBuilderData[level].total;
+      let savedData = await cache?.getData("sentenceBuilder");
+      const ids = savedData[level].compltedQuizIds;
+      let filteredList = filterQuizzes(ids);
 
-      setCompleteSenteceIds([...ids]);
-      setIsQuizCompleted(ids.length === totalQuizzes);
+      setsentenceQuizzes([...filteredList]);
+      setLoading(false);
     } catch (error) {
       console.log("Error retriving sentece Ids from local storage", error);
+      setLoading(false);
     }
   };
 
-  return { sentenceQuizzes, isQuizCompleted };
+  return { sentenceQuizzes, loading };
 };
 
 export default useGetSentenceQuizzes;
