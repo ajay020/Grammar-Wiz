@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 
 import colors from "../utility/colors";
-import AppButton from "../components/AppButton";
 import Text from "../components/Text";
 import { getQuizById } from "../database/grammer/quizzes";
 import { getQuestionById } from "../database/grammer/questions";
@@ -12,6 +11,8 @@ import Result from "../components/Result";
 import cache from "../utility/cache";
 import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
 import { ScrollView } from "react-native-gesture-handler";
+import CheckQuizButton from "../components/CheckQuizButton";
+import Quiz from "../components/Quiz";
 
 const QuizScreen = ({ route, navigation }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -162,24 +163,11 @@ const QuizScreen = ({ route, navigation }) => {
                 progress={progress}
                 style={{ backgroundColor: colors.gray5 }}
               />
-              <Text style={styles.questionTxt}>{question?.text}</Text>
-              {question?.options?.map((option) => (
-                <TouchableOpacity
-                  key={option.id}
-                  activeOpacity={0.9}
-                  onPress={() => handleOptionSelect(option)}
-                  style={[
-                    styles.optionContainer,
-                    selectedOptions.find(
-                      (selectdOp) => selectdOp?.id === option?.id
-                    ) && {
-                      backgroundColor: colors.gray5,
-                    },
-                  ]}
-                >
-                  <Text style={[styles.optionTxt]}>{option.text}</Text>
-                </TouchableOpacity>
-              ))}
+              <Quiz
+                handleOptionSelect={handleOptionSelect}
+                selectedOptions={selectedOptions}
+                question={question}
+              />
             </View>
             <View
               style={[
@@ -203,22 +191,12 @@ const QuizScreen = ({ route, navigation }) => {
                     {question?.explanation}
                   </Text>
                 )}
-                <AppButton
-                  onPress={
-                    isValidatedOption
-                      ? handleNextQeustion
-                      : handleOptionValidation
-                  }
-                  title={isValidatedOption ? "Next" : "Check"}
-                  style={[
-                    styles.button,
-
-                    !selectedOptions.length && styles.disableButton,
-                    isCorrect &&
-                      isValidatedOption && { backgroundColor: colors.primary },
-                    !isCorrect &&
-                      isValidatedOption && { backgroundColor: colors.danger },
-                  ]}
+                <CheckQuizButton
+                  isCorrect={isCorrect}
+                  isValidatedOption={isValidatedOption}
+                  handleNextQeustion={handleNextQeustion}
+                  handleOptionValidation={handleOptionValidation}
+                  selectedOptions={selectedOptions}
                 />
               </View>
             </View>
@@ -233,27 +211,19 @@ const QuizScreen = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   body: {
-    gap: 20,
     paddingHorizontal: 20,
     marginTop: 30,
+    // backgroundColor: "red",
+    justifyContent: "space-around",
+    gap: 50,
+    // flex: 1,
   },
-  button: {
-    fontSize: 28,
-    marginVertical: 6,
-    borderRadius: 12,
-    borderColor: colors.gray1,
-    width: "100%",
-    paddingHorizontal: 14,
-  },
+
   container: {
     justifyContent: "space-between",
-    height: "100%",
+    // backgroundColor: "green",
     paddingTop: 16,
-  },
-  disableButton: {
-    backgroundColor: colors.gray3,
-    borderWidth: 0.5,
-    paddingHorizontal: 10,
+    flex: 1,
   },
 
   explainContainer: {
@@ -271,27 +241,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     padding: 20,
-  },
-
-  optionTxt: {
-    color: colors.black,
-    fontSize: 18,
-    textAlign: "center",
-  },
-  optionContainer: {
-    // elevation: 5,
-    borderWidth: 0.5,
-    borderBottomWidth: 2,
-    borderColor: colors.black,
-    borderRadius: 10,
-    padding: 14,
-  },
-  questionTxt: {
-    color: colors.black,
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginVertical: 16,
+    // backgroundColor: "yellow",
   },
 });
 

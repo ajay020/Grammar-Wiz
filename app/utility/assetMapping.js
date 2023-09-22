@@ -6,6 +6,6 @@ export default {
   5: require("../assets/topicIntro/pastSimple.html"),
   6: require("../assets/topicIntro/pastContinuous.html"),
   7: require("../assets/topicIntro/pastPerfect.html"),
-  //   9: require("../assets/topicIntro/pastPerfectCont.html"),
-  //   10: require("../assets/topicIntro/future.html"),
+  8: require("../assets/topicIntro/pastPerfectCont.html"),
+  9: require("../assets/topicIntro/futureSimple.html"),
 };

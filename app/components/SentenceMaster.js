@@ -238,6 +238,7 @@ const styles = StyleSheet.create({
     height: 20,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "gray",
   },
   chipContainer: {
     backgroundColor: colors.white,

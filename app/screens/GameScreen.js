@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, StatusBar, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  StatusBar,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 
 import colors from "../utility/colors";
@@ -108,6 +114,17 @@ const GameScreen = ({ navigation }) => {
   }, []);
 
   const sendDataToSentenceMaster = (level) => {
+    const message =
+      "Congratulations! 🎉 You've successfully completed all the quizzes.";
+    if (
+      (level === 1 && beginnerCount === beginnerCompleteCount) ||
+      (level === 2 && intermediateCount === intermediateCompleteCount) ||
+      (level === 3 && expertCount === expertCompleteCount)
+    ) {
+      Alert.alert(message);
+      return;
+    }
+
     const data = {
       level,
     };
@@ -122,7 +139,7 @@ const GameScreen = ({ navigation }) => {
         onPress={() => sendDataToSentenceMaster(1)}
       >
         <Text style={styles.title}>
-          Beginner ({beginnerCompleteCount}/{beginnerCount})
+          Level1 ({beginnerCompleteCount}/{beginnerCount})
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -130,7 +147,7 @@ const GameScreen = ({ navigation }) => {
         onPress={() => sendDataToSentenceMaster(2)}
       >
         <Text style={styles.title}>
-          Intermediate ({intermediateCompleteCount}/{intermediateCount})
+          Level2 ({intermediateCompleteCount}/{intermediateCount})
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -138,7 +155,7 @@ const GameScreen = ({ navigation }) => {
         onPress={() => sendDataToSentenceMaster(3)}
       >
         <Text style={styles.title}>
-          Expert ({expertCompleteCount}/{expertCount})
+          Level3 ({expertCompleteCount}/{expertCount})
         </Text>
       </TouchableOpacity>
     </View>

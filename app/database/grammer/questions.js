@@ -1,9 +1,14 @@
+import futureSimple1 from "./tense/futureSimple1";
+import futureSimple2 from "./tense/futureSimple2";
 import pastContinuous1 from "./tense/pastContinuous1";
 import pastContinuous2 from "./tense/pastContinuous2";
 import pastContinuous3 from "./tense/pastContinuous3";
 import pastPerfect1 from "./tense/pastPerfect1";
 import pastPerfect2 from "./tense/pastPerfect2";
 import pastPerfect3 from "./tense/pastPerfect3";
+import pastPerfectCont1 from "./tense/pastPerfectCont1";
+import pastPerfectCont2 from "./tense/pastPerfectCont2";
+import pastPerfectCont3 from "./tense/pastPerfectCont3";
 import pastSimple1 from "./tense/pastSimple1";
 import pastSimple2 from "./tense/pastSimple2";
 import pastSimple3 from "./tense/pastSimple3";
@@ -77,6 +82,26 @@ const questions = [
   ...pastPerfect1,
   ...pastPerfect2,
   ...pastPerfect3,
+  /**
+   *
+   *
+   */
+  // ================ Past Perfect Continuous ==========================
+  ...pastPerfectCont1,
+  ...pastPerfectCont2,
+  ...pastPerfectCont3,
+  /**
+   *
+   *
+   */
+  // ================ Future simple ==========================
+  ...futureSimple1,
+  ...futureSimple2,
+  /**
+   *
+   *
+   */
+  // ================ Future continuous ==========================
 ];
 
 // ================ Methods ========================

@@ -123,6 +123,40 @@ const quizzes = [
     topicId: 7, // ID of the topic this quiz belongs to
     questions: [221, 222, 223, 224, 225, 226, 227, 228, 229, 230], // IDs of questions in this quiz
   },
+  //============= Past Perfect Continuous ====================
+  {
+    id: 24,
+    topicId: 8, // ID of the topic this quiz belongs to
+    questions: [231, 232, 233, 234, 235, 236, 237, 238, 239, 240],
+  },
+  {
+    id: 25,
+    topicId: 8,
+    questions: [241, 242, 243, 244, 245, 246, 247, 248, 249, 250],
+  },
+  {
+    id: 26,
+    topicId: 8,
+    questions: [251, 252, 253, 254, 255, 256, 257, 258, 259, 260],
+  },
+  //============= Future simple====================
+  {
+    id: 27,
+    topicId: 9, // ID of the topic this quiz belongs to
+    questions: [261, 262, 263, 264, 265, 266, 267, 268, 269, 270],
+  },
+  {
+    id: 28,
+    topicId: 9,
+    questions: [271, 272, 273, 274, 275, 276, 277, 278, 279, 280],
+  },
+  //============= Future continuous====================
+
+  {
+    id: 29,
+    topicId: 10,
+    questions: [281, 282, 283, 284, 285, 286, 287, 288, 289, 290],
+  },
 ];
 
 // ================ Methods ========================

@@ -59,3 +59,9 @@ export default {
   removeItems,
   storeData,
 };
+
+/**
+ * sentenceBuilder: { 1: [2,3,4 ], 2: [ ids of quizzes ] 3: []   }
+ *
+ *
+ */
