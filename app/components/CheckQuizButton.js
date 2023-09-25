@@ -1,4 +1,3 @@
-import React from "react";
 import { StyleSheet } from "react-native";
 
 import AppButton from "./AppButton";
@@ -11,9 +10,17 @@ const CheckQuizButton = ({
   handleOptionValidation,
   selectedOptions,
 }) => {
+  const handleClick = () => {
+    if (isValidatedOption) {
+      handleNextQeustion();
+    } else {
+      handleOptionValidation();
+    }
+  };
+
   return (
     <AppButton
-      onPress={isValidatedOption ? handleNextQeustion : handleOptionValidation}
+      onPress={handleClick}
       title={isValidatedOption ? "Next" : "Check"}
       style={[
         styles.button,

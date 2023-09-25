@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 
 import colors from "../utility/colors";
-import Text from "../components/Text";
 import { getQuizById } from "../database/grammer/quizzes";
 import { getQuestionById } from "../database/grammer/questions";
 
@@ -10,9 +9,10 @@ import AppProgressBar from "../components/AppProgressBar";
 import Result from "../components/Result";
 import cache from "../utility/cache";
 import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
-import { ScrollView } from "react-native-gesture-handler";
 import CheckQuizButton from "../components/CheckQuizButton";
 import Quiz from "../components/Quiz";
+import FillInBlank from "../components/FillInBlankQuiz";
+import Explanation from "../components/Explanation";
 
 const QuizScreen = ({ route, navigation }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -124,6 +124,7 @@ const QuizScreen = ({ route, navigation }) => {
   }
 
   const handleOptionValidation = () => {
+    // validate options type quiz
     if (selectedOptions.length > 0) {
       setIsValidatedOption(true);
 
@@ -156,18 +157,26 @@ const QuizScreen = ({ route, navigation }) => {
   return (
     <>
       {currentQuestionIndex < QUESTION_COUNT ? (
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="handled">
           <View style={styles.container}>
             <View style={styles.body}>
               <AppProgressBar
                 progress={progress}
                 style={{ backgroundColor: colors.gray5 }}
               />
-              <Quiz
-                handleOptionSelect={handleOptionSelect}
-                selectedOptions={selectedOptions}
-                question={question}
-              />
+
+              {question?.type === "fillIn_blank" ? (
+                <FillInBlank
+                  question={question}
+                  handleNextQeustion={handleNextQeustion}
+                />
+              ) : (
+                <Quiz
+                  handleOptionSelect={handleOptionSelect}
+                  selectedOptions={selectedOptions}
+                  question={question}
+                />
+              )}
             </View>
             <View
               style={[
@@ -175,22 +184,13 @@ const QuizScreen = ({ route, navigation }) => {
                 isValidatedOption ? { backgroundColor: colors.white } : "",
               ]}
             >
-              <View style={styles.explainContainer}>
-                <Text
-                  style={[
-                    styles.resultText,
-                    isCorrect && { color: colors.primary },
-                    !isCorrect && { color: colors.danger },
-                  ]}
-                >
-                  {isCorrect ? "Correct" : ""}
-                  {!isCorrect && isValidatedOption ? "Incorrect" : ""}
-                </Text>
-                {isValidatedOption && (
-                  <Text style={styles.explainText}>
-                    {question?.explanation}
-                  </Text>
-                )}
+              {isValidatedOption && (
+                <Explanation
+                  isCorrect={isCorrect}
+                  explanation={question?.explanation}
+                />
+              )}
+              {question?.type !== "fillIn_blank" && (
                 <CheckQuizButton
                   isCorrect={isCorrect}
                   isValidatedOption={isValidatedOption}
@@ -198,7 +198,7 @@ const QuizScreen = ({ route, navigation }) => {
                   handleOptionValidation={handleOptionValidation}
                   selectedOptions={selectedOptions}
                 />
-              </View>
+              )}
             </View>
           </View>
         </ScrollView>
@@ -223,24 +223,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     // backgroundColor: "green",
     paddingTop: 16,
-    flex: 1,
-  },
-
-  explainContainer: {
-    gap: 16,
-  },
-  resultText: {
-    textAlign: "left",
-    fontWeight: "bold",
-  },
-
-  explainText: {
-    fontSize: 16,
-    textAlign: "left",
-    color: colors.black,
+    gap: 25,
+    // flex: 1,
   },
   footer: {
     padding: 20,
+    gap: 20,
     // backgroundColor: "yellow",
   },
 });

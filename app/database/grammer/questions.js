@@ -1,5 +1,6 @@
 import futureSimple1 from "./tense/futureSimple1";
 import futureSimple2 from "./tense/futureSimple2";
+import futureSimple3 from "./tense/futureSimple3";
 import pastContinuous1 from "./tense/pastContinuous1";
 import pastContinuous2 from "./tense/pastContinuous2";
 import pastContinuous3 from "./tense/pastContinuous3";
@@ -97,6 +98,7 @@ const questions = [
   // ================ Future simple ==========================
   ...futureSimple1,
   ...futureSimple2,
+  ...futureSimple3,
   /**
    *
    *
