@@ -1,3 +1,6 @@
+import futureContinuous1 from "./tense/futureContinuous1";
+import futureContinuous2 from "./tense/futureContinuous2";
+import futureContinuous3 from "./tense/futureContinuous3";
 import futureSimple1 from "./tense/futureSimple1";
 import futureSimple2 from "./tense/futureSimple2";
 import futureSimple3 from "./tense/futureSimple3";
@@ -104,6 +107,9 @@ const questions = [
    *
    */
   // ================ Future continuous ==========================
+  ...futureContinuous1,
+  ...futureContinuous2,
+  ...futureContinuous3,
 ];
 
 // ================ Methods ========================

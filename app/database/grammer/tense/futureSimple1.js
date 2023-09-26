@@ -46,25 +46,13 @@ export default [
   {
     id: 263,
     quizId: 27,
-    text: "When is the future simple tense typically used?",
-    options: [
-      {
-        id: "a",
-        text: "To describe past events",
-      },
-      {
-        id: "b",
-        text: "To make predictions about the future",
-      },
-      {
-        id: "c",
-        text: "To talk about ongoing actions",
-      },
-    ],
-    correctOptionId: "b",
+    text: "They ___ not attend the party tomorrow.",
+    type: "fillIn_blank",
+    correctAnswers: ["will"],
     explanation:
-      "The future simple tense is typically used to make predictions about the future.",
+      "The negative form of the future simple tense uses 'will not' or 'won't.' It indicates an action that will not happen in the future.",
   },
+
   {
     id: 264,
     quizId: 27,
@@ -113,25 +101,13 @@ export default [
   {
     id: 266,
     quizId: 27,
-    text: "Choose the correct sentence in the future simple tense:",
-    options: [
-      {
-        id: "a",
-        text: "She is eating lunch now.",
-      },
-      {
-        id: "b",
-        text: "She will eat lunch later.",
-      },
-      {
-        id: "c",
-        text: "She ate lunch yesterday.",
-      },
-    ],
-    correctOptionId: "b",
+    text: "He ___ buy a new car next year.",
+    type: "fillIn_blank",
+    correctAnswers: ["will"],
     explanation:
-      "The sentence 'She will eat lunch later.' is in the future simple tense.",
+      "The future simple tense is used to express future actions. 'Will' is used here to indicate a future purchase.",
   },
+
   {
     id: 267,
     quizId: 27,
@@ -182,24 +158,11 @@ export default [
   {
     id: 269,
     quizId: 27,
-    text: "What modal verb is commonly used in the future simple tense?",
-    options: [
-      {
-        id: "a",
-        text: "Can",
-      },
-      {
-        id: "b",
-        text: "will",
-      },
-      {
-        id: "c",
-        text: "Was",
-      },
-    ],
-    correctOptionId: "b",
+    text: "We ___ go to the movies tonight, but I'm not sure what to see. Do you have any suggestions?",
+    type: "fillIn_blank",
+    correctAnswers: ["will"],
     explanation:
-      "The modal verb 'will' is commonly used in the future simple tense.",
+      "The future simple tense is used to talk about plans that we have for the future. It is formed with the auxiliary verb 'will' and the base form of the verb.",
   },
   {
     id: 270,

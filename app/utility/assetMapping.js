@@ -8,4 +8,7 @@ export default {
   7: require("../assets/topicIntro/pastPerfect.html"),
   8: require("../assets/topicIntro/pastPerfectCont.html"),
   9: require("../assets/topicIntro/futureSimple.html"),
+  10: require("../assets/topicIntro/futureContinuous.html"),
+  11: require("../assets/topicIntro/futurePerfect.html"),
+  12: require("../assets/topicIntro/futurePerfectCont.html"),
 };

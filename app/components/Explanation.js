@@ -5,7 +5,6 @@ import colors from "../utility/colors";
 import Text from "./Text";
 
 const Explanation = ({ isCorrect, explanation }) => {
-  console.log({ isCorrect });
   return (
     <View style={styles.container}>
       <Text

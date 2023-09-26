@@ -24,7 +24,7 @@ const FillInBlank = ({ question, handleNextQeustion }) => {
   );
 
   useEffect(() => {
-    let isTyped = inputValues?.some((val) => val.length > 0);
+    let isTyped = inputValues?.some((val) => val?.length > 0);
     if (isTyped) {
       setBtnBgColor(colors.primary);
       setIsActive(true);
@@ -76,15 +76,17 @@ const FillInBlank = ({ question, handleNextQeustion }) => {
 
   const handleCheckAnswer = () => {
     // Get the user's input from the input fields (assuming user inputs are stored in an array)
-    const userAnswers = inputValues.map((input) => input.trim().toLowerCase());
+    const userAnswers = inputValues.map((input) =>
+      input?.trim()?.toLowerCase()
+    );
 
     const correctAnswers = question?.correctAnswers?.map((answer) =>
-      answer.trim().toLowerCase()
+      answer?.trim()?.toLowerCase()
     );
 
     // Check if the user's answers match the correct answers
-    const isCorrect = userAnswers.every((userAnswer, index) => {
-      return userAnswer === correctAnswers[index];
+    const isCorrect = correctAnswers.every((correctAnser, index) => {
+      return correctAnser === userAnswers[index];
     });
 
     return isCorrect;

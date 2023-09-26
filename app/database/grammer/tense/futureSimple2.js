@@ -2,23 +2,11 @@ export default [
   {
     id: 271,
     quizId: 28,
-    text: "I hope that he __  on time.",
-    options: [
-      {
-        id: "a",
-        text: "arrives",
-      },
-      {
-        id: "b",
-        text: "will arrive",
-      },
-      {
-        id: "c",
-        text: "arrives in time",
-      },
-    ],
-    correctOptionId: "b",
-    explanation: "subject + will/shall  + base form of the verb + others.",
+    text: "I promise that I ___ finish my homework before dinner.",
+    type: "fillIn_blank",
+    correctAnswers: ["will"],
+    explanation:
+      "The future simple tense is used to make promises. It is formed with the auxiliary verb 'will' and the base form of the verb.",
   },
   {
     id: 272,
@@ -45,24 +33,11 @@ export default [
   {
     id: 273,
     quizId: 28,
-    text: "We __  the project by next week.",
-    options: [
-      {
-        id: "a",
-        text: "will finish",
-      },
-      {
-        id: "b",
-        text: "are going to finish",
-      },
-      {
-        id: "c",
-        text: "are finishing",
-      },
-    ],
-    correctOptionId: ["a", "b"],
+    text: "I have a big test tomorrow. I ___ study hard tonight.",
+    type: "fillIn_blank",
+    correctAnswers: ["will"],
     explanation:
-      "Both 'will finish' and 'are going to finish' are correct ways to express the future in English.",
+      "The future simple tense is used to make promises. It is formed with the auxiliary verb 'will' and the base form of the verb.",
   },
   {
     id: 274,
@@ -147,24 +122,11 @@ export default [
   {
     id: 278,
     quizId: 28,
-    text: "What is the correct sentence in the future simple tense?",
-    options: [
-      {
-        id: "a",
-        text: "He will goes to the store tomorrow.",
-      },
-      {
-        id: "b",
-        text: "They going to travel to Europe next year.",
-      },
-      {
-        id: "c",
-        text: "She will visit her grandmother this weekend.",
-      },
-    ],
-    correctOptionId: "c",
+    text: "I'm not sure what I ___ do for a living when I grow up. I'm still trying to figure that out.",
+    type: "fillIn_blank",
+    correctAnswers: ["will", "to"],
     explanation:
-      "Subject + will + base form of the verb + rest of the sentences.",
+      "The future simple tense is used to talk about things that we are not sure about, but that we think will happen in the future. It is formed with the auxiliary verb 'will' and the base form of the verb.",
   },
   {
     id: 279,
@@ -187,26 +149,14 @@ export default [
     correctOptionId: ["b"],
     explanation: "'Shall' is typically used to make suggestions or offers.",
   },
+
   {
     id: 280,
     quizId: 28,
-    text: "What is the correct form of the verb in the future simple tense?",
-    options: [
-      {
-        id: "a",
-        text: "Base form of the verb",
-      },
-      {
-        id: "b",
-        text: "Present participle (-ing form)",
-      },
-      {
-        id: "c",
-        text: "Past participle",
-      },
-    ],
-    correctOptionId: "a",
+    text: "We ___ go on vacation next summer. Where should we go?",
+    type: "fillIn_blank",
+    correctAnswers: ["will"],
     explanation:
-      "The correct form of the verb in the future simple tense is the base form of the verb.",
+      "The future simple tense is used to talk about things that will happen in the future. It is formed with the auxiliary verb 'will' and the base form of the verb.",
   },
 ];
