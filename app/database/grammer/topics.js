@@ -66,7 +66,7 @@ const topics = [
   {
     id: 12,
     title: "Future Perfect Continuous",
-    quizzes: [36, 37, 38],
+    quizzes: [36, 37],
   },
 ];
 

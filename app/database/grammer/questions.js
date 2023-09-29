@@ -4,6 +4,8 @@ import futureContinuous3 from "./tense/futureContinuous3";
 import futurePerfect1 from "./tense/futurePerfect1";
 import futurePerfect2 from "./tense/futurePerfect2";
 import futurePerfect3 from "./tense/futurePerfect3";
+import futurePerfectCont1 from "./tense/futurePerfectCont1";
+import futurePerfectCont2 from "./tense/futurePerfectCont2";
 import futureSimple1 from "./tense/futureSimple1";
 import futureSimple2 from "./tense/futureSimple2";
 import futureSimple3 from "./tense/futureSimple3";
@@ -121,6 +123,13 @@ const questions = [
   ...futurePerfect1,
   ...futurePerfect2,
   ...futurePerfect3,
+  /**
+   *
+   *
+   */
+  // ================ Future Perfect Continuous ==========================
+  ...futurePerfectCont1,
+  ...futurePerfectCont2,
 ];
 
 // ================ Methods ========================
