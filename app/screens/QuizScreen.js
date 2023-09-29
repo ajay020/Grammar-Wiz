@@ -131,10 +131,14 @@ const QuizScreen = ({ route, navigation }) => {
       if (
         checkOptionsContainAnswers(selectedOptions, question?.correctOptionId)
       ) {
-        setCorrectAnswerCount((preCount) => preCount + 1);
+        incrementCorrectCount();
         setIsCorrect(true);
       }
     }
+  };
+
+  const incrementCorrectCount = () => {
+    setCorrectAnswerCount((preCount) => preCount + 1);
   };
 
   function checkOptionsContainAnswers(chosenOptions, answers) {
@@ -169,6 +173,7 @@ const QuizScreen = ({ route, navigation }) => {
                 <FillInBlank
                   question={question}
                   handleNextQeustion={handleNextQeustion}
+                  incrementCorrectCount={incrementCorrectCount}
                 />
               ) : (
                 <Quiz

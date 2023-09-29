@@ -13,7 +13,11 @@ import colors from "../utility/colors";
 import AppButton from "./AppButton";
 import Explanation from "./Explanation";
 
-const FillInBlank = ({ question, handleNextQeustion }) => {
+const FillInBlank = ({
+  question,
+  handleNextQeustion,
+  incrementCorrectCount,
+}) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [isValidated, setIsValidated] = useState(false);
   const [btnBgColor, setBtnBgColor] = useState(colors.gray3);
@@ -100,6 +104,7 @@ const FillInBlank = ({ question, handleNextQeustion }) => {
     if (isRight) {
       setIsCorrect(true);
       setBtnBgColor(colors.primary);
+      incrementCorrectCount();
     } else {
       setIsCorrect(false);
       setBtnBgColor(colors.danger);
