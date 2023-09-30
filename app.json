@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "english grammar quiz",
-    "slug": "english-grammar-quiz",
+    "slug": "english-quiz",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
@@ -27,7 +27,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "fed6507c-6d90-46df-bb11-64661907fac8"
+        "projectId": "83b0608b-80a4-4c0c-8642-ac420e9fad8a"
       }
     },
     "owner": "ajay020"
