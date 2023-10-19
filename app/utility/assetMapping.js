@@ -11,4 +11,6 @@ export default {
   10: require("../assets/topicIntro/futureContinuous.html"),
   11: require("../assets/topicIntro/futurePerfect.html"),
   12: require("../assets/topicIntro/futurePerfectCont.html"),
+  13: require("../assets/topicIntro/nouns.html"),
+  14: require("../assets/topicIntro/adjective.html"),
 };

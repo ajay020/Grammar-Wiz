@@ -1,3 +1,6 @@
+import nouns1 from "./nouns/nouns1";
+import nouns2 from "./nouns/nouns2";
+import nouns3 from "./nouns/nouns3";
 import futureContinuous1 from "./tense/futureContinuous1";
 import futureContinuous2 from "./tense/futureContinuous2";
 import futureContinuous3 from "./tense/futureContinuous3";
@@ -130,6 +133,15 @@ const questions = [
   // ================ Future Perfect Continuous ==========================
   ...futurePerfectCont1,
   ...futurePerfectCont2,
+
+  /**
+   *
+   *
+   */
+  // ================ Nouns ==========================
+  ...nouns1,
+  ...nouns2,
+  ...nouns3,
 ];
 
 // ================ Methods ========================

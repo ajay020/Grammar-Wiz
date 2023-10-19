@@ -1,5 +1,14 @@
 const topics = [
   /**
+   * Noun
+   */
+  {
+    id: 13,
+    title: "Nouns",
+    quizzes: [38, 39, 40], // IDs of quizzes belonging to this topic
+  },
+
+  /**
    * Presnet Tense
    */
   {
