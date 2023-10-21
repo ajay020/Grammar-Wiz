@@ -1,6 +1,13 @@
 import nouns1 from "./nouns/nouns1";
 import nouns2 from "./nouns/nouns2";
 import nouns3 from "./nouns/nouns3";
+import pronoun1 from "./pronoun/pronoun1";
+import pronoun2 from "./pronoun/pronoun2";
+import pronoun3 from "./pronoun/pronoun3";
+import adjective1 from "./adjective/adjective1";
+import adjective2 from "./adjective/adjective2";
+import adjective3 from "./adjective/adjective3";
+
 import futureContinuous1 from "./tense/futureContinuous1";
 import futureContinuous2 from "./tense/futureContinuous2";
 import futureContinuous3 from "./tense/futureContinuous3";
@@ -142,6 +149,22 @@ const questions = [
   ...nouns1,
   ...nouns2,
   ...nouns3,
+  /**
+   *
+   *
+   */
+  // ================ Pronouns ==========================
+  ...pronoun1,
+  ...pronoun2,
+  ...pronoun3,
+  /**
+   *
+   *
+   */
+  // ================ Pronouns ==========================
+  ...adjective1,
+  ...adjective2,
+  ...adjective3,
 ];
 
 // ================ Methods ========================

@@ -5,10 +5,11 @@ import colors from "../utility/colors";
 import Text from "./Text";
 import { ScrollView } from "react-native-gesture-handler";
 
-const Quiz = ({ question, selectedOptions, handleOptionSelect }) => {
+const Quiz = ({ question, selectedOptions, handleOptionSelect, quizTitle }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <Text style={styles.quizTitle}>{quizTitle}</Text>
         <Text style={styles.questionTxt}>{question?.text}</Text>
         <View style={styles.optionContainer}>
           {question?.options?.map((option) => (
@@ -37,13 +38,15 @@ const Quiz = ({ question, selectedOptions, handleOptionSelect }) => {
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: "gray",
-    height: "60%",
-    gap: 20,
+    // height: "60%",
+    // gap: 20,
+    // flex: 1,
   },
   questionTxt: {
     color: colors.black,
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 20,
+    marginVertical: 12,
+    fontWeight: "500",
     textAlign: "center",
   },
   optionContainer: {
@@ -62,6 +65,10 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontSize: 18,
     textAlign: "center",
+  },
+  quizTitle: {
+    fontSize: 20,
+    // textAlign: "center",
   },
 });
 

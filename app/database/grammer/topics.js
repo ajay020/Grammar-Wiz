@@ -9,6 +9,22 @@ const topics = [
   },
 
   /**
+   * Pronoun
+   */
+  {
+    id: 14,
+    title: "Pronoun",
+    quizzes: [41, 42, 43], // IDs of quizzes belonging to this topic
+  },
+  /**
+   * Pronoun
+   */
+  {
+    id: 15,
+    title: "Adjective",
+    quizzes: [44, 45, 46], // IDs of quizzes belonging to this topic
+  },
+  /**
    * Presnet Tense
    */
   {

@@ -215,6 +215,41 @@ const quizzes = [
     topicId: 13,
     questions: [391, 392, 393, 394, 395, 396, 397, 398, 399, 400],
   },
+
+  //============= Pronoun id=41 ====================
+  {
+    id: 41,
+    topicId: 14,
+    questions: [401, 402, 403, 404, 405, 406, 407, 408, 409, 410],
+  },
+  {
+    id: 42,
+    topicId: 14,
+    text: "Identify the possessive pronoun in each sentence.",
+    questions: [411, 412, 413, 414, 415, 416, 417, 418, 419, 420],
+  },
+  {
+    id: 43,
+    topicId: 14,
+    questions: [421, 422, 423, 424, 425, 426, 427, 428, 429, 430],
+  },
+  //============= Adjective id=44 ====================
+  {
+    id: 44,
+    topicId: 15,
+    questions: [431, 432, 433, 434, 435, 436, 437, 438, 439, 440],
+  },
+  {
+    id: 45,
+    topicId: 15,
+    text: "Choose the adjective in the following sentence.",
+    questions: [441, 442, 443, 444, 445, 446, 447, 448, 449, 450],
+  },
+  {
+    id: 46,
+    topicId: 15,
+    questions: [451, 452, 453, 454, 455, 456, 457, 458, 459, 460],
+  },
 ];
 
 // ================ Methods ========================

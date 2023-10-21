@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, Text } from "react-native";
 
 import colors from "../utility/colors";
 import { getQuizById } from "../database/grammer/quizzes";
@@ -24,6 +24,7 @@ const QuizScreen = ({ route, navigation }) => {
 
   const { quizId, topicId, title } = route?.params;
   const quiz = getQuizById(quizId);
+  const quizTitle = quiz?.text;
   const questions = quiz?.questions;
 
   const question = getQuestionById(questions?.[currentQuestionIndex]);
@@ -151,11 +152,16 @@ const QuizScreen = ({ route, navigation }) => {
     }
 
     // check if chosen options are correct or not
-    return answerIds.every((answerId) => {
-      let index = chosenOptions.findIndex((option) => option?.id === answerId);
-      if (index < 0) return false;
-      return true;
-    });
+    return (
+      chosenOptions.length === answerIds.length &&
+      answerIds.every((answerId) => {
+        let index = chosenOptions.findIndex(
+          (option) => option?.id === answerId
+        );
+        if (index < 0) return false;
+        return true;
+      })
+    );
   }
 
   return (
@@ -180,6 +186,7 @@ const QuizScreen = ({ route, navigation }) => {
                   handleOptionSelect={handleOptionSelect}
                   selectedOptions={selectedOptions}
                   question={question}
+                  quizTitle={quizTitle}
                 />
               )}
             </View>
@@ -220,8 +227,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     // backgroundColor: "red",
     justifyContent: "space-around",
-    gap: 50,
-    // flex: 1,
+    gap: 40,
   },
 
   container: {
