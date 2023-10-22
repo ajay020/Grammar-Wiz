@@ -250,6 +250,24 @@ const quizzes = [
     topicId: 15,
     questions: [451, 452, 453, 454, 455, 456, 457, 458, 459, 460],
   },
+  //============= Artilce id=47 ====================
+  {
+    id: 47,
+    topicId: 16,
+    questions: [461, 462, 463, 464, 465, 466, 467, 468, 469, 470],
+  },
+  {
+    id: 48,
+    topicId: 16,
+    text: "Choose the article in the following sentence.",
+    questions: [471, 472, 473, 474, 475, 476, 477, 478, 479, 480],
+  },
+  {
+    id: 49,
+    topicId: 16,
+    text: "Select the correct article to complete the sentence.",
+    questions: [481, 482, 483, 484, 485, 486, 487, 488, 489, 490],
+  },
 ];
 
 // ================ Methods ========================

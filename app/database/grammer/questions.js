@@ -45,6 +45,7 @@ import { presentSimple1 } from "./tense/presentSimple1";
 import presentSimple2 from "./tense/presentSimple2";
 import presentSimple3 from "./tense/presentSimple3";
 import { presentSimple4 } from "./tense/presentSimple4";
+import article1 from "./article/article1";
 
 const questions = [
   // ================ present simple  ==========================
@@ -161,10 +162,16 @@ const questions = [
    *
    *
    */
-  // ================ Pronouns ==========================
+  // ================ Adjective ==========================
   ...adjective1,
   ...adjective2,
   ...adjective3,
+  /**
+   *
+   *
+   */
+  // ================ Article ==========================
+  ...article1,
 ];
 
 // ================ Methods ========================

@@ -17,12 +17,21 @@ const topics = [
     quizzes: [41, 42, 43], // IDs of quizzes belonging to this topic
   },
   /**
-   * Pronoun
+   * Adjective
    */
   {
     id: 15,
     title: "Adjective",
     quizzes: [44, 45, 46], // IDs of quizzes belonging to this topic
+  },
+
+  /**
+   * Article
+   */
+  {
+    id: 16,
+    title: "Article",
+    quizzes: [47, 48, 49], // IDs of quizzes belonging to this topic
   },
   /**
    * Presnet Tense
