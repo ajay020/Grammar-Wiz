@@ -31,15 +31,34 @@ const topics = [
   {
     id: 16,
     title: "Article",
-    quizzes: [47, 48, 49], // IDs of quizzes belonging to this topic
+    quizzes: [47, 48, 49],
   },
+
+  /**
+   * Adverb
+   */
+  {
+    id: 17,
+    title: "Adverbs",
+    quizzes: [50, 51, 52],
+  },
+
+  /**
+   * Modal verb
+   */
+  {
+    id: 18,
+    title: "Modal",
+    quizzes: [53, 54, 55, 56],
+  },
+
   /**
    * Presnet Tense
    */
   {
     id: 1,
     title: "Present Simple",
-    quizzes: [1, 2, 3, 4], // IDs of quizzes belonging to this topic
+    quizzes: [1, 2, 3, 4],
   },
   {
     id: 2,

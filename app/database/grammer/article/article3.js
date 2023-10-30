@@ -8,18 +8,14 @@ export default [
         id: "a",
         text: "a",
       },
+
       {
         id: "b",
-        text: "the",
-      },
-      {
-        id: "c",
         text: "an",
       },
     ],
     correctOptionId: "a",
-    explanation:
-      "The indefinite article 'a' is used here because the speaker is not referring to any specific park.",
+    explanation: "",
   },
   {
     id: 482,
@@ -30,16 +26,13 @@ export default [
         id: "a",
         text: "a",
       },
+
       {
         id: "b",
-        text: "the",
-      },
-      {
-        id: "c",
         text: "an",
       },
     ],
-    correctOptionId: "c",
+    correctOptionId: "b",
     explanation: "'ice-cream' begins with a vowl sound.",
   },
   {
@@ -49,45 +42,46 @@ export default [
     options: [
       {
         id: "a",
-        text: "the",
-      },
-      {
-        id: "b",
         text: "a",
       },
       {
-        id: "c",
+        id: "b",
         text: "an",
       },
     ],
-    correctOptionId: "c",
+    correctOptionId: "b",
     explanation: "'an' is used because 'adorable' begins with a vowl sound.",
   },
+
   {
     id: 484,
     quizId: 49,
-    text: "Sara saw _____ elephant at the zoo today.",
+    text: "I'm going to see __ movie tonight. I've heard that it's __ best movie of the year.",
     options: [
       {
         id: "a",
-        text: "the",
+        text: "the, the",
       },
       {
         id: "b",
-        text: "a",
+        text: "a, the",
       },
       {
         id: "c",
-        text: "an",
+        text: "a, a",
+      },
+      {
+        id: "d",
+        text: "the, a",
       },
     ],
-    correctOptionId: "c",
-    explanation: "'elephant' begins with a vowl sound.",
+    correctOptionId: "b",
+    explanation: "",
   },
   {
     id: 485,
     quizId: 49,
-    text: "This is __________ best restaurant in the city.",
+    text: "This is ______ best restaurant in the city.",
     options: [
       {
         id: "a",
@@ -99,7 +93,7 @@ export default [
       },
       {
         id: "c",
-        text: "an",
+        text: "no article",
       },
     ],
     correctOptionId: "a",
@@ -120,12 +114,11 @@ export default [
       },
       {
         id: "c",
-        text: "the",
+        text: "no article",
       },
     ],
     correctOptionId: "a",
-    explanation:
-      "In this sentence, 'an' is used because it refers to a specific book she found at the library.",
+    explanation: "",
   },
   {
     id: 487,
@@ -142,7 +135,7 @@ export default [
       },
       {
         id: "c",
-        text: "the",
+        text: "no article",
       },
     ],
     correctOptionId: "a",
@@ -163,7 +156,7 @@ export default [
       },
       {
         id: "c",
-        text: "the",
+        text: "no article",
       },
     ],
     correctOptionId: "b",
@@ -176,39 +169,31 @@ export default [
     options: [
       {
         id: "a",
-        text: "a",
-      },
-      {
-        id: "b",
         text: "an",
       },
       {
-        id: "c",
+        id: "b",
         text: "the",
       },
     ],
-    correctOptionId: "c",
+    correctOptionId: "b",
     explanation: "the",
   },
   {
     id: 490,
     quizId: 49,
-    text: "Have you fed _____ dog?",
+    text: "I saw ___ dress in a store. ____ dress was beautiful.",
     options: [
       {
         id: "a",
-        text: "a",
+        text: "an, the",
       },
       {
         id: "b",
-        text: "an",
-      },
-      {
-        id: "c",
-        text: "the",
+        text: "a, the",
       },
     ],
-    correctOptionId: "c",
-    explanation: "the",
+    correctOptionId: "b",
+    explanation: "a, the",
   },
 ];

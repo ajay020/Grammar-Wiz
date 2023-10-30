@@ -15,4 +15,6 @@ export default {
   14: require("../assets/topicIntro/pronoun.html"),
   15: require("../assets/topicIntro/adjective.html"),
   16: require("../assets/topicIntro/article.html"),
+  17: require("../assets/topicIntro/adverb.html"),
+  18: require("../assets/topicIntro/modal.html"),
 };

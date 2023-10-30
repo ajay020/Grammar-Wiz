@@ -268,6 +268,50 @@ const quizzes = [
     text: "Select the correct article to complete the sentence.",
     questions: [481, 482, 483, 484, 485, 486, 487, 488, 489, 490],
   },
+  //============= Adverbs id=50 ====================
+  {
+    id: 50,
+    topicId: 17,
+    text: "Choose the Adverb in the following sentence.",
+    questions: [491, 492, 493, 494, 495, 496, 497, 498, 499, 500],
+  },
+  {
+    id: 51,
+    topicId: 17,
+    text: "Choose the correct adverb form to complete the sentence.",
+    questions: [501, 502, 503, 504, 505, 506, 507, 508, 509, 510],
+  },
+  {
+    id: 52,
+    topicId: 17,
+    text: "Select the correct adverb to complete the sentence.",
+    questions: [511, 512, 513, 514, 515, 516, 517, 518, 519, 520],
+  },
+  //============= Modal verb id=53 ====================
+  {
+    id: 53,
+    topicId: 18,
+    text: "Fill in the blanks with the correct modal verb:",
+    questions: [521, 522, 523, 524, 525, 526, 527, 528, 529, 530],
+  },
+  {
+    id: 54,
+    topicId: 18,
+    text: "Fill in the blanks with the correct modal verb:",
+    questions: [531, 532, 533, 534, 535, 536, 537, 538, 539, 540],
+  },
+  {
+    id: 55,
+    topicId: 18,
+    text: "Fill in the blanks with the correct modal verb:",
+    questions: [541, 542, 543, 544, 545, 546, 547, 548, 549, 550],
+  },
+  {
+    id: 56,
+    topicId: 18,
+    text: "Fill in the blanks with the correct modal verb:",
+    questions: [551, 552, 553, 554, 555, 556, 557, 558, 559, 560],
+  },
 ];
 
 // ================ Methods ========================

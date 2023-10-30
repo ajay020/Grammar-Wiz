@@ -46,6 +46,15 @@ import presentSimple2 from "./tense/presentSimple2";
 import presentSimple3 from "./tense/presentSimple3";
 import { presentSimple4 } from "./tense/presentSimple4";
 import article1 from "./article/article1";
+import article2 from "./article/article2";
+import article3 from "./article/article3";
+import adverb1 from "./adverbs/adverb1";
+import adverb2 from "./adverbs/adverb2";
+import adverb3 from "./adverbs/adverb3";
+import modal1 from "./modals/modal1";
+import modal2 from "./modals/modal2";
+import modal3 from "./modals/modal3";
+import modal4 from "./modals/modal4";
 
 const questions = [
   // ================ present simple  ==========================
@@ -172,6 +181,25 @@ const questions = [
    */
   // ================ Article ==========================
   ...article1,
+  ...article2,
+  ...article3,
+  /**
+   *
+   *
+   */
+  // ================ Adverb ==========================
+  ...adverb1,
+  ...adverb2,
+  ...adverb3,
+  /**
+   *
+   *
+   */
+  // ================ Modal ==========================
+  ...modal1,
+  ...modal2,
+  ...modal3,
+  ...modal4,
 ];
 
 // ================ Methods ========================

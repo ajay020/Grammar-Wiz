@@ -28,25 +28,20 @@ export default [
     options: [
       {
         id: "a",
-        text: "A",
-      },
-      {
-        id: "b",
-        text: "The",
+        text: "a",
       },
       {
         id: "c",
-        text: "An",
+        text: "an",
       },
     ],
     correctOptionId: "c",
-    explanation:
-      "The indefinite article 'An' is used here because 'idea' starts with a vowel sound ('i' sound), making it appropriate to use 'An' before it.",
+    explanation: "",
   },
   {
     id: 473,
     quizId: 48,
-    text: "____ internet has revolutionized the way we communicate.",
+    text: "I'm going to the store to buy __ new pair of shoes.",
     options: [
       {
         id: "a",
@@ -56,18 +51,10 @@ export default [
         id: "b",
         text: "the",
       },
-      {
-        id: "c",
-        text: "an",
-      },
-      {
-        id: "d",
-        text: "—",
-      },
     ],
-    correctOptionId: "b",
+    correctOptionId: "a",
     explanation:
-      "'the' is used before 'internet' because it is a specific invention that is unique in the world.",
+      "The speaker is not referring to any specific pair of shoes, so they use the indefinite article 'a'.",
   },
   {
     id: 474,
@@ -79,16 +66,12 @@ export default [
         text: "a",
       },
       {
-        id: "b",
-        text: "the",
-      },
-      {
         id: "c",
         text: "an",
       },
       {
         id: "d",
-        text: "—",
+        text: "no artilce",
       },
     ],
     correctOptionId: "c",
@@ -110,10 +93,10 @@ export default [
       },
       {
         id: "c",
-        text: "an",
+        text: "no article",
       },
     ],
-    correctOptionId: "a",
+    correctOptionId: "b",
     explanation:
       "The definite article 'the' is used here because 'first time' refers to a specific event.",
   },
@@ -128,28 +111,6 @@ export default [
       },
       {
         id: "b",
-        text: "the",
-      },
-      {
-        id: "c",
-        text: "an",
-      },
-    ],
-    correctOptionId: "a",
-    explanation:
-      "The indefinite article 'a' is used here because the speaker is not referring to any specific dress.",
-  },
-  {
-    id: 477,
-    quizId: 48,
-    text: "The doctor is wearing ______ white coat.",
-    options: [
-      {
-        id: "a",
-        text: "a",
-      },
-      {
-        id: "b",
         text: "an",
       },
     ],
@@ -157,26 +118,47 @@ export default [
     explanation: "",
   },
   {
-    id: 478,
+    id: 477,
     quizId: 48,
-    text: "I'm going to ______ school tomorrow.",
+    text: "I bought __ phone; ___ phone is black.",
     options: [
       {
         id: "a",
-        text: "a",
+        text: "a, an",
       },
       {
         id: "b",
-        text: "the",
-      },
-      {
-        id: "c",
-        text: "an",
+        text: "a, the",
       },
     ],
     correctOptionId: "b",
+    explanation: "",
+  },
+  {
+    id: 478,
+    quizId: 48,
+    text: "I'm going to ____ museum to see ____ Mona Lisa.",
+    options: [
+      {
+        id: "a",
+        text: "the, the",
+      },
+      {
+        id: "b",
+        text: "a, the",
+      },
+      {
+        id: "c",
+        text: "the, a",
+      },
+      {
+        id: "d",
+        text: "a, a",
+      },
+    ],
+    correctOptionId: "a",
     explanation:
-      "The definite article 'the' is used here because the speaker is referring to a specific school.",
+      "Both the museum and the Mona Lisa are specific, so we use the definite article 'the' for both.",
   },
   {
     id: 479,
@@ -185,18 +167,14 @@ export default [
     options: [
       {
         id: "a",
-        text: "the",
+        text: "an",
       },
       {
         id: "b",
         text: "a",
       },
-      {
-        id: "c",
-        text: "an",
-      },
     ],
-    correctOptionId: "c",
+    correctOptionId: "a",
     explanation: "'owl' begins with vowl sound",
   },
 

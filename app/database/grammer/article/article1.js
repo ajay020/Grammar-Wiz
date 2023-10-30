@@ -2,54 +2,42 @@ export default [
   {
     id: 461,
     quizId: 47,
-    text: "Which planet is nearest to __ sun?",
+    text: "I saw __ man and __ woman walking down the street.",
     options: [
       {
         id: "a",
-        text: "a",
+        text: "a, an",
       },
       {
         id: "b",
-        text: "the",
+        text: "a, the",
       },
       {
         id: "c",
-        text: "an",
-      },
-      {
-        id: "d",
-        text: "—",
+        text: "a, a",
       },
     ],
-    correctOptionId: "b",
+    correctOptionId: "c",
     explanation:
-      "‘Sun’ is proper nouns and is specific. The definite article 'the' is used to refer to specific or particular nouns.",
+      "The first person is indefinite, so we use the indefinite article 'a'. The second person is also indefinite, so we use the indefinite article 'a'.",
   },
   {
     id: 462,
     quizId: 47,
-    text: "Which of the following articles is used to refer to the Atlantic Ocean?",
+    text: "I'm going to __ Wallmart store to buy __ gallon of milk.",
     options: [
       {
         id: "a",
-        text: "a",
+        text: "the, a",
       },
       {
         id: "b",
-        text: "the",
-      },
-      {
-        id: "c",
-        text: "an",
-      },
-      {
-        id: "d",
-        text: "—",
+        text: "a, the",
       },
     ],
-    correctOptionId: "b",
+    correctOptionId: "a",
     explanation:
-      "The Atlantic Ocean is a specific and unique body of water. The definite article 'the' is used to refer to specific or particular nouns.",
+      "The definite article 'the' is used before 'Walmart store' because it is a specific store",
   },
   {
     id: 463,
@@ -62,18 +50,10 @@ export default [
       },
       {
         id: "b",
-        text: "the",
-      },
-      {
-        id: "c",
         text: "an",
       },
-      {
-        id: "d",
-        text: "—",
-      },
     ],
-    correctOptionId: "c",
+    correctOptionId: "b",
     explanation:
       "'an' is used before apple, because the 'apple' has a vowl sound in the beginning.",
   },
@@ -140,16 +120,12 @@ export default [
         text: "a",
       },
       {
-        id: "b",
-        text: "the",
-      },
-      {
         id: "c",
         text: "an",
       },
       {
         id: "d",
-        text: "—",
+        text: "no article",
       },
     ],
     correctOptionId: "c",
@@ -159,7 +135,7 @@ export default [
   {
     id: 467,
     quizId: 47,
-    text: "I'm going to ______ university tomorrow.",
+    text: "___ Eiffel Tower is in Paris.",
     options: [
       {
         id: "a",
@@ -170,17 +146,12 @@ export default [
         text: "the",
       },
       {
-        id: "c",
-        text: "an",
-      },
-      {
         id: "d",
-        text: "—",
+        text: "no article",
       },
     ],
     correctOptionId: "b",
-    explanation:
-      "'the' is used before 'university' because it is a specific university that the speaker is referring to.",
+    explanation: "",
   },
 
   {
@@ -244,16 +215,8 @@ export default [
         text: "a",
       },
       {
-        id: "b",
-        text: "the",
-      },
-      {
         id: "c",
         text: "an",
-      },
-      {
-        id: "d",
-        text: "—",
       },
     ],
     correctOptionId: "a",
