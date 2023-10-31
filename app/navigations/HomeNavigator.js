@@ -19,9 +19,9 @@ const HomeNavigator = () => {
             headerShown: true,
             headerTitleAlign: "center",
             headerTitle: "English Grammer",
-            headerRight: () => {
-              return <ShareButton />;
-            },
+            // headerRight: () => {
+            //   return <ShareButton />;
+            // },
           }}
         />
         <Stack.Screen name="quizList" component={QuizListScreen} />

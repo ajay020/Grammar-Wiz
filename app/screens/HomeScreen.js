@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList, View } from "react-native";
 
 import cache from "../utility/cache";
 import topicData from "../database/grammer/topics";
@@ -30,6 +30,9 @@ export default HomeScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    // padding: 10,
+    paddingHorizontal: 20,
+    // paddingVertical: 8,
+    marginBottom: 4,
   },
 });
