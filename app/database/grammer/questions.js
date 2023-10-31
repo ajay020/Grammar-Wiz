@@ -57,6 +57,9 @@ import modal3 from "./modals/modal3";
 import modal4 from "./modals/modal4";
 import preposition2 from "./preposition/preposition2";
 import preposition1 from "./preposition/preposition1";
+import preposition3 from "./preposition/preposition3";
+import preposition4 from "./preposition/preposition4";
+import preposition5 from "./preposition/preposition5";
 
 const questions = [
   // ================ present simple  ==========================
@@ -209,6 +212,9 @@ const questions = [
   // ================ Preposition ==========================
   ...preposition1,
   ...preposition2,
+  ...preposition3,
+  ...preposition4,
+  ...preposition5,
 ];
 
 // ================ Methods ========================
