@@ -28,7 +28,7 @@ const QuizScreen = ({ route, navigation }) => {
   const questions = quiz?.questions;
 
   const question = getQuestionById(questions?.[currentQuestionIndex]);
-  const QUESTION_COUNT = questions?.length;
+  const totalQuestionNumber = questions?.length;
 
   // Hide Bottom tab navigation layout.
   useHideBottomTabBar();
@@ -43,15 +43,15 @@ const QuizScreen = ({ route, navigation }) => {
     setIsValidatedOption(false);
     setIsCorrect(false);
 
-    if (currentQuestionIndex < QUESTION_COUNT) {
+    if (currentQuestionIndex < totalQuestionNumber) {
       // Slide out the current question and update progress
-      const nextProgress = (currentQuestionIndex + 1) / QUESTION_COUNT;
+      const nextProgress = (currentQuestionIndex + 1) / totalQuestionNumber;
       setProgress(nextProgress);
 
       setCurrentQuestionIndex((prevQuestionIndex) => prevQuestionIndex + 1);
     }
     // Quiz is completed, save its id to local storage
-    if (currentQuestionIndex == QUESTION_COUNT - 1) {
+    if (currentQuestionIndex == totalQuestionNumber - 1) {
       saveQuiz();
     }
   };
@@ -72,7 +72,7 @@ const QuizScreen = ({ route, navigation }) => {
             quizId,
             topicId,
             correct: correctAnswerCount,
-            total: QUESTION_COUNT,
+            total: totalQuestionNumber,
           },
         ];
         // Store the modified quizzes back to local storage
@@ -166,7 +166,7 @@ const QuizScreen = ({ route, navigation }) => {
 
   return (
     <>
-      {currentQuestionIndex < QUESTION_COUNT ? (
+      {currentQuestionIndex < totalQuestionNumber ? (
         <ScrollView keyboardShouldPersistTaps="handled">
           <View style={styles.container}>
             <View style={styles.body}>
@@ -215,7 +215,10 @@ const QuizScreen = ({ route, navigation }) => {
           </View>
         </ScrollView>
       ) : (
-        <Result correct={correctAnswerCount} totalQuestions={QUESTION_COUNT} />
+        <Result
+          correct={correctAnswerCount}
+          totalQuestions={totalQuestionNumber}
+        />
       )}
     </>
   );

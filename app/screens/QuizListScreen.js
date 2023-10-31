@@ -14,7 +14,7 @@ const QuizListScreen = ({ route }) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const { completedQuizzes, fetchCompletdQuizzes } = useQuizData();
-  const { id: topicId, quizzes: quizIds, title, summary } = route?.params?.data;
+  const { id: topicId, quizzes: quizIds, title } = route?.params?.data;
   const navigation = useNavigation();
 
   // Hide Bottom tab navigation layout.

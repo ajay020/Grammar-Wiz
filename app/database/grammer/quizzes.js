@@ -312,6 +312,14 @@ const quizzes = [
     text: "Fill in the blanks with the correct modal verb:",
     questions: [551, 552, 553, 554, 555, 556, 557, 558, 559, 560],
   },
+  //============= Preposition id=57 ====================
+
+  {
+    id: 57,
+    topicId: 19,
+    text: "Fill in the blank with the correct preposition: in or into?",
+    questions: [561, 562, 563, 564, 565, 566, 567, 568, 569, 570],
+  },
 ];
 
 // ================ Methods ========================
