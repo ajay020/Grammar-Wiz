@@ -1,22 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import RenderHtml from "react-native-render-html";
 import {
   StyleSheet,
   Modal,
   View,
+  Text,
   TouchableOpacity,
   useWindowDimensions,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
 import { Asset } from "expo-asset";
+import * as FileSystem from "expo-file-system";
 
 import Icon from "./Icon";
 import colors from "../utility/colors";
 import assetMapping from "../utility/assetMapping";
+import { StatusBar } from "expo-status-bar";
 
-const TopicSummary = ({ isVisible, onClose, topicId }) => {
-  const { width } = useWindowDimensions();
+const TopicSummary = memo(({ isVisible, onClose, topicId }) => {
+  const { width, height } = useWindowDimensions();
   const [htmlContent, setHtmlContent] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const contentFileName = assetMapping[topicId];
 
@@ -25,23 +30,32 @@ const TopicSummary = ({ isVisible, onClose, topicId }) => {
     return null;
   }
 
-  useEffect(() => {
-    // Function to read HTML content from the asset file
-    const readHtmlFile = async () => {
-      try {
-        const asset = Asset.fromModule(contentFileName);
-        const response = await fetch(asset.uri); // Fetch the content
-        const html = await response.text(); // Read as text
-        setHtmlContent(html);
-      } catch (error) {
-        console.error("Error reading HTML file:", error);
-      }
-    };
+  const readHtmlFile = async () => {
+    try {
+      const asset = Asset.fromModule(contentFileName);
+      await asset.downloadAsync(); // Load the asset
 
-    if (isVisible && contentFileName) {
-      readHtmlFile();
+      const htmlUri = asset.localUri || asset.uri; // Get the local URI
+
+      let fileInfo = await FileSystem.getInfoAsync(htmlUri);
+
+      if (fileInfo.exists) {
+        const content = await FileSystem.readAsStringAsync(htmlUri);
+        setHtmlContent(content);
+      } else {
+        console.error("HTML file doesn't exist");
+      }
+    } catch (error) {
+      console.error("Error reading HTML file:", error);
+    } finally {
+      console.log(loading);
+      setLoading(false);
     }
-  }, [isVisible, contentFileName]);
+  };
+
+  useEffect(() => {
+    readHtmlFile();
+  }, [contentFileName]);
 
   return (
     <Modal visible={isVisible} animationType="slide">
@@ -50,17 +64,23 @@ const TopicSummary = ({ isVisible, onClose, topicId }) => {
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Icon name={"close"} size={32} color={colors.danger} />
           </TouchableOpacity>
-          <RenderHtml
-            source={{
-              html: htmlContent,
-            }}
-            contentWidth={width}
-          />
+          <View>
+            {loading ? (
+              <ActivityIndicator color={"blue"} size={"large"} />
+            ) : (
+              <RenderHtml
+                source={{
+                  html: htmlContent,
+                }}
+                contentWidth={width}
+              />
+            )}
+          </View>
         </View>
       </ScrollView>
     </Modal>
   );
-};
+});
 
 export default TopicSummary;
 
@@ -68,10 +88,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 12,
+    // backgroundColor: "lightblue",
   },
   closeButton: {
-    alignSelf: "flex-end",
-    paddingRight: 20,
-    paddingTop: 18,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+    position: "absolute",
+    borderWidth: 1,
+    width: 55,
+    height: 55,
+    borderRadius: 27,
+    borderColor: "lightgray",
+    elevation: 8,
+    top: 10,
+    zIndex: 11,
+    right: 10,
   },
 });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -44,9 +44,9 @@ const QuizListScreen = ({ route }) => {
     });
   };
 
-  const toggleModal = () => {
+  const toggleModal = useCallback(() => {
     setModalVisible(!isModalVisible);
-  };
+  }, [isModalVisible]);
 
   return (
     <>
