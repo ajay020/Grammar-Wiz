@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
+import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 import colors from "../utility/colors";
 import Text from "./Text";
@@ -24,8 +25,11 @@ const Explanation = ({ isCorrect, explanation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: "gray",
-    gap: 18,
+    backgroundColor: "white",
+    gap: moderateScale(18),
+    paddingHorizontal: 4,
+    paddingVertical: moderateScale(8),
+    borderRadius: moderateScale(12),
   },
   resultText: {
     textAlign: "left",

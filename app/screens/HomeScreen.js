@@ -4,6 +4,7 @@ import { StyleSheet, FlatList, View } from "react-native";
 import cache from "../utility/cache";
 import topicData from "../database/grammer/topics";
 import TopicListItem2 from "../components/TopicListItem2";
+import { scale, moderateScale } from "react-native-size-matters";
 
 export default HomeScreen = ({ navigation }) => {
   //   console.log("HomeScreen render");
@@ -30,9 +31,8 @@ export default HomeScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    // padding: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: moderateScale(20),
     // paddingVertical: 8,
-    marginBottom: 4,
+    marginBottom: moderateScale(4),
   },
 });

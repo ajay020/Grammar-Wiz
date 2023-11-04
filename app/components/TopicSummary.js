@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Modal,
   View,
-  Text,
   TouchableOpacity,
   useWindowDimensions,
   ScrollView,
@@ -16,7 +15,7 @@ import * as FileSystem from "expo-file-system";
 import Icon from "./Icon";
 import colors from "../utility/colors";
 import assetMapping from "../utility/assetMapping";
-import { StatusBar } from "expo-status-bar";
+import { moderateScale } from "react-native-size-matters";
 
 const TopicSummary = memo(({ isVisible, onClose, topicId }) => {
   const { width, height } = useWindowDimensions();
@@ -87,7 +86,7 @@ export default TopicSummary;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 12,
+    paddingHorizontal: moderateScale(14),
     // backgroundColor: "lightblue",
   },
   closeButton: {
@@ -101,8 +100,8 @@ const styles = StyleSheet.create({
     borderRadius: 27,
     borderColor: "lightgray",
     elevation: 8,
-    top: 10,
+    top: moderateScale(10),
     zIndex: 11,
-    right: 10,
+    right: moderateScale(10),
   },
 });

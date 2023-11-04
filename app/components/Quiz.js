@@ -4,6 +4,7 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../utility/colors";
 import Text from "./Text";
 import { ScrollView } from "react-native-gesture-handler";
+import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 const Quiz = ({ question, selectedOptions, handleOptionSelect, quizTitle }) => {
   return (
@@ -44,30 +45,31 @@ const styles = StyleSheet.create({
   },
   questionTxt: {
     color: colors.black,
-    fontSize: 20,
-    marginVertical: 12,
+    fontSize: moderateScale(18, 0.5),
+    // marginVertical: verticalScale(12),
+    marginBottom: verticalScale(16),
     fontWeight: "500",
-    textAlign: "center",
+    textAlign: "left",
   },
   optionContainer: {
     // backgroundColor: "teal",
-    gap: 20,
+    gap: verticalScale(14),
   },
   option: {
     borderWidth: 0.5,
-    borderBottomWidth: 2,
+    borderBottomWidth: moderateScale(2, 0.2),
     borderColor: colors.black,
     borderRadius: 10,
     // backgroundColor: "pink",
-    padding: 14,
+    padding: moderateScale(10, 0.5),
   },
   optionTxt: {
     color: colors.black,
-    fontSize: 18,
+    fontSize: moderateScale(18, 0.5),
     textAlign: "center",
   },
   quizTitle: {
-    fontSize: 20,
+    fontSize: moderateScale(18),
     // textAlign: "center",
   },
 });

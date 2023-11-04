@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
 } from "react-native";
+import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 import colors from "../utility/colors";
 import AppButton from "./AppButton";
@@ -138,10 +139,10 @@ const FillInBlank = ({
           <View style={styles.questionContainer}>{getQuestionText()}</View>
 
           <View
-            style={[
-              styles.innerContainer,
-              isValidated && { backgroundColor: "white" },
-            ]}
+          // style={[
+          //   styles.innerContainer,
+          //   isValidated && { backgroundColor: "white" },
+          // ]}
           >
             {isValidated && (
               <Explanation
@@ -165,42 +166,48 @@ const FillInBlank = ({
 const styles = StyleSheet.create({
   button: {
     width: "100%",
-    borderRadius: 12,
+    borderRadius: moderateScale(12),
     // backgroundColor: colors.gray3,
   },
 
   questionContainer: {
     flex: 1,
-    paddingVertical: 12,
+    paddingVertical: scale(12),
     // backgroundColor: colors.gray3,
   },
   innerContainer: {
     gap: 20,
-    padding: 12,
+    paddingVertical: scale(4),
+    backgroundColor: colors.gray3,
   },
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 4,
-    gap: 30,
+    // alignItems: "center",
+    // padding: 4,
+    gap: scale(30),
+    // backgroundColor: colors.gray5,
   },
 
   questionRow: {
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
+    gap: moderateScale(10, 0.4),
+    // justifyContent: "space-between",
+    // backgroundColor: colors.gray5,
   },
   questionText: {
     color: colors.black,
-    fontSize: 20,
+    fontSize: moderateScale(18, 0.4),
     fontWeight: "400",
-    lineHeight: 40,
+    lineHeight: moderateScale(30),
     letterSpacing: 0.5,
-    marginRight: 4,
+    marginRight: moderateScale(4, 0.4),
     // backgroundColor: "lightblue",
   },
   input: {
-    width: 100,
+    // width: moderateScale(100, 0.5),
     borderColor: "black",
     borderWidth: 1,
     borderStyle: "dashed",
@@ -208,7 +215,8 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     borderRightWidth: 0,
     color: "blue",
-    marginHorizontal: 4,
+    fontSize: moderateScale(18, 0.4),
+    marginHorizontal: scale(4),
     // backgroundColor: "dodgerblue",
   },
 });

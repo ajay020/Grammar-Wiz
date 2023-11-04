@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 import useQuizData from "../hooks/useQuizData";
 import colors from "../utility/colors";
@@ -53,11 +54,11 @@ const QuizListScreen = ({ route }) => {
       <TouchableOpacity
         style={{
           alignItems: "center",
-          paddingVertical: 18,
+          paddingVertical: moderateScale(18),
         }}
         onPress={toggleModal}
       >
-        <Icon name={"book"} size={56} />
+        <Icon name={"book-open-outline"} size={60} />
         <TopicSummary
           topicId={topicId}
           isVisible={isModalVisible}
@@ -84,9 +85,9 @@ const QuizListScreen = ({ route }) => {
         })}
         <View style={[styles.trophyContainer]}>
           <Icon
-            name={"trophy"}
+            name={"trophy-outline"}
             color={`${allQuizzesCompleted ? colors.golden : "gray"}`}
-            size={50}
+            size={60}
           />
         </View>
       </View>
@@ -97,17 +98,17 @@ const QuizListScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    gap: 8,
-    padding: 16,
+    gap: moderateScale(8, 0.5),
     alignItems: "center",
-    // justifyContent: "center",
+    paddingHorizontal: moderateScale(16),
+    // backgroundColor: "gray",
   },
   checkBox: {
-    width: 24,
-    height: 24,
+    width: scale(24),
+    height: scale(24),
     borderWidth: 1,
     borderColor: "transparent",
-    borderRadius: 12,
+    borderRadius: scale(12),
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "dodgerblue",
@@ -117,21 +118,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: colors.white,
-    borderRadius: 10,
-    elevation: 5,
-    padding: 16,
-    marginVertical: 4,
-    marginHorizontal: 10,
+    borderRadius: scale(10),
+    elevation: scale(5),
+    padding: moderateScale(16),
+    marginVertical: verticalScale(4),
     width: "90%",
   },
   trophyContainer: {
     alignItems: "center",
-    // borderWidth: 2,
-    // borderRadius: 35,
-    // borderColor: colors.gray4,
-    // width: 80,
-    // height: 80,
-    padding: 12,
+    padding: scale(12),
   },
 });
 
