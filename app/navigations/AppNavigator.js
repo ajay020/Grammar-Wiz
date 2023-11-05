@@ -1,11 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-// import ProgressScreen from "../screens/ProgressScreen";
 import Icon from "../components/Icon";
 import colors from "../utility/colors";
 import HomeNavigator from "./HomeNavigator";
 import GameNavigator from "./GameNavigator";
-import ShareButton from "../components/ShareButton";
 
 const Tab = createBottomTabNavigator();
 

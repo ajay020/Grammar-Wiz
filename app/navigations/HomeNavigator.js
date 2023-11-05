@@ -4,7 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import QuizScreen from "../screens/QuizScreen";
 import HomeScreen from "../screens/HomeScreen";
 import QuizListScreen from "../screens/QuizListScreen";
-import ShareButton from "../components/ShareButton";
+import MoreButton from "../components/MoreButton";
+import AboutScreen from "../screens/AboutScreen";
 
 const Stack = createStackNavigator();
 
@@ -17,15 +18,16 @@ const HomeNavigator = () => {
           component={HomeScreen}
           options={{
             headerShown: true,
-            headerTitleAlign: "center",
-            headerTitle: "English Grammer",
-            // headerRight: () => {
-            //   return <ShareButton />;
-            // },
+            headerTitleAlign: "left",
+            headerTitle: "English Grammer Wiz",
+            headerRight: () => {
+              return <MoreButton />;
+            },
           }}
         />
         <Stack.Screen name="quizList" component={QuizListScreen} />
         <Stack.Screen name="QuizScreen" component={QuizScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
       </Stack.Navigator>
     </>
   );
