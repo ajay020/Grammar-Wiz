@@ -10,22 +10,20 @@ import Result from "../components/Result";
 import cache from "../utility/cache";
 import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
 import CheckQuizButton from "../components/CheckQuizButton";
-import Quiz from "../components/Quiz";
+import QuestionOptions from "../components/QuestionOptions";
 import FillInBlank from "../components/FillInBlankQuiz";
 import Explanation from "../components/Explanation";
+import SelectOptionQuiz from "../components/SelectOptionQuiz";
 
 const QuizScreen = ({ route, navigation }) => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [progress, setProgress] = useState(0.02);
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const [isValidatedOption, setIsValidatedOption] = useState(false);
-  const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
-  const [isCorrect, setIsCorrect] = useState(false);
-
   const { quizId, topicId, title } = route?.params;
+  const [progress, setProgress] = useState(0.02);
+  const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
   const quiz = getQuizById(quizId);
-  const quizTitle = quiz?.text;
+  const [quizTitle, setQuizTitle] = useState(quiz?.text);
+
   const questions = quiz?.questions;
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const question = getQuestionById(questions?.[currentQuestionIndex]);
   const totalQuestionNumber = questions?.length;
@@ -39,10 +37,6 @@ const QuizScreen = ({ route, navigation }) => {
   }, [navigation, route]);
 
   const handleNextQeustion = async () => {
-    setSelectedOptions([]);
-    setIsValidatedOption(false);
-    setIsCorrect(false);
-
     if (currentQuestionIndex < totalQuestionNumber) {
       // Slide out the current question and update progress
       const nextProgress = (currentQuestionIndex + 1) / totalQuestionNumber;
@@ -99,151 +93,66 @@ const QuizScreen = ({ route, navigation }) => {
     }
   };
 
-  const handleOptionSelect = (option) => {
-    if (!isValidatedOption) {
-      if (typeof question.correctOptionId === "string") {
-        setSelectedOptions([option]);
-      } else {
-        setSelectedOptions((prev) => toggleOption(prev, option));
-      }
-    }
-  };
-
-  function toggleOption(selectedOptions, optionToAdd) {
-    // Check if the optionToAdd already exists in selectedOptions
-    const index = selectedOptions.findIndex(
-      (option) => option.id === optionToAdd.id
-    );
-
-    // If the optionToAdd is not in selectedOptions, add it
-    if (index === -1) {
-      return [...selectedOptions, optionToAdd];
-    } else {
-      // If the optionToAdd is already in selectedOptions, remove it
-      return selectedOptions.filter((option) => option.id !== optionToAdd.id);
-    }
-  }
-
-  const handleOptionValidation = () => {
-    // validate options type quiz
-    if (selectedOptions.length > 0) {
-      setIsValidatedOption(true);
-
-      if (
-        checkOptionsContainAnswers(selectedOptions, question?.correctOptionId)
-      ) {
-        incrementCorrectCount();
-        setIsCorrect(true);
-      }
-    }
-  };
-
   const incrementCorrectCount = () => {
     setCorrectAnswerCount((preCount) => preCount + 1);
   };
 
-  function checkOptionsContainAnswers(chosenOptions, answers) {
-    let answerIds;
-
-    if (typeof answers === "string") {
-      answerIds = [answers];
-    } else {
-      answerIds = [...answers];
-    }
-
-    // check if chosen options are correct or not
+  if (currentQuestionIndex == totalQuestionNumber) {
     return (
-      chosenOptions.length === answerIds.length &&
-      answerIds.every((answerId) => {
-        let index = chosenOptions.findIndex(
-          (option) => option?.id === answerId
-        );
-        if (index < 0) return false;
-        return true;
-      })
+      <Result
+        correct={correctAnswerCount}
+        totalQuestions={totalQuestionNumber}
+      />
     );
   }
 
   return (
-    <>
-      {currentQuestionIndex < totalQuestionNumber ? (
-        <ScrollView keyboardShouldPersistTaps="handled">
-          <View style={styles.container}>
-            <View style={styles.body}>
-              <AppProgressBar
-                progress={progress}
-                style={{ backgroundColor: colors.gray5 }}
-              />
-
-              {question?.type === "fillIn_blank" ? (
-                <FillInBlank
-                  question={question}
-                  handleNextQeustion={handleNextQeustion}
-                  incrementCorrectCount={incrementCorrectCount}
-                />
-              ) : (
-                <Quiz
-                  handleOptionSelect={handleOptionSelect}
-                  selectedOptions={selectedOptions}
-                  question={question}
-                  quizTitle={quizTitle}
-                />
-              )}
-            </View>
-            <View
-              style={[
-                styles.footer,
-                isValidatedOption ? { backgroundColor: colors.white } : "",
-              ]}
-            >
-              {isValidatedOption && (
-                <Explanation
-                  isCorrect={isCorrect}
-                  explanation={question?.explanation}
-                />
-              )}
-              {question?.type !== "fillIn_blank" && (
-                <CheckQuizButton
-                  isCorrect={isCorrect}
-                  isValidatedOption={isValidatedOption}
-                  handleNextQeustion={handleNextQeustion}
-                  handleOptionValidation={handleOptionValidation}
-                  selectedOptions={selectedOptions}
-                />
-              )}
-            </View>
-          </View>
-        </ScrollView>
-      ) : (
-        <Result
-          correct={correctAnswerCount}
-          totalQuestions={totalQuestionNumber}
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      style={{
+        padding: 0,
+      }}
+      contentContainerStyle={{
+        justifyContent: "space-between",
+        // backgroundColor: "lightblue",
+        flex: 1,
+      }}
+    >
+      <View style={styles.container}>
+        <AppProgressBar
+          progress={progress}
+          style={{
+            backgroundColor: colors.gray5,
+            width: "90%",
+          }}
         />
-      )}
-    </>
+
+        {question?.type === "fillIn_blank" ? (
+          <FillInBlank
+            question={question}
+            handleNextQeustion={handleNextQeustion}
+            incrementCorrectCount={incrementCorrectCount}
+          />
+        ) : (
+          <SelectOptionQuiz
+            quizTitle={quizTitle}
+            question={question}
+            handleNextQeustion={handleNextQeustion}
+            incrementCorrectCount={incrementCorrectCount}
+          />
+        )}
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  body: {
-    paddingHorizontal: 20,
-    marginTop: 30,
-    // backgroundColor: "red",
-    justifyContent: "space-around",
-    gap: 40,
-  },
-
   container: {
-    justifyContent: "space-between",
     // backgroundColor: "green",
-    paddingTop: 16,
-    gap: 25,
-    // flex: 1,
-  },
-  footer: {
-    padding: 20,
-    gap: 20,
-    // backgroundColor: "yellow",
+    // paddingHorizontal: 16,
+    paddingVertical: 10,
+    paddingBottom: 0,
+    alignItems: "center",
   },
 });
 

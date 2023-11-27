@@ -239,7 +239,7 @@ export default [
         text: "at",
       },
     ],
-    correctOptionId: "c",
+    correctOptionId: "b",
     explanation: "'From' is used to indicate the point of origin.",
   },
 ];

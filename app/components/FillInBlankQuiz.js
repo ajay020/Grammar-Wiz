@@ -7,12 +7,14 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
+  ScrollView,
 } from "react-native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 import colors from "../utility/colors";
 import AppButton from "./AppButton";
 import Explanation from "./Explanation";
+import CheckQuizButton from "./CheckQuizButton";
 
 const FillInBlank = ({
   question,
@@ -132,61 +134,63 @@ const FillInBlank = ({
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={{ flex: 1 }}
+      style={{
+        // backgroundColor: "lightyellow",
+        paddingVertical: 20,
+        paddingHorizontal: 8,
+        height: "100%",
+        width: "100%",
+        justifyContent: "space-between",
+      }}
     >
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={styles.container}>
           <View style={styles.questionContainer}>{getQuestionText()}</View>
-
-          <View
-          // style={[
-          //   styles.innerContainer,
-          //   isValidated && { backgroundColor: "white" },
-          // ]}
-          >
-            {isValidated && (
-              <Explanation
-                isCorrect={isCorrect}
-                explanation={question?.explanation}
-              />
-            )}
-          </View>
-          <AppButton
-            style={[styles.button, { backgroundColor: btnBgColor }]}
-            onPress={handlePress}
-            disabled={!isActive}
-            title={isValidated ? "Next" : "Check"}
-          />
         </View>
       </TouchableWithoutFeedback>
+      <View
+        style={[
+          styles.footer,
+          isValidated && { backgroundColor: "white", elevation: 5 },
+        ]}
+      >
+        {isValidated && (
+          <Explanation
+            isCorrect={isCorrect}
+            explanation={question?.explanation}
+          />
+        )}
+        <CheckQuizButton
+          onPress={handlePress}
+          isCorrect={isCorrect}
+          isSelected={isActive}
+          isValidatedOption={isValidated}
+        />
+      </View>
     </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
-  button: {
-    width: "100%",
-    borderRadius: moderateScale(12),
-    // backgroundColor: colors.gray3,
-  },
-
   questionContainer: {
-    flex: 1,
     paddingVertical: scale(12),
     // backgroundColor: colors.gray3,
   },
-  innerContainer: {
+  footer: {
+    paddingHorizontal: 10,
+    paddingBottom: 12,
+    // position: "absolute",
+    bottom: 50,
+    left: 0,
+    right: 0,
     gap: 20,
-    paddingVertical: scale(4),
-    backgroundColor: colors.gray3,
   },
   container: {
-    flex: 1,
     justifyContent: "center",
-    // alignItems: "center",
-    // padding: 4,
+    alignItems: "center",
+    padding: 4,
     gap: scale(30),
-    // backgroundColor: colors.gray5,
+    // backgroundColor: "blue",
   },
 
   questionRow: {

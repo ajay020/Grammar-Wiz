@@ -25,7 +25,7 @@ const Explanation = ({ isCorrect, explanation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    // backgroundColor: "orange",
     gap: moderateScale(18),
     paddingHorizontal: 4,
     paddingVertical: moderateScale(8),

@@ -118,4 +118,17 @@ export default presentPerfectCont3 = [
     correctOptionId: "c",
     explanation: "",
   },
+  {
+    id: 140,
+    quizId: 14,
+    text: "My brother ____ video game for the past one hour.",
+    options: [
+      { id: "a", text: "has been played" },
+      { id: "b", text: "have been playing" },
+      { id: "c", text: "has been playing" },
+    ],
+    correctOptionId: "c",
+    explanation:
+      "My brother has been playing video game for the past one hour.",
+  },
 ];

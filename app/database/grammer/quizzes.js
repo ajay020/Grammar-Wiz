@@ -342,6 +342,7 @@ const quizzes = [
     id: 61,
     topicId: 19,
     text: "Fill in the blank with the correct preposition:",
+    title: "",
     questions: [601, 602, 603, 604, 605, 606, 607, 608, 609, 610],
   },
 ];
