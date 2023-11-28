@@ -18,4 +18,5 @@ export default {
   17: require("../assets/topicIntro/adverb.html"),
   18: require("../assets/topicIntro/modal.html"),
   19: require("../assets/topicIntro/preposition.html"),
+  20: require("../assets/topicIntro/punctuation.html"),
 };

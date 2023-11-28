@@ -6,12 +6,7 @@ import Text from "./Text";
 import { ScrollView } from "react-native-gesture-handler";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
-const QuestionOptions = ({
-  question,
-  selectedOptions,
-  handleOptionSelect,
-  quizTitle,
-}) => {
+const QuestionOptions = ({ question, selectedOptions, handleOptionSelect }) => {
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -47,7 +42,7 @@ const styles = StyleSheet.create({
   },
   questionTxt: {
     color: colors.black,
-    fontSize: moderateScale(18, 0.5),
+    fontSize: moderateScale(17, 0.5),
     marginVertical: verticalScale(14),
     marginBottom: verticalScale(16),
     lineHeight: moderateScale(24, 0.5),
@@ -68,8 +63,9 @@ const styles = StyleSheet.create({
   },
   optionTxt: {
     color: colors.black,
-    fontSize: moderateScale(18, 0.5),
-    textAlign: "center",
+    fontSize: moderateScale(16, 0.5),
+    lineHeight: moderateScale(24, 0.2),
+    // textAlign: "center",
   },
 });
 

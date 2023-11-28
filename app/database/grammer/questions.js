@@ -60,6 +60,8 @@ import preposition1 from "./preposition/preposition1";
 import preposition3 from "./preposition/preposition3";
 import preposition4 from "./preposition/preposition4";
 import preposition5 from "./preposition/preposition5";
+import punc1 from "./punctuation/punc1";
+import punc2 from "./punctuation/punc2";
 
 const questions = [
   // ================ present simple  ==========================
@@ -215,6 +217,13 @@ const questions = [
   ...preposition3,
   ...preposition4,
   ...preposition5,
+  /**
+   *
+   *
+   */
+  // ================ Punctuation ==========================
+  ...punc1,
+  ...punc2,
 ];
 
 // ================ Methods ========================
