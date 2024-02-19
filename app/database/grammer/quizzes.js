@@ -225,7 +225,7 @@ const quizzes = [
   {
     id: 42,
     topicId: 14,
-    text: "Identify the possessive pronoun in each sentence.",
+    text: "Identify the correct pronoun.",
     questions: [411, 412, 413, 414, 415, 416, 417, 418, 419, 420],
   },
   {

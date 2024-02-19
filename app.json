@@ -25,11 +25,7 @@
     "web": {
       "favicon": "./app/assets/images/favicon.png"
     },
-    "extra": {
-      "eas": {
-        "projectId": "83b0608b-80a4-4c0c-8642-ac420e9fad8a"
-      }
-    },
+
     "owner": "ajay020"
   }
 }

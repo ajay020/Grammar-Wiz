@@ -22,9 +22,8 @@ export default [
       { id: "b", text: "I" },
       { id: "c", text: "myself" },
     ],
-    correctOptionId: "b",
-    explanation:
-      "In this sentence, 'I' is the correct pronoun for the subject 'I'.",
+    correctOptionId: "a",
+    explanation: "",
   },
   {
     id: 413,
@@ -37,7 +36,7 @@ export default [
     ],
     correctOptionId: "a",
     explanation:
-      "In this sentence, 'They' is the correct pronoun for the subject 'Tom and Jerry'.",
+      "'They' is the correct pronoun for the subject 'Tom and Jerry'.",
   },
   {
     id: 414,
@@ -49,8 +48,7 @@ export default [
       { id: "c", text: "you're" },
     ],
     correctOptionId: "a",
-    explanation:
-      "In this sentence, 'yours' is the possessive pronoun indicating ownership.",
+    explanation: "'yours' is the possessive pronoun indicating ownership.",
   },
   {
     id: 415,
@@ -63,7 +61,7 @@ export default [
     ],
     correctOptionId: "a",
     explanation:
-      "In this sentence, 'its' is the possessive pronoun showing that the tail belongs to the dog.",
+      "'its' is the possessive pronoun showing that the tail belongs to the dog.",
   },
   {
     id: 416,
@@ -76,7 +74,7 @@ export default [
     ],
     correctOptionId: "a",
     explanation:
-      "In this sentence, 'their' is the possessive pronoun indicating that the books belong to someone.",
+      "'their' is the possessive pronoun indicating that the books belong to someone.",
   },
   {
     id: 417,
@@ -89,7 +87,7 @@ export default [
     ],
     correctOptionId: "b",
     explanation:
-      "In this sentence, 'them' is the indefinite pronoun referring to people in general.",
+      "'them' is the indefinite pronoun referring to people in general.",
   },
   {
     id: 418,
@@ -102,7 +100,7 @@ export default [
     ],
     correctOptionId: "b",
     explanation:
-      "In this sentence, 'where' is the interrogative pronoun used to ask a question about location.",
+      "'where' is the interrogative pronoun used to ask a question about location.",
   },
   {
     id: 419,
@@ -115,7 +113,7 @@ export default [
     ],
     correctOptionId: "a",
     explanation:
-      "In this sentence, 'which' is the relative pronoun introducing the relative clause 'which I am reading'.",
+      "'which' is the relative pronoun introducing the relative clause 'which I am reading'.",
   },
   {
     id: 420,
@@ -128,6 +126,6 @@ export default [
     ],
     correctOptionId: "a",
     explanation:
-      "In this sentence, 'myself' is the reflexive pronoun referring back to the subject of the sentence, 'I'.",
+      "'myself' is the reflexive pronoun referring back to the subject of the sentence, 'I'.",
   },
 ];

@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import colors from "../utility/colors";
-import QuizIcon from "../components/QuizIcon";
+import QuizIcon from "./QuizIcon";
 import useQuizData from "../hooks/useQuizData";
 
 const ExpandableItem = ({ topic }) => {
