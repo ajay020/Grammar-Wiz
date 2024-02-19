@@ -46,7 +46,8 @@ export const presentSimple1 = [
       { id: "c", text: "is" },
     ],
     correctOptionId: "b",
-    explanation: "In questions with 'he, she, it,' use 'does.'",
+    explanation:
+      " Wh-word + does + singular subject + others ? \n\n Wh-word + do + plural subject + others ?",
   },
   {
     id: 5,
@@ -58,7 +59,8 @@ export const presentSimple1 = [
       { id: "c", text: "did" },
     ],
     correctOptionId: "b",
-    explanation: "Use 'do' for 'I' in the present simple tense.",
+    explanation:
+      "He/she/it + v1 with (s/es) + others. \n\n I/You/They + v1 + other.",
   },
   {
     id: 6,
@@ -70,7 +72,8 @@ export const presentSimple1 = [
       { id: "c", text: "went" },
     ],
     correctOptionId: "b",
-    explanation: "Use 'goes' for 'she' in the present simple tense.",
+    explanation:
+      "He/she/it + v1 with (s/es) + others. \n\n I/You/They + v1 + others.",
   },
   {
     id: 7,
@@ -82,7 +85,8 @@ export const presentSimple1 = [
       { id: "c", text: "drank" },
     ],
     correctOptionId: "b",
-    explanation: "Use 'drinks' for 'my cat' in the present simple tense.",
+    explanation:
+      "Singular subject + v1 with (s/es) + other. \n\n Plural subject + v1 + other.",
   },
   {
     id: 8,
@@ -94,7 +98,8 @@ export const presentSimple1 = [
       { id: "c", text: "took" },
     ],
     correctOptionId: "a",
-    explanation: "Use 'take' for 'we' in the present simple tense.",
+    explanation:
+      "Singular subject + v1 with (s/es) + other. \n\n Plural subject + v1 + other.",
   },
   {
     id: 9,
@@ -106,7 +111,8 @@ export const presentSimple1 = [
       { id: "c", text: "rose" },
     ],
     correctOptionId: "b",
-    explanation: "Use 'rises' for 'the sun' in the present simple tense.",
+    explanation:
+      "Singular subject + v1 with (s/es) + other. \n\n Plural subject + v1 + other.",
   },
   {
     id: 10,
@@ -118,6 +124,7 @@ export const presentSimple1 = [
       { id: "c", text: "spoken" },
     ],
     correctOptionId: "b",
-    explanation: "Use 'speak' for 'they' in the present simple tense.",
+    explanation:
+      "Singular subject + v1 with (s/es) + other. \n\n Plural subject + v1 + other.",
   },
 ];

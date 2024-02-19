@@ -10,7 +10,7 @@ const presentSimple3 = [
     ],
     correctOptionId: "b",
     explanation:
-      "In the present simple tense, use 'doesn't' for 'he, she, it' in negative sentences. Example: She doesn't like pizza.",
+      "In the present simple tense, use 'doesn't' for 'he, she, it' in negative sentences.",
   },
   {
     id: 22,
@@ -22,8 +22,7 @@ const presentSimple3 = [
       { id: "c", text: "going" },
     ],
     correctOptionId: "b",
-    explanation:
-      "The missing word in the sentence is 'goes.' The complete sentence is 'She goes to school every day.'",
+    explanation: "The missing word in the sentence is 'goes.'",
   },
   {
     id: 23,
@@ -36,46 +35,43 @@ const presentSimple3 = [
     ],
     correctOptionId: "a",
     explanation:
-      "The correct negative form in the present simple tense for 'she' is 'doesn't.' Example: She doesn't like ice cream.",
+      "The correct negative form in the present simple tense for 'she' is 'doesn't.'",
   },
   {
     id: 24,
     quizId: 3,
     text: "Which sentence is an interrogative in the present simple tense?",
     options: [
-      { id: "a", text: "He is playing the guitar." },
-      { id: "b", text: "Do you like chocolate?" },
-      { id: "c", text: "She reads books every day." },
+      { id: "a", text: "He is playing the guitar" },
+      { id: "b", text: "Do you like chocolate" },
+      { id: "c", text: "She reads books every day" },
     ],
     correctOptionId: "b",
-    explanation:
-      "The sentence 'Do you like chocolate?' is an interrogative in the present simple tense because it asks a question and uses the auxiliary verb 'do.'",
+    explanation: "",
   },
   {
     id: 25,
     quizId: 3,
-    text: "What is the correct form for 'I' in the present simple tense?",
+    text: "What is the correct?",
     options: [
       { id: "a", text: "He don't like swimming." },
       { id: "b", text: "He doesn't likes swimming." },
       { id: "c", text: "I like swimming." },
     ],
     correctOptionId: "c",
-    explanation:
-      "The correct form for 'I' in the present simple tense is 'I like swimming.'",
+    explanation: "",
   },
   {
     id: 26,
     quizId: 3,
-    text: "What is the missing word in the sentence: 'They _____ to the beach on weekends.'?",
+    text: "'They _____ to the beach on weekends.'?",
     options: [
       { id: "a", text: "go" },
       { id: "b", text: "goes" },
       { id: "c", text: "going" },
     ],
     correctOptionId: "a",
-    explanation:
-      "The missing word in the sentence is 'go.' The complete sentence is 'They go to the beach on weekends.'",
+    explanation: "",
   },
   {
     id: 27,
@@ -88,46 +84,42 @@ const presentSimple3 = [
     ],
     correctOptionId: "b",
     explanation:
-      "The correct imperative sentence in the present simple tense is 'Don't eat too much candy.' It gives a command or request.",
+      "'Don't eat too much candy.'\n\n It gives a command or request.",
   },
   {
     id: 28,
     quizId: 3,
-    text: "What is the missing word in the sentence: 'She _____ the piano beautifully.'?",
+    text: "'She _____ the piano beautifully.'?",
     options: [
       { id: "a", text: "plays" },
-      { id: "b", text: "is playing" },
+      { id: "b", text: "playing" },
       { id: "c", text: "play" },
     ],
     correctOptionId: "a",
-    explanation:
-      "The missing word in the sentence is 'plays.' The complete sentence is 'She plays the piano beautifully.'",
+    explanation: "",
   },
   {
     id: 29,
     quizId: 3,
-    text: "What is the correct form for 'they' in the present simple tense?",
+    text: "Which is the correct ?",
     options: [
-      { id: "a", text: "He doesn't like ice cream." },
+      { id: "a", text: "He don't like ice cream." },
       { id: "b", text: "They doesn't like ice cream." },
       { id: "c", text: "They don't like ice cream." },
     ],
     correctOptionId: "c",
-    explanation:
-      "The correct form for 'they' in the present simple tense is 'They don't like ice cream.'",
+    explanation: "He/She/It + doesn't + v1. \n\n I/You/They + don't + v1",
   },
   {
     id: 30,
     quizId: 3,
-    text: "What is the correct negative form in the present simple tense?",
+    text: "Which one is correct?",
     options: [
-      { id: "a", text: "He likes pizza." },
-      { id: "b", text: "He isn't like pizza." },
-      { id: "c", text: "He doesn't like pizza." },
+      { id: "a", text: "He like pizza." },
+      { id: "b", text: "He likes like pizza." },
     ],
-    correctOptionId: "c",
-    explanation:
-      "The correct negative form in the present simple tense for 'he' is 'doesn't.' Example: He doesn't like pizza.",
+    correctOptionId: "b",
+    explanation: "He/she/it + v1(s/es). \n\n I/They/You + v1.",
   },
 ];
 

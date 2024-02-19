@@ -2,28 +2,25 @@ export const presentSimple2 = [
   {
     id: 11,
     quizId: 2,
-    text: "What is the correct sentence in the present simple tense?",
+    text: "He ___ like ice cream. They ___ like ice cream.",
     options: [
-      { id: "a", text: "He don't like ice cream." },
-      { id: "b", text: "She doesn't like ice cream." },
-      { id: "c", text: "They isn't like ice cream." },
+      { id: "a", text: "doesn't/don't" },
+      { id: "b", text: "don't/doesn't" },
     ],
-    correctOptionId: "b",
-    explanation:
-      "In the present simple tense, use 'doesn't' for 'he, she, it' in negative sentences. Example: She doesn't like ice cream.",
+    correctOptionId: "a",
+    explanation: "He/she/it  + doesn't \n\n I/You/They + don't",
   },
   {
     id: 12,
     quizId: 2,
-    text: "Which sentence is in the present simple tense?",
+    text: "They ___ tennis every Sunday. You ___ tennis every Sunday",
     options: [
-      { id: "a", text: "I am playing tennis tomorrow." },
-      { id: "b", text: "We plays tennis every Sunday." },
-      { id: "c", text: "They play tennis every Sunday." },
+      { id: "a", text: "play / plays" },
+      { id: "b", text: "plays / play" },
+      { id: "c", text: "play / play" },
     ],
     correctOptionId: "c",
-    explanation:
-      "The sentence 'They play tennis every Sunday.' is in the present simple tense and describes a habitual action.",
+    explanation: "He/she/it + v1 with (s/es). \n\n I/You/They + v1.",
   },
   {
     id: 13,
@@ -36,7 +33,7 @@ export const presentSimple2 = [
     ],
     correctOptionId: "c",
     explanation:
-      "To make a negative sentence in the present simple tense, use 'don't' before the base form of the verb. Example: I don't like swimming.",
+      "To make a negative sentence in the present simple tense, use 'don't' before the base form of the verb.",
   },
   {
     id: 14,
@@ -49,7 +46,7 @@ export const presentSimple2 = [
     ],
     correctOptionId: "b",
     explanation:
-      "In the present simple tense, use 'likes' for 'he, she, it' to describe actions they regularly do. Example: He likes to read books.",
+      "In the present simple tense, use 'likes' for 'he, she, it' to describe actions they regularly do.",
   },
   {
     id: 15,
@@ -57,12 +54,12 @@ export const presentSimple2 = [
     text: "What is the negative form of 'They visit the museum.'?",
     options: [
       { id: "a", text: "They don't visit the museum." },
-      { id: "b", text: "They visits not the museum." },
+      { id: "b", text: "They does not the museum." },
       { id: "c", text: "They not visit the museum." },
     ],
     correctOptionId: "a",
     explanation:
-      "To make a negative sentence in the present simple tense, use 'don't' before the base form of the verb. Example: They don't visit the museum.",
+      "To make a negative sentence in the present simple tense, use 'don't' before the base form of the verb.",
   },
   {
     id: 16,
@@ -75,7 +72,7 @@ export const presentSimple2 = [
     ],
     correctOptionId: "c",
     explanation:
-      "In the present simple tense, use 'doesn't' for 'he, she, it' in negative sentences. Example: She doesn't like vegetables.",
+      "In the present simple tense, use 'doesn't' for 'he, she, it' in negative sentences.",
   },
   {
     id: 17,
@@ -88,7 +85,7 @@ export const presentSimple2 = [
     ],
     correctOptionId: "c",
     explanation:
-      "To make a negative sentence in the present simple tense, use 'don't' before the base form of the verb. Example: We don't enjoy the party.",
+      "To make a negative sentence in the present simple tense, use 'don't' before the base form of the verb.",
   },
   {
     id: 18,
@@ -96,12 +93,12 @@ export const presentSimple2 = [
     text: "What is the correct sentence in the present simple tense?",
     options: [
       { id: "a", text: "He don't have a car." },
-      { id: "b", text: "She have a car." },
+      { id: "b", text: "She has a car." },
       { id: "c", text: "They has a car." },
     ],
     correctOptionId: "b",
     explanation:
-      "In the present simple tense, use 'has' for 'he, she, it' to indicate possession. Example: She has a car.",
+      "In the present simple tense, use 'has' for 'he, she, it' to indicate possession.",
   },
   {
     id: 19,
@@ -113,8 +110,7 @@ export const presentSimple2 = [
       { id: "c", text: "I don't understand this lesson." },
     ],
     correctOptionId: "c",
-    explanation:
-      "To make a negative sentence in the present simple tense, use 'don't' before the base form of the verb. Example: I don't understand this lesson.",
+    explanation: "Use 'don't' before the base form of the verb.",
   },
   {
     id: 20,
@@ -127,7 +123,7 @@ export const presentSimple2 = [
     ],
     correctOptionId: "c",
     explanation:
-      "In the present simple tense, use 'goes' for 'he, she, it' to describe actions they regularly do. Example: He goes to school.",
+      "Use 'goes' for 'he, she, it' to describe actions they regularly do.",
   },
 ];
 
