@@ -58,7 +58,19 @@ const QuizListScreen = ({ route }) => {
         }}
         onPress={toggleModal}
       >
-        <Icon name={"book-open-outline"} size={60} />
+        <View
+          style={{
+            backgroundColor: "white",
+            padding: 4,
+            paddingHorizontal: moderateScale(14),
+            borderRadius: 4,
+            elevation: 5,
+            alignItems: "center",
+          }}
+        >
+          <Icon name={"book-open-outline"} size={60} />
+          <Text>Read</Text>
+        </View>
         <TopicSummary
           topicId={topicId}
           isVisible={isModalVisible}
@@ -84,11 +96,13 @@ const QuizListScreen = ({ route }) => {
           );
         })}
         <View style={[styles.trophyContainer]}>
-          <Icon
-            name={"trophy-outline"}
-            color={`${allQuizzesCompleted ? colors.golden : "gray"}`}
-            size={60}
-          />
+          {allQuizzesCompleted && (
+            <Icon
+              name={"trophy-outline"}
+              color={`${allQuizzesCompleted ? colors.golden : "gray"}`}
+              size={60}
+            />
+          )}
         </View>
       </View>
     </>
@@ -120,7 +134,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: scale(10),
     elevation: scale(5),
-    padding: moderateScale(16),
+    paddingVertical: moderateScale(12),
+    paddingHorizontal: moderateScale(16),
     marginVertical: verticalScale(4),
     width: "90%",
   },

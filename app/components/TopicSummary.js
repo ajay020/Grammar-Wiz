@@ -8,6 +8,7 @@ import {
   useWindowDimensions,
   ScrollView,
   ActivityIndicator,
+  Text,
 } from "react-native";
 import { Asset } from "expo-asset";
 import * as FileSystem from "expo-file-system";
@@ -47,7 +48,7 @@ const TopicSummary = memo(({ isVisible, onClose, topicId }) => {
     } catch (error) {
       console.error("Error reading HTML file:", error);
     } finally {
-      console.log(loading);
+      //   console.log(loading);
       setLoading(false);
     }
   };
