@@ -33,8 +33,8 @@ const TopicListItem2 = ({ item }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    borderRadius: 10,
-    paddingVertical: 14,
+    borderRadius: 8,
+    paddingVertical: 16,
     paddingHorizontal: 8,
     marginVertical: 4,
 

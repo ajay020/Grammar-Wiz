@@ -9,6 +9,7 @@ import useQuizData from "../hooks/useQuizData";
 
 export default HomeScreen = ({ navigation }) => {
   const [topics, setTopics] = useState([]);
+  const { completedQuizzes, loading, fetchCompletdQuizzes } = useQuizData();
 
   useEffect(() => {
     async function clearCache() {
@@ -16,20 +17,6 @@ export default HomeScreen = ({ navigation }) => {
     }
     // clearCache();
   }, []);
-
-  const { completedQuizzes, loading, fetchCompletdQuizzes } = useQuizData();
-
-  function calcualteCompletedQuiz() {
-    // console.log({ completedQuizzes });
-    let data = topicData.topics.map((topic) => {
-      const quizCount = completedQuizzes.filter(
-        (cq) => cq.topicId === topic.id
-      ).length;
-      return { ...topic, quizCompletedCount: quizCount };
-    });
-    // console.log({ data });
-    setTopics([...data]);
-  }
 
   useEffect(() => {
     calcualteCompletedQuiz();
@@ -44,6 +31,18 @@ export default HomeScreen = ({ navigation }) => {
     // Clean up the listener when component unmounts
     return unsubscribe;
   }, [navigation]);
+
+  function calcualteCompletedQuiz() {
+    // console.log({ completedQuizzes });
+    let data = topicData.topics.map((topic) => {
+      const quizCount = completedQuizzes.filter(
+        (cq) => cq.topicId === topic.id
+      ).length;
+      return { ...topic, quizCompletedCount: quizCount };
+    });
+    // console.log({ data });
+    setTopics([...data]);
+  }
 
   return (
     <View>

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, StyleSheet, TouchableOpacity, BackHandler } from "react-native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 import useQuizData from "../hooks/useQuizData";
@@ -13,10 +13,10 @@ import TopicSummary from "../components/TopicSummary";
 
 const QuizListScreen = ({ route }) => {
   const [isModalVisible, setModalVisible] = useState(false);
-
   const { completedQuizzes, fetchCompletdQuizzes } = useQuizData();
-  const { id: topicId, quizzes: quizIds, title } = route?.params?.data;
   const navigation = useNavigation();
+
+  const { id: topicId, quizzes: quizIds, title } = route?.params?.data;
 
   // Hide Bottom tab navigation layout.
   useHideBottomTabBar();
@@ -45,6 +45,23 @@ const QuizListScreen = ({ route }) => {
     });
   };
 
+  useFocusEffect(
+    useCallback(() => {
+
+      const onBackPress = () => {
+        navigation.goBack();
+        return true;
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => {
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+      };
+
+    }, [navigation])
+  )
+
   const toggleModal = useCallback(() => {
     setModalVisible(!isModalVisible);
   }, [isModalVisible]);
@@ -62,14 +79,14 @@ const QuizListScreen = ({ route }) => {
           style={{
             backgroundColor: "white",
             padding: 4,
-            paddingHorizontal: moderateScale(14),
+            paddingHorizontal: moderateScale(16),
             borderRadius: 4,
-            elevation: 5,
+            elevation: 2,
             alignItems: "center",
           }}
         >
           <Icon name={"book-open-outline"} size={60} />
-          <Text>Read</Text>
+          <Text>Study</Text>
         </View>
         <TopicSummary
           topicId={topicId}
@@ -79,9 +96,11 @@ const QuizListScreen = ({ route }) => {
       </TouchableOpacity>
       <View style={styles.container}>
         {quizIds.map((quizId, index) => {
+
           let isQuizTaken = completedQuizzes.find(
             (quiz) => quiz.quizId === quizId
           );
+
           return (
             <TouchableOpacity
               key={quizId}
@@ -133,11 +152,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: colors.white,
     borderRadius: scale(10),
-    elevation: scale(5),
-    paddingVertical: moderateScale(12),
-    paddingHorizontal: moderateScale(16),
-    marginVertical: verticalScale(4),
+    elevation: scale(2),
+    paddingVertical: moderateScale(16),
+    paddingHorizontal: moderateScale(8),
+    marginVertical: verticalScale(2),
     width: "90%",
+    // backgroundColor :"green"
   },
   trophyContainer: {
     alignItems: "center",

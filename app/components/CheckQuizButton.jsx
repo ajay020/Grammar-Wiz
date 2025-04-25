@@ -30,12 +30,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: colors.gray1,
     width: "100%",
-    paddingHorizontal: 12,
+    paddingHorizontal: 8,
   },
   disableButton: {
     backgroundColor: colors.gray3,
     borderWidth: 0.5,
-    paddingHorizontal: 10,
+    paddingHorizontal: 0,
   },
 });
 

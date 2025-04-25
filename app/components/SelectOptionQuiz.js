@@ -131,7 +131,6 @@ export default SelectOptionQuiz;
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: "pink",
-    paddingHorizontal: 16,
     height: "100%",
     width: "100%",
   },

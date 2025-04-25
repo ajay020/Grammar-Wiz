@@ -9,15 +9,12 @@ import AppProgressBar from "../components/AppProgressBar";
 import Result from "../components/Result";
 import cache from "../utility/cache";
 import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
-import CheckQuizButton from "../components/CheckQuizButton";
-import QuestionOptions from "../components/QuestionOptions";
 import FillInBlank from "../components/FillInBlankQuiz";
-import Explanation from "../components/Explanation";
 import SelectOptionQuiz from "../components/SelectOptionQuiz";
 
 const QuizScreen = ({ route, navigation }) => {
   const { quizId, topicId, title } = route?.params;
-  const [progress, setProgress] = useState(0.02);
+  const [progress, setProgress] = useState(0.0);
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
   const quiz = getQuizById(quizId);
   const [quizTitle, setQuizTitle] = useState(quiz?.text);
@@ -27,9 +24,6 @@ const QuizScreen = ({ route, navigation }) => {
 
   const question = getQuestionById(questions?.[currentQuestionIndex]);
   const totalQuestionNumber = questions?.length;
-
-  // Hide Bottom tab navigation layout.
-  useHideBottomTabBar();
 
   // Set the header title dynamically based on the passed title parameter
   React.useLayoutEffect(() => {
@@ -109,9 +103,6 @@ const QuizScreen = ({ route, navigation }) => {
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
-      style={{
-        padding: 0,
-      }}
       contentContainerStyle={{
         justifyContent: "space-between",
         // backgroundColor: "lightblue",
@@ -123,7 +114,6 @@ const QuizScreen = ({ route, navigation }) => {
           progress={progress}
           style={{
             backgroundColor: colors.gray5,
-            width: "90%",
           }}
         />
 
@@ -149,9 +139,8 @@ const QuizScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: "green",
-    // paddingHorizontal: 16,
-    paddingVertical: 10,
-    paddingBottom: 0,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
     alignItems: "center",
   },
 });

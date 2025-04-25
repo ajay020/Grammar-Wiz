@@ -66,7 +66,7 @@ const TopicSummary = memo(({ isVisible, onClose, topicId }) => {
           </TouchableOpacity>
           <View>
             {loading ? (
-              <ActivityIndicator color={"blue"} size={"large"} />
+              <ActivityIndicator color={"blue"} size={22} />
             ) : (
               <RenderHtml
                 source={{

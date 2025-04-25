@@ -3,6 +3,7 @@
     "name": "english grammar quiz",
     "slug": "english-quiz",
     "version": "1.0.0",
+    "newArchEnabled": true,
     "orientation": "portrait",
     "icon": "./app/assets/images/icon.png",
     "userInterfaceStyle": "light",
@@ -11,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -25,7 +28,9 @@
     "web": {
       "favicon": "./app/assets/images/favicon.png"
     },
-
-    "owner": "ajay020"
+    "owner": "ajay020",
+    "plugins": [
+      "expo-asset"
+    ]
   }
 }

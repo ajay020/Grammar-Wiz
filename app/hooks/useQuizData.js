@@ -7,6 +7,11 @@ function useQuizData() {
   const [completedQuizzes, setCompletedQuizzes] = useState([]);
   const [loading, setLoading] = useState(false);
 
+
+  useEffect(() => {
+    fetchCompletdQuizzes();
+  }, []);
+
   const fetchCompletdQuizzes = async () => {
     try {
       setLoading(true);
@@ -20,10 +25,6 @@ function useQuizData() {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchCompletdQuizzes();
-  }, []);
 
   return {
     completedQuizzes,
