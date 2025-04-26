@@ -1,4 +1,4 @@
-# Grammar Wiz ✏️
+# Grammar Wiz
 
 **Grammar Wiz** is an English learning app designed to make grammar practice fun and interactive.  
 You can take quizzes, play matching games, and improve your grammar skills in a playful way!
