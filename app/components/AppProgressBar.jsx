@@ -5,7 +5,7 @@ import colors from "../utility/colors";
 const AppProgressBar = ({
   progress = 0,
   backgroundColor = colors.primary,
-  height = 16,
+  height = 20,
   style,
   range = 1,
   duration = 400,
@@ -16,7 +16,7 @@ const AppProgressBar = ({
   Animated.timing(animatedWidth, {
     toValue: progress,
     duration, // Duration of the animation in milliseconds
-    useNativeDriver: false, // Set to true for better performance (requires Animated.View)
+    useNativeDriver: false, // Set to false because width animation does not support native driver
   }).start();
 
   const animatedStyles = {

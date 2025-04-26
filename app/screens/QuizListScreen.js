@@ -10,16 +10,19 @@ import Icon from "../components/Icon";
 import CheckIcon from "../components/CheckIcon";
 import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
 import TopicSummary from "../components/TopicSummary";
+import { ThemedText, ThemedView } from "../themedComponents/ThemedText";
+import { useTheme } from "../theme/ThemeContext";
+import { darkTheme, lightTheme } from "../utility/theme";
 
 const QuizListScreen = ({ route }) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const { completedQuizzes, fetchCompletdQuizzes } = useQuizData();
   const navigation = useNavigation();
 
-  const { id: topicId, quizzes: quizIds, title } = route?.params?.data;
+  const { theme } = useTheme()
+  const isDark = theme === 'dark';
 
-  // Hide Bottom tab navigation layout.
-  useHideBottomTabBar();
+  const { id: topicId, quizzes: quizIds, title } = route?.params?.data;
 
   // Check if all quizzes have been completed
   const allQuizzesCompleted = quizIds.every((quizId) => {
@@ -71,13 +74,14 @@ const QuizListScreen = ({ route }) => {
       <TouchableOpacity
         style={{
           alignItems: "center",
+          backgroundColor: isDark ? darkTheme.background : lightTheme.background,
           paddingVertical: moderateScale(18),
         }}
         onPress={toggleModal}
       >
-        <View
+        <ThemedView
           style={{
-            backgroundColor: "white",
+            backgroundColor: isDark ? darkTheme.card : lightTheme.card,
             padding: 4,
             paddingHorizontal: moderateScale(16),
             borderRadius: 4,
@@ -85,16 +89,20 @@ const QuizListScreen = ({ route }) => {
             alignItems: "center",
           }}
         >
-          <Icon name={"book-open-outline"} size={60} />
-          <Text>Study</Text>
-        </View>
+          <Icon
+            color={isDark ? lightTheme.background : darkTheme.background}
+            name={"book-open-outline"}
+            size={60}
+          />
+          <ThemedText>Study</ThemedText>
+        </ThemedView>
         <TopicSummary
           topicId={topicId}
           isVisible={isModalVisible}
           onClose={toggleModal}
         />
       </TouchableOpacity>
-      <View style={styles.container}>
+      <ThemedView style={styles.container}>
         {quizIds.map((quizId, index) => {
 
           let isQuizTaken = completedQuizzes.find(
@@ -105,16 +113,16 @@ const QuizListScreen = ({ route }) => {
             <TouchableOpacity
               key={quizId}
               activeOpacity={0.3}
-              style={styles.quizItem}
+              style={ [styles.quizItem, {  backgroundColor: isDark ? darkTheme.card : lightTheme.card}] }
               onPress={() => navigateToQuizScreen(quizId)}
             >
-              <Text> Quiz {index + 1}</Text>
+              <ThemedText> Quiz {index + 1}</ThemedText>
 
               {isQuizTaken ? <CheckIcon /> : null}
             </TouchableOpacity>
           );
         })}
-        <View style={[styles.trophyContainer]}>
+        <ThemedView style={[styles.trophyContainer]}>
           {allQuizzesCompleted && (
             <Icon
               name={"trophy-outline"}
@@ -122,8 +130,8 @@ const QuizListScreen = ({ route }) => {
               size={60}
             />
           )}
-        </View>
-      </View>
+        </ThemedView>
+      </ThemedView>
     </>
   );
 };
@@ -150,7 +158,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: colors.white,
     borderRadius: scale(10),
     elevation: scale(2),
     paddingVertical: moderateScale(16),

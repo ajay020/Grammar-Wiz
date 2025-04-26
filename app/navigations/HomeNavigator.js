@@ -6,22 +6,45 @@ import HomeScreen from "../screens/HomeScreen";
 import QuizListScreen from "../screens/QuizListScreen";
 import MoreButton from "../components/MoreButton";
 import AboutScreen from "../screens/AboutScreen";
+import { BackHandler, View } from "react-native";
+import ThemeToggleButton from "../theme/.ThemeToggleButton";
+import { useTheme } from "../theme/ThemeContext";
+import { darkTheme, lightTheme } from "../utility/theme";
 
 const Stack = createStackNavigator();
 
 const HomeNavigator = () => {
+
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   return (
     <>
-      <Stack.Navigator screenOptions={{ headerShown: true }}>
+      <Stack.Navigator screenOptions={{
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: isDark ? darkTheme.background : lightTheme.background, 
+        },
+        headerTintColor:isDark ? darkTheme.text : lightTheme.text,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
           options={{
             headerShown: true,
             headerTitleAlign: "left",
-            headerTitle: "English Grammer Wiz",
+            headerTitle: "Grammer Wiz",
             headerRight: () => {
-              return <MoreButton />;
+              return <View style={{
+                flexDirection: "row",
+                alignItems: "center"
+              }}>
+                <ThemeToggleButton />
+                <MoreButton />
+              </View>;
             },
           }}
         />

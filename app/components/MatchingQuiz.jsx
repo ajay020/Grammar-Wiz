@@ -1,25 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import QuestionItem from "./QeustionItem";
-import AnswerItem from "./AnswerItem";
-
-const quizData = {
-  id: 1,
-
-  questions: [
-    { id: 1, text: "What time is now?", matched: false },
-    { id: 2, text: "banana", matched: false },
-    { id: 3, text: "apple", matched: false },
-    { id: 4, text: "orange", matched: false },
-  ],
-  answers: [
-    { id: 1, text: "NOW", matched: false },
-    { id: 2, text: "yellow", matched: false },
-    { id: 3, text: "green", matched: false },
-    { id: 4, text: "yellow", matched: false },
-  ],
-};
+import { getMatchquizData } from "../utility/match_pair_data";
+import CompletionDialog from "./CompletionDialog";
 
 const MatchingQuiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -28,6 +12,9 @@ const MatchingQuiz = () => {
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [isCorrect, setIsCorrect] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showDialog, setShowDialog] = useState(false);
+
 
   useEffect(() => {
     let id = setTimeout(() => {
@@ -37,11 +24,18 @@ const MatchingQuiz = () => {
   }, [isCorrect]);
 
   useEffect(() => {
+    const quizData = getMatchquizData(currentIndex);
+
+    if (!quizData) {
+      setQuizCompleted(true);
+      return;
+    }
+
     const shuffledQuestions = shuffleArray([...quizData.questions]);
     const shuffledAnswers = shuffleArray([...quizData.answers]);
     setQuestions(shuffledQuestions);
     setAnswers(shuffledAnswers);
-  }, []);
+  }, [currentIndex]);
 
   const shuffleArray = (array) => {
     // Function to shuffle an array (Fisher-Yates algorithm)
@@ -92,6 +86,7 @@ const MatchingQuiz = () => {
     }
   };
 
+  // Function to mark matched pairs
   const markMatchdPairs = (id) => {
     setAnswers((prev) => {
       const updatedAnswers = prev.map((ans) =>
@@ -100,6 +95,7 @@ const MatchingQuiz = () => {
       checkCompletion(updatedAnswers);
       return updatedAnswers;
     });
+
     setQuestions((prev) => {
       const updatedQuestions = prev.map((question) =>
         question.id === id ? { ...question, matched: true } : question
@@ -117,47 +113,89 @@ const MatchingQuiz = () => {
   const checkCompletion = (array) => {
     const allMatched = array.every((item) => item.matched);
     if (allMatched) {
-      setQuizCompleted(true);
+      setShowDialog(true);
     }
   };
+
+
+  if (quizCompleted) {
+    return (
+      <View style={
+        {
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center"
+        }
+      }>
+        <Text style={{ marginBottom: 12 }}>You’ve completed all quizzes! 🎉</Text>
+        <TouchableOpacity
+          style={{
+            marginTop: 20,
+          }}
+          title="Restart Quiz"
+          onPress={() => {
+            setCurrentIndex(0);
+            setQuizCompleted(false);
+            setShowDialog(false);
+            clearSelected();
+            setIsCorrect("");
+          }}
+          color="#2196F3"
+        />
+      </View>
+    )
+  }
+
 
   return (
     <View style={styles.outerContainer}>
       <Text style={styles.headingText}>Match the correct Pairs</Text>
-      <Text style={{ textAlign: "center" }}>
+      <Text style={{ textAlign: "center", fontSize: 30 }}>
         {isCorrect === "correct"
           ? "Right"
           : isCorrect === "inCorrect"
-          ? "Wrong"
-          : ""}
+            ? "Wrong"
+            : ""}
       </Text>
 
-      {quizCompleted && <Text>Congratulations! Quiz Completed!</Text>}
+
       <View style={styles.container}>
         <View style={styles.column}>
           {questions.map((question, index) => (
             <QuestionItem
               key={index}
-              question={question}
+              item={question}
               selectedQuestion={selectedQuestion}
               onPress={() => handleQestionSelection(question)}
-              disabled={question.matched}
+              disabled={question?.matched ?? false}
             />
           ))}
         </View>
         <View style={styles.column}>
           {answers.map((answer, index) => (
-            <AnswerItem
+            <QuestionItem
               key={index}
-              answer={answer}
+              item={answer}
               selectedAnswer={selectedAnswer}
               onPress={() => handleAnswerSelection(answer)}
-              disabled={answer.matched}
+              disabled={ answer?.matched ?? false}
             />
           ))}
         </View>
       </View>
+
+      {/* Dialog to show when quiz is completed */}
+      <CompletionDialog
+        visible={showDialog}
+        onClose={() => setShowDialog(false)}
+        onNext={() => {
+          setShowDialog(false);
+          setCurrentIndex(prev => prev + 1); // Next quiz
+          setQuizCompleted(false);
+        }}
+      />
     </View>
+
   );
 };
 
@@ -166,7 +204,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     gap: 24,
-    // backgroundColor: "lightgray",
+    backgroundColor: "lightgray",
   },
   container: {
     // flex: 1,
@@ -179,7 +217,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     gap: 12,
-    // margin: 10,
+    margin: 10,
     // backgroundColor: "green",
   },
   headingText: {

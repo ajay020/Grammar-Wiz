@@ -6,10 +6,15 @@ import topicData from "../database/grammer/topics";
 import TopicListItem2 from "../components/TopicListItem2";
 import cache from "../utility/cache";
 import useQuizData from "../hooks/useQuizData";
+import { useTheme } from "../theme/ThemeContext";
+import { darkTheme, lightTheme } from "../utility/theme";
 
 export default HomeScreen = ({ navigation }) => {
   const [topics, setTopics] = useState([]);
   const { completedQuizzes, loading, fetchCompletdQuizzes } = useQuizData();
+
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   useEffect(() => {
     async function clearCache() {
@@ -45,7 +50,7 @@ export default HomeScreen = ({ navigation }) => {
   }
 
   return (
-    <View>
+    <View style={{ backgroundColor: isDark ? darkTheme.background : lightTheme.background, flex: 1 }}>
       {loading && <ActivityIndicator color={"blue"} />}
       <FlatList
         style={styles.container}

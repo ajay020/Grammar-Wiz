@@ -1,12 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 
-import Text from "./Text";
-import colors from "../utility/colors";
 import CheckIcon from "./CheckIcon";
+import { useTheme } from "../theme/ThemeContext";
+import { darkTheme, lightTheme } from "../utility/theme";
+import { ThemedText, ThemedView } from "../themedComponents/ThemedText";
 
 const TopicListItem2 = ({ item }) => {
   const navigation = useNavigation();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const isAllQuizCompleted = item.quizzes.length === item.quizCompletedCount;
 
@@ -15,29 +18,27 @@ const TopicListItem2 = ({ item }) => {
   };
 
   return (
-    <View style={styles.outerContainer}>
+    <ThemedView style={styles.outerContainer}>
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={goToQuizList}
-        style={styles.container}
+        style={[styles.container, { backgroundColor: isDark ? darkTheme.card : lightTheme.card}]}
       >
-        <Text style={styles.text}>
+        <ThemedText style={styles.text}>
           {item?.title} ({item.quizCompletedCount}/{item?.quizzes?.length})
-        </Text>
+        </ThemedText>
         {isAllQuizCompleted && <CheckIcon />}
       </TouchableOpacity>
-    </View>
+    </ThemedView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.white,
     borderRadius: 8,
     paddingVertical: 16,
     paddingHorizontal: 8,
     marginVertical: 4,
-
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -48,7 +49,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 2,
   },
   text: {
-    color: colors.black,
     fontSize: 18,
     fontWeight: "400",
     textAlign: "left",

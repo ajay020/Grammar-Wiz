@@ -38,8 +38,6 @@ const SentenceMaster = ({ route, navigation }) => {
     data: { level },
   } = route.params;
 
-  // Hide Bottom tab navigation layout.
-  useHideBottomTabBar();
 
   const { sentenceQuizzes, loading } = useGetSentenceQuizzes(level);
 
@@ -221,7 +219,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     gap: 14,
-    // padding: 10,
+    padding: 10,
   },
   output: {
     // backgroundColor: colors.gray2,

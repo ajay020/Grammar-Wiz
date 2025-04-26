@@ -1,19 +1,19 @@
 import React from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
-const QuestionItem = ({ question, selectedQuestion, onPress, disabled }) => {
+const QuestionItem = ({ item, selectedQuestion, onPress, disabled }) => {
   return (
     <TouchableOpacity
       style={[
         styles.item,
-        selectedQuestion?.id === question?.id && styles.activeItem,
-        question.matched && styles.inActiveItem,
+        selectedQuestion?.id === item?.id && styles.activeItem,
+        item.matched && styles.inActiveItem,
       ]}
       onPress={onPress}
       disabled={disabled}
     >
-      <Text style={[styles.text, question.matched && { color: "gray" }]}>
-        {question.text}
+      <Text style={[styles.text, item.matched && { color: "gray" }]}>
+        {item.text}
       </Text>
     </TouchableOpacity>
   );
@@ -44,9 +44,10 @@ const styles = StyleSheet.create({
     elevation: 5,
     padding: 20,
     margin: 5,
-    // borderWidth: 1,
-    // width: 120,
-    // height: 80,
+    borderWidth: 1,
+    minWidth: 120,
+    minHeight: 80,
+    borderRadius: 10,
   },
   text: {
     fontSize: 20,
