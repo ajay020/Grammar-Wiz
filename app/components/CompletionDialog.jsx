@@ -1,5 +1,6 @@
 import React from 'react';
-import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Modal, Text, StyleSheet } from 'react-native';
+import { AppButton, ThemedCardView, ThemedText, ThemedTouchableOpacity, ThemedView } from '../themedComponents/ThemedText';
 
 const CompletionDialog = ({ visible, onClose, onNext }) => {
     return (
@@ -9,14 +10,14 @@ const CompletionDialog = ({ visible, onClose, onNext }) => {
             animationType="fade"
             onRequestClose={onClose}
         >
-            <View style={styles.dialogOverlay}>
-                <View style={styles.dialogBox}>
-                    <Text style={styles.dialogText}>🎉 Well done! You completed the game!</Text>
-                    <TouchableOpacity onPress={onNext} style={styles.dialogButton}>
-                        <Text style={styles.dialogButtonText}>Next</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+            <ThemedView style={styles.dialogOverlay}>
+                <ThemedCardView style={styles.dialogBox}>
+                    <ThemedText style={styles.dialogText}>🎉 Well done! You completed the game!</ThemedText>
+                    <AppButton onPress={onNext} style={styles.dialogButton}>
+                        <ThemedText style={styles.dialogButtonText}>Next</ThemedText>
+                    </AppButton>
+                </ThemedCardView>
+            </ThemedView>
         </Modal>
     );
 };
@@ -30,8 +31,7 @@ const styles = StyleSheet.create({
     },
     dialogBox: {
         width: '80%',
-        backgroundColor: '#fff',
-        padding: 20,
+        padding: 26,
         borderRadius: 10,
         alignItems: 'center',
     },
@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     dialogButton: {
-        backgroundColor: '#2196F3',
+        // backgroundColor: '#2196F3',
         paddingVertical: 12,
         marginTop: 10,
         paddingHorizontal: 25,
         borderRadius: 5,
     },
     dialogButtonText: {
-        color: '#fff',
+        // color: '#fff',
         fontSize: 16,
     },
 });

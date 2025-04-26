@@ -12,6 +12,7 @@ import colors from "../utility/colors";
 import Text from "../components/Text";
 import gameData from "../database/gameData";
 import cache from "../utility/cache";
+import { ThemedText, ThemedTouchableOpacity, ThemedView } from "../themedComponents/ThemedText";
 
 const SentenceBuilder = ({ navigation }) => {
     const [beginnerCount, setBeginnerCount] = useState(0);
@@ -133,32 +134,32 @@ const SentenceBuilder = ({ navigation }) => {
     };
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity
+        <ThemedView style={styles.container}>
+            <ThemedTouchableOpacity
                 style={styles.tile}
                 onPress={() => sendDataToSentenceMaster(1)}
             >
-                <Text style={styles.title}>
+                <ThemedText style={styles.title}>
                     Level1 ({beginnerCompleteCount}/{beginnerCount})
-                </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+                </ThemedText>
+            </ThemedTouchableOpacity>
+            <ThemedTouchableOpacity
                 style={styles.tile}
                 onPress={() => sendDataToSentenceMaster(2)}
             >
-                <Text style={styles.title}>
+                <ThemedText style={styles.title}>
                     Level2 ({intermediateCompleteCount}/{intermediateCount})
-                </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+                </ThemedText>
+            </ThemedTouchableOpacity>
+            <ThemedTouchableOpacity
                 style={styles.tile}
                 onPress={() => sendDataToSentenceMaster(3)}
             >
-                <Text style={styles.title}>
+                <ThemedText style={styles.title}>
                     Level3 ({expertCompleteCount}/{expertCount})
-                </Text>
-            </TouchableOpacity>
-        </View>
+                </ThemedText>
+            </ThemedTouchableOpacity>
+        </ThemedView>
     );
 };
 
@@ -171,7 +172,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     tile: {
-        backgroundColor: colors.white,
         paddingVertical: 20,
         borderRadius: 10,
         elevation: 5,
@@ -181,7 +181,6 @@ const styles = StyleSheet.create({
     title: {
         textAlign: "center",
         fontSize: 24,
-        color: colors.black,
     },
 });
 

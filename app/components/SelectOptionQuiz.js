@@ -5,6 +5,7 @@ import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 import QuestionOptions from "./QuestionOptions";
 import CheckQuizButton from "./CheckQuizButton";
 import Explanation from "./Explanation";
+import { ThemedCardView, ThemedText } from "../themedComponents/ThemedText";
 
 const SelectOptionQuiz = ({
   quizTitle,
@@ -94,7 +95,7 @@ const SelectOptionQuiz = ({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.quizTitle}>{quizTitle}</Text>
+      <ThemedText style={styles.quizTitle}>{quizTitle}</ThemedText>
 
       <QuestionOptions
         handleOptionSelect={handleOptionSelect}
@@ -102,10 +103,10 @@ const SelectOptionQuiz = ({
         question={question}
         quizTitle={quizTitle}
       />
-      <View
+      <ThemedCardView
         style={[
           styles.footer,
-          isValidatedOption && { elevation: 5, backgroundColor: "white" },
+          isValidatedOption && { elevation: 5 },
         ]}
       >
         {isValidatedOption && (
@@ -121,7 +122,7 @@ const SelectOptionQuiz = ({
           isSelected={isSelected}
           isValidatedOption={isValidatedOption}
         />
-      </View>
+      </ThemedCardView>
     </View>
   );
 };

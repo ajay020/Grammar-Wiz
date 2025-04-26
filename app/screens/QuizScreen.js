@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, ScrollView, Text } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 
 import colors from "../utility/colors";
 import { getQuizById } from "../database/grammer/quizzes";
@@ -8,9 +8,9 @@ import { getQuestionById } from "../database/grammer/questions";
 import AppProgressBar from "../components/AppProgressBar";
 import Result from "../components/Result";
 import cache from "../utility/cache";
-import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
 import FillInBlank from "../components/FillInBlankQuiz";
 import SelectOptionQuiz from "../components/SelectOptionQuiz";
+import { ThemedView } from "../themedComponents/ThemedText";
 
 const QuizScreen = ({ route, navigation }) => {
   const { quizId, topicId, title } = route?.params;
@@ -109,7 +109,7 @@ const QuizScreen = ({ route, navigation }) => {
         flex: 1,
       }}
     >
-      <View style={styles.container}>
+      <ThemedView style={styles.container}>
         <AppProgressBar
           progress={progress}
           style={{
@@ -131,7 +131,7 @@ const QuizScreen = ({ route, navigation }) => {
             incrementCorrectCount={incrementCorrectCount}
           />
         )}
-      </View>
+      </ThemedView>
     </ScrollView>
   );
 };

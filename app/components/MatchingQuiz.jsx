@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 import QuestionItem from "./QeustionItem";
 import { getMatchquizData } from "../utility/match_pair_data";
 import CompletionDialog from "./CompletionDialog";
+import { ThemedText, ThemedTouchableOpacity, ThemedView } from "../themedComponents/ThemedText";
 
 const MatchingQuiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -120,19 +121,18 @@ const MatchingQuiz = () => {
 
   if (quizCompleted) {
     return (
-      <View style={
+      <ThemedView style={
         {
           flex: 1,
           justifyContent: "center",
           alignItems: "center"
         }
       }>
-        <Text style={{ marginBottom: 12 }}>You’ve completed all quizzes! 🎉</Text>
-        <TouchableOpacity
+        <ThemedText style={{ marginBottom: 12 }}>You’ve completed all quizzes! 🎉</ThemedText>
+        <ThemedTouchableOpacity
           style={{
             marginTop: 20,
           }}
-          title="Restart Quiz"
           onPress={() => {
             setCurrentIndex(0);
             setQuizCompleted(false);
@@ -141,22 +141,24 @@ const MatchingQuiz = () => {
             setIsCorrect("");
           }}
           color="#2196F3"
-        />
-      </View>
+        >
+          <ThemedText>Replay</ThemedText>
+        </ThemedTouchableOpacity>
+      </ThemedView>
     )
   }
 
 
   return (
-    <View style={styles.outerContainer}>
-      <Text style={styles.headingText}>Match the correct Pairs</Text>
-      <Text style={{ textAlign: "center", fontSize: 30 }}>
+    <ThemedView style={styles.outerContainer}>
+      <ThemedText style={styles.headingText}>Match the correct Pairs</ThemedText>
+      <ThemedText style={{ textAlign: "center", fontSize: 30 }}>
         {isCorrect === "correct"
           ? "Right"
           : isCorrect === "inCorrect"
             ? "Wrong"
             : ""}
-      </Text>
+      </ThemedText>
 
 
       <View style={styles.container}>
@@ -178,7 +180,7 @@ const MatchingQuiz = () => {
               item={answer}
               selectedAnswer={selectedAnswer}
               onPress={() => handleAnswerSelection(answer)}
-              disabled={ answer?.matched ?? false}
+              disabled={answer?.matched ?? false}
             />
           ))}
         </View>
@@ -194,7 +196,7 @@ const MatchingQuiz = () => {
           setQuizCompleted(false);
         }}
       />
-    </View>
+    </ThemedView>
 
   );
 };
@@ -204,7 +206,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     gap: 24,
-    backgroundColor: "lightgray",
   },
   container: {
     // flex: 1,

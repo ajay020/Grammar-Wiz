@@ -1,20 +1,19 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { View } from "react-native";
 
 import QuizScreen from "../screens/QuizScreen";
 import HomeScreen from "../screens/HomeScreen";
 import QuizListScreen from "../screens/QuizListScreen";
 import MoreButton from "../components/MoreButton";
 import AboutScreen from "../screens/AboutScreen";
-import { BackHandler, View } from "react-native";
-import ThemeToggleButton from "../theme/.ThemeToggleButton";
+import ThemeToggleButton from "../theme/ThemeToggleButton";
 import { useTheme } from "../theme/ThemeContext";
 import { darkTheme, lightTheme } from "../utility/theme";
 
 const Stack = createStackNavigator();
 
 const HomeNavigator = () => {
-
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 

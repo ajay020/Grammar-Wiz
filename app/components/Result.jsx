@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-import AppButton from "./AppButton";
 import colors from "../utility/colors";
 import { useNavigation } from "@react-navigation/native";
 import AppText from "./Text";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Icon from "./Icon";
 import CheckIcon from "./CheckIcon";
+import { ThemedText, ThemedView } from "../themedComponents/ThemedText";
+import AppButton from "./AppButton";
 
 const Result = ({ correct, totalQuestions }) => {
   const navigation = useNavigation();
@@ -24,19 +24,19 @@ const Result = ({ correct, totalQuestions }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.box1}>
+    <ThemedView style={styles.container}>
+      <ThemedView style={styles.box1}>
         <CheckIcon
           color={colors.white}
           backgroundColor={colors.primary}
           size={38}
           style={{ width: 70, height: 70, borderRadius: 35 }}
         />
-        <Text style={styles.messageText}>{message}</Text>
-      </View>
-      <View style={styles.box2}>
+        <ThemedText style={styles.messageText}>{message}</ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.box2}>
         <View style={styles.scoreContainer}>
-          <Text style={styles.score}>{percent}% </Text>
+          <ThemedText style={styles.score}>{percent}% </ThemedText>
         </View>
 
         <View style={styles.box}>
@@ -51,14 +51,14 @@ const Result = ({ correct, totalQuestions }) => {
             <Icon name={"close"} size={24} color="red" />
           </View>
         </View>
-      </View>
+      </ThemedView>
 
       <AppButton
         title="Next Quiz"
         style={styles.button}
         onPress={() => navigation.goBack()}
       />
-    </View>
+    </ThemedView>
   );
 };
 
@@ -88,17 +88,14 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   messageText: {
-    color: colors.black,
     fontSize: 24,
     fontWeight: "400",
     marginTop: 16,
   },
   score: {
-    color: colors.black,
     fontSize: 40,
   },
   scoreText: {
-    color: colors.black,
     fontSize: 20,
   },
   scoreTextContainer: {

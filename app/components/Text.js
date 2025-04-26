@@ -1,8 +1,9 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
+import { ThemedText } from "../themedComponents/ThemedText";
 
 const AppText = ({ children, style }) => {
-  return <Text style={[styles.text, style]}>{children}</Text>;
+  return <ThemedText style={[styles.text, style]}>{children}</ThemedText>;
 };
 
 const styles = StyleSheet.create({

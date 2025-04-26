@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
-import AppButton from "./AppButton";
 import colors from "../utility/colors";
+import AppButton from "./AppButton";
 
 const CheckQuizButton = ({
   onPress,

@@ -5,6 +5,7 @@ import useSentenceCounts from "../hooks/useSentenceCount";
 
 import colors from "../utility/colors";
 import Icon from "./Icon";
+import { ThemedText, ThemedTouchableOpacity, ThemedView } from "../themedComponents/ThemedText";
 
 const SentenceModal = ({
   words,
@@ -55,19 +56,19 @@ const SentenceModal = ({
 
   return (
     <Modal visible={modalVisible} animationType="slide" transparent={false}>
-      <TouchableOpacity
+      <ThemedTouchableOpacity
         onPress={() => {
           navigation.goBack();
         }}
         style={styles.closeIconContainer}
       >
         <Icon name={"close"} size={35} />
-      </TouchableOpacity>
-      <View style={styles.modalContainer}>
+      </ThemedTouchableOpacity>
+      <ThemedView style={styles.modalContainer}>
         {timeTaken >= 60 ? (
-          <Text style={styles.ansTxt}> Try again </Text>
+          <ThemedText style={styles.ansTxt}> Try again </ThemedText>
         ) : (
-          <Text style={styles.ansTxt}>{arrangedSentence}</Text>
+          <ThemedText style={styles.ansTxt}>{arrangedSentence}</ThemedText>
         )}
 
         <View style={styles.performance}>
@@ -79,24 +80,24 @@ const SentenceModal = ({
 
           <View style={styles.timeContainer}>
             <Icon name={"clock-outline"} color={colors.black} size={24} />
-            <Text style={styles.timeTaken}>{60 - timeLeft} seconds</Text>
+            <ThemedText style={styles.timeTaken}>{60 - timeLeft} seconds</ThemedText>
           </View>
           <View style={styles.countContainer}>
-            <Text style={styles.countText}>
+            <ThemedText style={styles.countText}>
               {completed + 1}/{total}
-            </Text>
+            </ThemedText>
           </View>
         </View>
 
         <View style={styles.actionContainer}>
           <TouchableOpacity onPress={handleRetakeQuiz}>
-            <Icon name={"reload"} size={40} color={colors.black} />
+            <Icon name={"reload"} size={40}  />
           </TouchableOpacity>
           <TouchableOpacity onPress={moveToNextSentence}>
-            <Icon name={"arrow-right"} size={40} color={colors.black} />
+            <Icon name={"arrow-right"} size={40}  />
           </TouchableOpacity>
         </View>
-      </View>
+      </ThemedView>
     </Modal>
   );
 };
@@ -110,7 +111,6 @@ const styles = StyleSheet.create({
   },
   ansTxt: {
     fontSize: 30,
-    color: colors.black,
     textAlign: "center",
     padding: 12,
   },
@@ -126,7 +126,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   closeIconContainer: {
-    backgroundColor: "white",
     paddingLeft: 28,
     paddingTop: 24,
   },

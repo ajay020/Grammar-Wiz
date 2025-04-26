@@ -4,11 +4,12 @@ import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 import colors from "../utility/colors";
 import Text from "./Text";
+import { ThemedCardView, ThemedText, ThemedView } from "../themedComponents/ThemedText";
 
 const Explanation = ({ isCorrect, explanation }) => {
   return (
-    <View style={styles.container}>
-      <Text
+    <ThemedCardView style={styles.container}>
+      <ThemedText
         style={[
           styles.resultText,
           isCorrect && { color: colors.primary },
@@ -17,15 +18,14 @@ const Explanation = ({ isCorrect, explanation }) => {
       >
         {isCorrect ? "Correct" : ""}
         {!isCorrect ? "Incorrect" : ""}
-      </Text>
-      <Text style={styles.explainText}>{explanation}</Text>
-    </View>
+      </ThemedText>
+      <ThemedText style={styles.explainText}>{explanation}</ThemedText>
+    </ThemedCardView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: "orange",
     gap: moderateScale(18),
     paddingHorizontal: 4,
     paddingVertical: moderateScale(8),

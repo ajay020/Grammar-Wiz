@@ -10,6 +10,7 @@ import useTimer from "../hooks/useTimer";
 import AppProgressBar from "./AppProgressBar";
 import { useHideBottomTabBar } from "../hooks/useHideBottomTabBar";
 import useGetSentenceQuizzes from "../hooks/useGetSentenceQuizzes";
+import { ThemedCardView, ThemedTouchableOpacity, ThemedView } from "../themedComponents/ThemedText";
 
 function shuffleArray(array) {
   // Create a copy of the original array to avoid modifying it directly
@@ -162,22 +163,22 @@ const SentenceMaster = ({ route, navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <View style={styles.output}>
         {arrangedWords.map((word) => (
-          <View key={word.id} style={styles.chipContainer}>
+          <ThemedCardView key={word.id} style={styles.chipContainer}>
             <AppText style={styles.wordChip}>{word.text}</AppText>
-          </View>
+          </ThemedCardView>
         ))}
       </View>
-      <View style={styles.progressContainer}>
+      <ThemedView style={styles.progressContainer}>
         {progress > 0 && (
           <AppProgressBar progress={progress} range={100} duration={600} />
         )}
-      </View>
+      </ThemedView>
       <View style={styles.input}>
         {words?.map((word) => (
-          <TouchableOpacity
+          <ThemedTouchableOpacity
             onPress={() => handleWordSelect(word)}
             key={word.id}
             activeOpacity={0.8}
@@ -188,7 +189,7 @@ const SentenceMaster = ({ route, navigation }) => {
             ]}
           >
             <AppText style={styles.wordChip}>{word.text}</AppText>
-          </TouchableOpacity>
+          </ThemedTouchableOpacity>
         ))}
       </View>
       {/* Sentence Modal */}
@@ -202,7 +203,7 @@ const SentenceMaster = ({ route, navigation }) => {
         level={level}
       />
       {/* Sentence Modal */}
-    </View>
+    </ThemedView>
   );
 };
 
@@ -222,7 +223,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   output: {
-    // backgroundColor: colors.gray2,
     alignItems: "center",
     alignContent: "center",
     flex: 1,
@@ -239,7 +239,6 @@ const styles = StyleSheet.create({
     backgroundColor: "gray",
   },
   chipContainer: {
-    backgroundColor: colors.white,
     borderWidth: 1,
     borderRadius: 10,
     elevation: 3,
@@ -248,9 +247,7 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   wordChip: {
-    color: colors.white,
     fontSize: 24,
-    color: colors.black,
   },
 });
 

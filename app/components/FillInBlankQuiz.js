@@ -11,7 +11,6 @@ import {
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 import colors from "../utility/colors";
-import AppButton from "./AppButton";
 import Explanation from "./Explanation";
 import CheckQuizButton from "./CheckQuizButton";
 

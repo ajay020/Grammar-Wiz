@@ -1,26 +1,27 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Touchable, TouchableOpacity } from "react-native";
+import { ThemedText, ThemedTouchableOpacity, ThemedView } from "../themedComponents/ThemedText";
 
 const GameListScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
+    <ThemedView style={styles.container}>
+      <ThemedTouchableOpacity
         style={styles.tile}
         onPress={() => navigation.navigate("SentenceBuilder")}
       >
-        <Text style={styles.title}>Sentence Builder</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
+        <ThemedText style={styles.title}>Sentence Builder</ThemedText>
+      </ThemedTouchableOpacity>
+      <ThemedTouchableOpacity
         style={styles.tile}
         onPress={() => navigation.navigate("MatchingQuiz")}
       >
-        <Text style={styles.title}>Matching Quiz</Text>
-      </TouchableOpacity>
+        <ThemedText style={styles.title}>Matching Quiz</ThemedText>
+      </ThemedTouchableOpacity>
 
-    </View>
+    </ThemedView>
   );
 }
 
@@ -29,10 +30,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f5f5f5",
   },
   tile: {
-    backgroundColor: "#fff",
     padding: 20,
     marginVertical: 10,
     borderRadius: 10,

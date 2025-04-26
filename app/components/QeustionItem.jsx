@@ -1,9 +1,10 @@
 import React from "react";
-import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { ThemedText, ThemedTouchableOpacity } from "../themedComponents/ThemedText";
 
 const QuestionItem = ({ item, selectedQuestion, onPress, disabled }) => {
   return (
-    <TouchableOpacity
+    <ThemedTouchableOpacity
       style={[
         styles.item,
         selectedQuestion?.id === item?.id && styles.activeItem,
@@ -12,10 +13,10 @@ const QuestionItem = ({ item, selectedQuestion, onPress, disabled }) => {
       onPress={onPress}
       disabled={disabled}
     >
-      <Text style={[styles.text, item.matched && { color: "gray" }]}>
+      <ThemedText style={[styles.text, item.matched && { color: "gray" }]}>
         {item.text}
-      </Text>
-    </TouchableOpacity>
+      </ThemedText>
+    </ThemedTouchableOpacity>
   );
 };
 
@@ -40,7 +41,6 @@ const styles = StyleSheet.create({
   item: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
     elevation: 5,
     padding: 20,
     margin: 5,
