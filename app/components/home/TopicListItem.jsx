@@ -3,8 +3,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 
 import colors from "../../utility/colors.js";
-import ExpandableItem from "../ExpandableItem.js";
-import Text from "../Text";
+import ExpandableItem from "../ExpandableItem.jsx";
+import Text from "../Text.jsx";
 
 const TopicListItem = ({ selectedTopic, setSelectedTopic, topic }) => {
   return (
